@@ -4,7 +4,8 @@ import { buildQuery } from '../data/query'
 import { computeLayout } from '../scene/layout'
 import { EMPTY_SPEC, getState, setState, type Vec3 } from '../store'
 import type { Column, Dataset, GeoFields, ViewSpec } from '../types'
-import { appendLog } from './log'
+import { askAi, type AiContext } from './ai'
+import { appendLog, type LogEntry } from './log'
 import { HELP, parse, type ParseContext } from './parse'
 import type { Command, Filter, FlyTarget } from './types'
 
@@ -106,16 +107,64 @@ function context(): ParseContext {
   }
 }
 
+// A few frequent values per text column, so the AI can map what people say
+// ("California") onto what the data holds ("CA").
+function samples(): Record<string, string[]> {
+  const { rows } = getState()
+  const out: Record<string, string[]> = {}
+  for (const c of active()?.columns ?? []) {
+    if (c.kind !== 'text') continue
+    const counts = new Map<string, number>()
+    for (const r of rows.slice(0, 2000)) {
+      const v = r[c.name]
+      if (typeof v === 'string' && v) counts.set(v, (counts.get(v) ?? 0) + 1)
+    }
+    out[c.name] = [...counts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 5).map(([v]) => v.slice(0, 40))
+  }
+  return out
+}
+
+function aiContext(): AiContext {
+  const ds = active()!
+  const { defs, layout, spec } = getState()
+  return {
+    dataset: { id: ds.def.id, name: ds.def.name },
+    columns: ds.columns.map((c) => ({ name: c.name, kind: c.kind })),
+    datasets: defs.map((d) => ({ id: d.id, name: d.name })),
+    groups: layout?.groups.map((g) => g.key) ?? [],
+    spec,
+    samples: samples(),
+  }
+}
+
+// Free parser first; the AI only sees what the parser couldn't handle.
 export async function submit(raw: string, source: 'voice' | 'typed') {
   const text = raw.trim()
   if (!text) return
   setState({ heard: text })
+  const log = (handledBy: LogEntry['handled_by'], command = '') =>
+    appendLog({ at: Date.now(), text, source, understood: handledBy !== 'none', handled_by: handledBy, command })
+
   const result = parse(text, context())
-  const command = result && 'command' in result ? result.command : null
-  appendLog({ at: Date.now(), text, source, understood: !!command, command: command?.type ?? '' })
-  if (!result) return say(`I don't know "${text}" yet. Say "help" to hear what I understand.`)
-  if ('error' in result) return say(result.error)
-  await runCommand(result.command)
+  if (result && 'command' in result) {
+    log('parser', result.command.type)
+    await runCommand(result.command)
+    return
+  }
+  if (!active()) return say(result?.error ?? `I don't know "${text}" yet.`)
+
+  say('Thinking…')
+  const ai = await askAi(text, aiContext())
+  if ('error' in ai) {
+    log('none')
+    if (result) return say(result.error)
+    return say(`I don't know "${text}" yet (${ai.error}). Say "help" to hear what I understand.`)
+  }
+  log(ai.commands.length ? 'ai' : 'none', ai.commands.map((c) => c.type).join(' '))
+  let ok = true
+  for (const cmd of ai.commands) ok = (await runCommand(cmd)) && ok
+  // A rejected command already explained itself; otherwise the AI's reply narrates.
+  if (ok && ai.reply) say(ai.reply)
 }
 
 const OP_WORDS: Record<Filter['op'], string> = {
@@ -128,19 +177,29 @@ async function updateSpec(patch: Partial<ViewSpec>) {
   await refresh()
 }
 
-// Validates and applies one command. The AI will call this with the same
-// shapes, so it must never trust field names.
-export async function runCommand(cmd: Command) {
+// Validates and applies one command. The AI sends the same shapes, so field
+// names and dataset ids are never trusted. Returns false if it was rejected.
+export async function runCommand(cmd: Command): Promise<boolean> {
+  if (cmd.type === 'dataset' && !getState().defs.some((d) => d.id === cmd.id)) {
+    say(`There's no world called "${cmd.id}".`)
+    return false
+  }
+  const ds = active()
+  const field =
+    cmd.type === 'groupBy' || cmd.type === 'sortBy' || cmd.type === 'encode' ? cmd.field : cmd.type === 'filter' ? cmd.filter.field : null
+  if (ds && field !== null && !ds.columns.some((c) => c.name === field)) {
+    say(`There's no field called "${field}" in ${ds.def.name}.`)
+    return false
+  }
+  await apply(cmd)
+  return true
+}
+
+async function apply(cmd: Command) {
   const ds = active()
   if (cmd.type === 'help') return say(HELP)
   if (cmd.type === 'dataset') return activate(cmd.id)
   if (!ds) return
-
-  const hasField = (f: string | null) => f === null || ds.columns.some((c) => c.name === f)
-  const fieldOf = (c: Command) =>
-    c.type === 'groupBy' || c.type === 'sortBy' || c.type === 'encode' ? c.field : c.type === 'filter' ? c.filter.field : null
-  const field = fieldOf(cmd)
-  if (!hasField(field)) return say(`There's no field called "${field}" in ${ds.def.name}.`)
 
   switch (cmd.type) {
     case 'groupBy':

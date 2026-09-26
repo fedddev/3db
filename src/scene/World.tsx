@@ -1,6 +1,6 @@
 import { Billboard, Grid, Stars, Text } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
-import { useRef } from 'react'
+import { Suspense, useRef } from 'react'
 import type { Group } from 'three'
 import { useStore } from '../store'
 import { BACKGROUND } from './colors'
@@ -17,8 +17,12 @@ export function World() {
       <SlowSky />
       <Floor />
       <Records />
-      <GroupLabels />
-      <Title />
+      {/* Text loads its font lazily; keep that suspense inside the canvas so it
+          never holds back the rest of the page (it swallowed keystrokes). */}
+      <Suspense fallback={null}>
+        <GroupLabels />
+        <Title />
+      </Suspense>
       <Navigation />
     </>
   )

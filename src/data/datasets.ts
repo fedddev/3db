@@ -90,10 +90,11 @@ const commandLog: DatasetDef = {
   id: 'commands',
   name: 'Everything you said to 3db',
   blurb:
-    "Every command you've spoken or typed in this browser. The dim ones are what I couldn't understand yet: the AI's to-do list.",
+    "Every command you've spoken or typed in this browser, colored by who understood it: the free parser, the AI, or nobody. The 'none' pile is my to-do list.",
   aliases: ['command log', 'commands', 'log', 'voice log', 'what i said', 'my commands'],
   fieldAliases: {
-    understood: ['handled', 'parsed', 'recognized'],
+    understood: ['parsed', 'recognized'],
+    handled_by: ['handled', 'handler', 'who handled it', 'parser or ai'],
     source: ['input', 'voice or typed'],
     at: ['time', 'when', 'date'],
     words: ['length'],
@@ -102,10 +103,10 @@ const commandLog: DatasetDef = {
   timeField: 'at',
   labelField: 'text',
   volatile: true,
-  defaults: { layout: 'timeline', height: 'words', color: 'understood' },
+  defaults: { layout: 'timeline', height: 'words', color: 'handled_by' },
   load: async () => ({
     kind: 'json',
-    rows: readLog().map((e) => ({ ...e, words: e.text.split(/\s+/).length })),
+    rows: readLog().map((e) => ({ ...e, handled_by: e.handled_by ?? (e.understood ? 'parser' : 'none'), words: e.text.split(/\s+/).length })),
   }),
 }
 

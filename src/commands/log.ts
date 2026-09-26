@@ -6,6 +6,7 @@ export interface LogEntry {
   text: string
   source: 'voice' | 'typed'
   understood: boolean
+  handled_by: 'parser' | 'ai' | 'none'
   command: string
 }
 

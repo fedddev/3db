@@ -16,13 +16,14 @@ voice control, a narrator/tutorial line, a world you move through.
   itself (its git history, its command log) with public data (USGS
   earthquakes). Every dataset has a `blurb`: the narrator's voice on arrival.
 - **Voice costs nothing by default.** A free in-browser parser handles common
-  phrases; only what it can't parse will go to an AI (not built yet).
+  phrases; only what it can't parse goes to the AI proxy (Claude Haiku 4.5).
 
 ## Architecture
 
 ```
 speech / typed text
   -> commands/parse.ts   free fast path: phrase -> Command (or null)
+  -> commands/ai.ts      if null/unknown field: POST /api/interpret -> server/interpret.ts (Haiku)
   -> commands/run.ts     validates + applies Command; the only thing that changes the world
   -> data/query.ts       ViewSpec -> SQL (DuckDB-WASM, in the browser)
   -> scene/layout.ts     rows -> target positions/sizes/colors (grid | timeline | geo)
@@ -31,6 +32,13 @@ speech / typed text
 
 - `src/commands/types.ts` is **the contract**. The AI proxy must emit exactly
   these shapes (structured output). `runCommand` never trusts field names.
+- `server/interpret.ts`: the AI proxy. Web-standard `handleInterpret(Request)`,
+  served by Vite middleware in dev (`vite.config.ts`). Sends the phrase plus a
+  small context (columns, groups, current view, top values per text column),
+  never the rows. Output is constrained by a JSON schema built from Zod with
+  `z.toJSONSchema` (not the SDK's zod helper, which demotes enum/const to
+  descriptions and would let the model invent command types), then re-validated
+  with Zod. Guardrails: 12 calls/min per IP, a daily cap, 300-char phrases.
 - `src/store.ts`: zustand. Non-React modules use `getState`/`setState`.
 - `src/data/datasets.ts`: dataset definitions (load, aliases, field aliases,
   defaults, blurb). Add new worlds here.
@@ -46,6 +54,21 @@ speech / typed text
   Co-Authored-By trailer.
 - Earthquakes load live from the USGS weekly feed (CORS-open, no key).
 - The command log lives in localStorage (`3db.commandLog`); it will move server-side.
+
+## AI setup
+
+Put `ANTHROPIC_API_KEY=...` in `.env.local` (gitignored; see `.env.example`)
+and restart `npm run dev`. Without it, unparsed phrases just get a polite
+"don't know that yet". Set a monthly spend limit on the Anthropic Console
+workspace: the in-memory limits reset on restart. Haiku 4.5 only caches
+prompts of 4096+ tokens and ours is ~1.5K, so every call pays full input
+(about $0.002-0.003 per phrase).
+
+## Gotchas
+
+- drei `<Text>` suspends while its font loads. Keep it inside a `<Suspense>`
+  within the Canvas; without one the suspension reached the DOM tree and
+  reverted keystrokes in the command bar.
 
 ## Commands
 
@@ -63,15 +86,16 @@ Shift to run, V for voice, / to type, Esc to release. Drop a CSV to explore it.
 - React + React Three Fiber, Vite, TypeScript. VR/WebXR is a nice-to-have.
 - Twitter/X dropped. No secrets in the client, ever (the old repo leaked keys).
 - AI voice: Claude behind a small serverless proxy (Firebase Functions likely)
-  with rate limits and a hard spend cap; model choice is still open (Haiku 4.5
-  vs Sonnet 5 vs Opus 5). No self-hosted model: idle GPU cost and cold starts
+  with rate limits and a hard spend cap. Model: Claude Haiku 4.5 (chosen for
+  cost; step up to Sonnet 5 if it misreads phrases). No self-hosted model: idle GPU cost and cold starts
   don't fit a voice demo.
 - DuckDB-WASM costs ~8 MB gzipped on first load. Accepted for real SQL; revisit
   (lazy-load, or CDN bundles) if first paint suffers.
 
 ## Next
 
-1. AI proxy for unparsed phrases (send schema + phrase, receive a Command).
+1. Deploy the proxy (Firebase Functions next to Hosting; set VITE_AI_URL if
+   it lives on another origin) and move the command log server-side.
 2. Coastline outline under the geo layout; stack order for weekday/month groups.
 3. Open a record in place (fields unfold around it) instead of only the side panel.
 4. Guided tour: the narrator walks first-time visitors through a world.
