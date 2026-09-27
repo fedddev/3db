@@ -140,11 +140,22 @@ prompts of 4096+ tokens and ours is ~1.5K, so every call pays full input
 npm run dev        # starts Vite
 npm run build      # typecheck + production build
 npm run lint       # oxlint
+npm run deploy     # build + deploy to Firebase Hosting (needs `npx firebase login`)
 ```
 
 Controls: click the world to capture the mouse (it looks around), WASD or
 arrows to walk and strafe, Space/C up/down (floor at eye height, 1.6 m),
 Shift to run, V for voice, / to type, Esc to release. Drop or upload a CSV to explore it.
+
+## Deploy
+
+- Live at https://fedddev-3db.web.app (Firebase project `fedddev-3db`,
+  `.firebaserc`). Hosting only so far: the site is static, and phrases the
+  parser can't handle get the "AI unreachable" fallback until the proxy ships.
+- `firebase.json`: hashed `/assets/**` cached for a year (immutable); `/` and
+  `/index.html` are `no-cache`, so a deploy shows up at once. DuckDB's wasm is
+  served as `application/wasm`, brotli (~5.4 MB for the eh bundle).
+- `firebase-tools` is a dev dependency; run it with `npx firebase`.
 
 ## Decisions (2026-09-26)
 
@@ -159,12 +170,13 @@ Shift to run, V for voice, / to type, Esc to release. Drop or upload a CSV to ex
 
 ## Next
 
-1. Deploy the proxy (Firebase Functions next to Hosting; set VITE_AI_URL if
-   it lives on another origin).
+1. Deploy the proxy as a Cloud Function in `fedddev-3db` (needs the Blaze
+   plan), with a Hosting rewrite for `/api/interpret` and the key in Secret
+   Manager. Its rate limits are in memory, so set an Anthropic Console spend
+   limit (or move the counters to Firestore).
 2. Coastline outline under the geo layout; stack order for weekday/month groups.
 3. Open a record in place (fields unfold around it) instead of only the side panel.
 4. Guided tour: the narrator walks first-time visitors through a world.
-5. Deploy (Firebase Hosting; the project `three-db` exists from 2018).
-6. Year gridlines along the timeline, so time reads as distance at a glance.
-7. Keep the keys panel from covering the street names when a view is grouped
+5. Year gridlines along the timeline, so time reads as distance at a glance.
+6. Keep the keys panel from covering the street names when a view is grouped
    and several view-key items are applied.

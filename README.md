@@ -10,6 +10,8 @@ key shows facts about the file and whatever is applied (color, height, groups,
 sort, filters); "show keys" adds its columns and what you can say. "clear all"
 undoes what you've added.
 
+Live at **https://fedddev-3db.web.app**.
+
 ```bash
 npm install
 npm run dev

@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 
 # Generated from git history before dev/build
+
+# Firebase deploy cache
+.firebase/
