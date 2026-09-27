@@ -4,21 +4,43 @@
 Grouping builds districts, sorting builds skylines, filtering sinks what doesn't
 match, and time stretches into distance. Drive it with your voice or a command bar.
 
+**Try it: https://fedddev-3db.web.app**
+
 You start on an empty floor. Drop a CSV onto the page (or use Upload CSV) and it
 builds in front of you, already colored by one of its columns. Once it loads, a
 key shows facts about the file and whatever is applied (color, height, groups,
 sort, filters); "show keys" adds its columns and what you can say. "clear all"
 undoes what you've added.
 
-Live at **https://fedddev-3db.web.app**.
+Click the world to look around · WASD or arrows to walk and strafe · Space/C up/down (never below eye height) · Shift to run · "recenter" to go back to the start ·
+V to talk · / to type · try "group by <column>", "color by <column>", "only <column> above 10", "help".
+
+Voice uses the browser's Web Speech API (Chrome, Edge, Safari). Everything runs
+in the browser; SQL runs on [DuckDB-WASM](https://duckdb.org/docs/api/wasm/overview).
+Your CSV stays in the browser. When the AI proxy is on, a phrase the parser
+can't handle is sent to it with the file name, column names, current group
+names and up to five common values per text column, never the rows.
+
+## Run locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-Click the world to look around · WASD or arrows to walk and strafe · Space/C up/down (never below eye height) · Shift to run · "recenter" to go back to the start ·
-V to talk · / to type · try "group by <column>", "color by <column>", "only <column> above 10", "help".
+For AI help with phrases the built-in parser doesn't know, put
+`ANTHROPIC_API_KEY=...` in `.env.local` (see `.env.example`) and restart.
 
-Voice uses the browser's Web Speech API (Chrome, Edge, Safari). Everything runs
-in the browser; SQL runs on [DuckDB-WASM](https://duckdb.org/docs/api/wasm/overview).
+## Deployment
+
+The app is hosted on Firebase Hosting in the `fedddev-3db` project, at
+https://fedddev-3db.web.app. To deploy:
+
+```bash
+npx firebase login   # once
+npm run deploy       # builds, then deploys hosting
+```
+
+The AI proxy isn't deployed yet, so on the live site only phrases the built-in
+parser understands work (everything in the key); anything else gets a polite
+"don't know that yet".
