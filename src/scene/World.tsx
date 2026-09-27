@@ -9,6 +9,7 @@ import { BACKGROUND, BASE, FLOOR_CELL, FLOOR_LINE, SURFACE } from './colors'
 import { CORNER_YAW, titlePlacement } from './layout'
 import { Navigation } from './Navigation'
 import { Records } from './Records'
+import { Splash } from './Splash'
 
 export function World() {
   return (
@@ -25,6 +26,12 @@ export function World() {
       <Suspense fallback={null}>
         <GroupLabels />
         <Title />
+      </Suspense>
+      {/* Its own boundary: when the first world's title font starts loading,
+          the shared boundary above hides its children, which made the
+          splash blink out before fading. */}
+      <Suspense fallback={null}>
+        <Splash />
       </Suspense>
       <Navigation />
     </>

@@ -9,6 +9,9 @@ import { EASE_RATE } from './layout'
 // The animated state of every box, shared with the highlight outlines.
 // Boxes ease toward the layout's targets each frame, so every change to the
 // view is a physical rearrangement you can watch.
+// How bright the other boxes stay while one is selected.
+const SELECTION_DIM = 0.3
+
 const live = {
   pos: new Float32Array(ROW_LIMIT * 3),
   size: new Float32Array(ROW_LIMIT * 3),
@@ -45,6 +48,13 @@ export function Records() {
     mesh.current.count = layout.n
   }, [layout])
 
+  // Selecting a record dims every other box (brand/BRAND.md §8a); easing
+  // toward the dimmed colors needs another pass of the frame loop.
+  const selected = useStore((s) => s.selected)
+  useEffect(() => {
+    live.settled = false
+  }, [selected])
+
   useFrame((_, dt) => {
     const m = mesh.current
     if (layout && !live.settled) {
@@ -55,7 +65,8 @@ export function Records() {
         const ds = layout.size[j] - live.size[j]
         live.pos[j] += dp * k
         live.size[j] += ds * k
-        const dc = layout.color[j] - live.color[j]
+        const dim = selected !== null && Math.floor(j / 3) !== selected ? SELECTION_DIM : 1
+        const dc = layout.color[j] * dim - live.color[j]
         live.color[j] += dc * k
         moving = Math.max(moving, Math.abs(dp), Math.abs(ds), Math.abs(dc))
       }

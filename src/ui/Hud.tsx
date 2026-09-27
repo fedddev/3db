@@ -26,12 +26,16 @@ export function Hud({ inputRef, onToggleVoice }: { inputRef: RefObject<HTMLInput
 }
 
 // Before any world: the narrator's welcome (and any file errors), plus upload.
+// It carries the fedddev maker's mark. Like every 3db panel it sits on a fern
+// block (a deliberate 3db exception to brand/BRAND.md §2a; see CLAUDE.md).
 function Welcome() {
   const message = useStore((s) => s.message)
   const heard = useStore((s) => s.heard)
   const interim = useStore((s) => s.interim)
   return (
-    <div className="narrator panel">
+    <div className="narrator panel fd-fern">
+      {/* The light wordmark (d's in lagoon, papaya, hibiscus), by choice over the -fern file. */}
+      <img className="maker" src="/brand/fedddev-wordmark-light.svg" alt="fedddev" />
       {(interim || heard) && <div className="heard">{interim ? `…${interim}` : `“${heard}”`}</div>}
       <div className="welcome">
         <div>{message}</div>
@@ -56,7 +60,7 @@ function Toast() {
   }, [messageId])
   const visible = !!interim || expiredId !== messageId
   return (
-    <div className={`toast panel ${visible ? 'on' : ''}`} role="status" aria-live="polite">
+    <div className={`toast panel fd-fern ${visible ? 'on' : ''}`} role="status" aria-live="polite">
       {(interim || heard) && <div className="heard">{interim ? `…${interim}` : `“${heard}”`}</div>}
       {!interim && <div>{message}</div>}
     </div>
@@ -94,7 +98,7 @@ function Keys() {
   const file = ds.def.file
   const records = file?.rows ?? shown
   return (
-    <div className="keys panel">
+    <div className="keys panel fd-fern">
       <div className="keys-head">
         <strong>{ds.def.name}</strong>
         <UploadButton label="Upload another" />
@@ -137,18 +141,33 @@ function Keys() {
   )
 }
 
+const PLACEHOLDER = 'Type a command: "group by <column>", "color by <column>", "help"'
+
 function CommandBar({ inputRef, onToggleVoice }: { inputRef: RefObject<HTMLInputElement | null>; onToggleVoice: () => void }) {
   const [text, setText] = useState('')
   const listening = useStore((s) => s.listening)
   return (
     <form
-      className="command panel"
+      className="command panel fd-fern"
       onSubmit={(e) => {
         e.preventDefault()
         submit(text)
         setText('')
       }}
     >
+      {/* The input grows with its text (a hidden copy sets the width), so the
+          text and the talk button center together as one unit. */}
+      <span className="autosize" data-value={text || PLACEHOLDER}>
+        <input
+          ref={inputRef}
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          onKeyDown={(e) => e.key === 'Escape' && e.currentTarget.blur()}
+          placeholder={PLACEHOLDER}
+          aria-label="Command"
+          size={1}
+        />
+      </span>
       <button
         type="button"
         className={`mic ${listening ? 'on' : ''}`}
@@ -159,14 +178,6 @@ function CommandBar({ inputRef, onToggleVoice }: { inputRef: RefObject<HTMLInput
         <MicIcon />
         {listening ? 'listening' : 'talk'}
       </button>
-      <input
-        ref={inputRef}
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        onKeyDown={(e) => e.key === 'Escape' && e.currentTarget.blur()}
-        placeholder='Type a command: "group by <column>", "color by <column>", "help"'
-        aria-label="Command"
-      />
     </form>
   )
 }
@@ -179,7 +190,7 @@ function Inspector() {
   const row = rows[selected]
   const title = ds.labelField ? formatValue(row[ds.labelField]) : `Record ${selected + 1}`
   return (
-    <div className="inspector panel">
+    <div className="inspector panel fd-fern">
       <div className="inspector-head">
         <strong>{title}</strong>
         <button onClick={() => useStore.setState({ selected: null })} aria-label="Close">

@@ -13,6 +13,7 @@
   --fd-hibiscus: #E0457B; /* light-mode warm accent 2; moiré */
   --fd-muted-on-dark: #C9BFAE;
   --fd-muted-on-light: #4A5A55;
+  --fd-muted-on-fern: #2E5A4E;
 
   /* Type */
   --fd-font-display: "Bricolage Grotesque", "Figtree", system-ui, sans-serif;
@@ -82,4 +83,21 @@
   --fd-button-bg: var(--fd-papaya);
   --fd-button-text: var(--fd-jungle);
   --fd-pattern-opacity: 0.3;
+}
+
+/* Fern brand block — same in both modes. Use -fern artwork inside. */
+.fd-fern {
+  --fd-bg: var(--fd-fern);
+  --fd-surface: var(--fd-frangipani);
+  --fd-text: var(--fd-jungle);
+  --fd-text-muted: var(--fd-muted-on-fern);
+  --fd-accent-cool: var(--fd-jungle);
+  --fd-accent-warm-1: var(--fd-mango);   /* artwork only on fern */
+  --fd-accent-warm-2: var(--fd-papaya);  /* artwork only on fern */
+  --fd-link: var(--fd-jungle);
+  --fd-link-underline: var(--fd-jungle);
+  --fd-button-bg: var(--fd-papaya);
+  --fd-button-text: var(--fd-jungle);
+  background: var(--fd-bg);
+  color: var(--fd-text);
 }

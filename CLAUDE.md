@@ -25,8 +25,13 @@ This project is built by fedddev. Follow `brand/BRAND.md` for all styling, color
 logo/wordmark usage and 3D scene decisions, and use the variables in `brand/tokens.css`
 (semantic tokens like `--fd-bg`, `--fd-accent-cool`) instead of hard-coded values. Artwork is in
 `public/brand/`; never redraw, retype or recolor it. Source of truth for the kit:
-`C:\Users\fedde\00_DEVELOPMENT\000_fedddev_branding` (re-copy on changes).
+`C:\Users\fedde\00_DEVELOPMENT\000_fedddev_branding\fedddev-brand\fedddev-brand` (re-copy on
+changes: `BRAND.md` + `tokens.css` to `brand/`, `assets/` to `public/brand/`).
 
+- Deliberate exception to BRAND.md §2a (fern only in brand moments, never
+  behind working areas): every 3db panel (welcome, keys, toast, record
+  details, command bar) is a fern block (`.panel.fd-fern`). The 3D world
+  itself stays jungle; fern never goes on the floor.
 - 3db is dark mode only (`data-theme="dark"`): the world is a night scene. Scene colors live in
   `src/scene/colors.ts`.
 - Brand colors only, data included: six categorical colors (papaya, frangipani, lagoon,
@@ -74,13 +79,24 @@ speech / typed text
   it, pitched so the title sits near the top of the screen and the skyline
   above the keys (`titleGaze` in `run.ts`; a "gaze", `GAZE_RATE` = a third of the boxes' `EASE_RATE`); any movement
   or mouse look cancels it.
+- Selecting a record outlines it in fern and eases every other box to 30%
+  brightness (`SELECTION_DIM` in `Records.tsx`); no outlines at rest.
+- Opening branding (`scene/Splash.tsx`): "3DB" in giant Michroma letters in
+  the sky at z = -80, "by" (Figtree, muted), then the dark-mode fedddev logo
+  (PNG, not tone-mapped). It fades out when the scene has records and back in whenever it
+  has none (ready for a future blank-slate start).
 - The floor is opaque so the stars are only a sky; in the map (geo) layout it
   turns see-through, since rows with a depth hang below it.
 - Group names are painted flat on the floor like street names, in the gap left
   of each group and reading along it (`GroupInfo.street`).
 - "recenter"/"home" fly back to the start and end looking at the title.
-- HUD (`src/ui/Hud.tsx`): before a world, the welcome box shows the narrator
-  line and an Upload CSV button; once loaded, a keys panel replaces it: name
+- HUD (`src/ui/Hud.tsx`): before a world, the welcome box shows the centered
+  fedddev wordmark (the maker's mark), then the narrator line and an Upload
+  CSV button centered as a row. It uses `fedddev-wordmark-light.svg` (d's
+  lagoon, papaya, hibiscus) on fern, by choice over the `-fern` file (d's
+  jungle, mango, papaya). The command bar centers its input and the talk
+  button as one unit (the input autosizes to its text via `.autosize`).
+  Once loaded, a keys panel replaces the welcome box: name
   and file facts, with columns and `COMMANDS` (from `parse.ts`) collapsed
   until "Show keys" / "show keys" (`keys` command). A current-view key
   (`ViewKey`) is always visible there: color legend, height range, group names
@@ -114,6 +130,9 @@ prompts of 4096+ tokens and ours is ~1.5K, so every call pays full input
 - drei `<Text>` suspends while its font loads. Keep it inside a `<Suspense>`
   within the Canvas; without one the suspension reached the DOM tree and
   reverted keystrokes in the command bar.
+- Each `<Suspense>` hides all its children while any one of them loads. The
+  splash has its own boundary: sharing one with the world title made it blink
+  out when the title's font started loading on the first CSV.
 
 ## Commands
 

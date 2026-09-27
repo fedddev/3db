@@ -5,6 +5,7 @@ import { Color } from 'three'
 export const BACKGROUND = '#0F2A24' // jungle: clear color and fog
 export const SURFACE = '#173D34' // jungle-surface: floor
 export const BASE = '#F6EBD9' // frangipani: labels, hover outline
+export const MUTED_TEXT = '#C9BFAE' // muted-on-dark: secondary words in the scene
 export const FERN = '#A9D8A0' // selection outline
 // Floor lines stay recessive (brand §8a secondary lines), since fern is also a
 // data color and would blend into a fern grid.

@@ -71,8 +71,38 @@ button {
 .welcome {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--fd-space-2);
+  justify-content: center;
+  gap: var(--fd-space-3);
+  /* Equal extra room on both sides, so the copy wraps into a fuller second
+     line and the button sits close to it; on this row only, so the wordmark
+     above stays centered in the box. */
+  padding-inline: var(--fd-space-4);
+}
+
+/* Every panel is a fern block: opaque, jungle text, -fern artwork. This is a
+   deliberate 3db exception to BRAND.md §2a (fern only in brand moments). */
+.panel.fd-fern {
+  color-scheme: light; /* light scrollbars and form controls on fern */
+  background: var(--fd-fern);
+  border-color: transparent;
+  backdrop-filter: none;
+}
+
+.maker {
+  display: block;
+  height: 18px;
+  margin: 0 auto 12px;
+}
+
+.fd-fern .upload {
+  border: 0;
+  background: var(--fd-button-bg);
+  color: var(--fd-button-text);
+}
+
+.fd-fern .upload:hover {
+  background: var(--fd-button-bg);
+  filter: brightness(1.05);
 }
 
 .upload {
@@ -195,6 +225,8 @@ button {
   width: 10px;
   height: 10px;
   border-radius: 3px;
+  /* A thin jungle ring, so a fern (or pale) category still shows on fern. */
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--fd-jungle) 45%, transparent);
 }
 
 .group-name span {
@@ -233,8 +265,8 @@ button {
 .columns li {
   padding: 2px var(--fd-space-1);
   border-radius: 6px;
-  background: var(--fd-bg);
-  color: var(--fd-accent-cool);
+  background: color-mix(in srgb, var(--fd-jungle) 10%, transparent);
+  color: var(--fd-text);
   font: var(--fd-text-13) var(--fd-font-mono);
 }
 
@@ -273,26 +305,47 @@ button {
   margin-bottom: 4px;
 }
 
+/* The input (sized to its text) and the talk button center together. */
 .command {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: var(--fd-space-1);
   padding: 6px;
 }
 
+.autosize {
+  display: inline-grid;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.autosize::after,
+.autosize input {
+  grid-area: 1 / 1;
+  font: var(--fd-text-15) var(--fd-font-body);
+  padding: 6px var(--fd-space-1);
+  white-space: pre;
+}
+
+.autosize::after {
+  content: attr(data-value) ' ';
+  visibility: hidden;
+  overflow: hidden;
+}
+
 .command input {
-  flex: 1;
+  width: 100%;
   min-width: 0;
   background: transparent;
   border: 0;
   outline: none;
   color: var(--fd-text);
-  font: var(--fd-text-15) var(--fd-font-body);
-  padding: 6px var(--fd-space-1);
 }
 
 .command input::placeholder {
-  color: var(--fd-text-muted);
-  opacity: 0.8;
+  color: var(--fd-text);
+  opacity: 1;
 }
 
 .mic {
@@ -307,16 +360,18 @@ button {
   border-radius: var(--fd-radius-pill);
   padding: 6px var(--fd-space-2);
   white-space: nowrap;
+  flex: none;
 }
 
 .mic.on {
-  background: var(--fd-accent-cool);
+  background: var(--fd-jungle);
+  color: var(--fd-fern);
   animation: pulse 1.4s ease-in-out infinite;
 }
 
 @keyframes pulse {
   50% {
-    box-shadow: 0 0 0 6px color-mix(in srgb, var(--fd-accent-cool) 30%, transparent);
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--fd-jungle) 25%, transparent);
   }
 }
 

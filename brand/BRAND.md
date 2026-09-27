@@ -31,6 +31,29 @@ light-mode accents (2.35–3.35:1 on frangipani) are for **artwork, shapes, fill
 underlines — never for text or as the only signal of meaning**. Light-mode text, links and labels
 use jungle or muted-on-light.
 
+## 2a. Fern brand surface (both modes)
+
+Fern `#A9D8A0` is the brand's signature ground. It appears as a **brand block** in both modes:
+the hero, splash screens, the logo area, section breaks, and the footer. Everything else stays
+on the mode's normal ground (jungle in dark mode, frangipani in light mode).
+
+| Role on a fern block | Color |
+|---|---|
+| Ground | Fern `#A9D8A0` |
+| Text, "fe"/"ev", logo back D + FE | Night Jungle `#0F2A24` (9.45:1) |
+| Secondary text | `#2E5A4E` (4.84:1) |
+| Logo middle D / wordmark 2nd d | Mango `#F4B942` |
+| Logo front D + EV / wordmark 3rd d | Papaya `#F2784B` |
+| Button | Papaya fill, jungle text |
+
+Rules:
+- Use the `-fern` artwork on fern blocks, in both modes.
+- On fern, mango (1.10:1) and papaya (1.72:1) are artwork and fills only — never text, never the
+  only carrier of meaning. Text on fern is jungle or `#2E5A4E`.
+- Keep fern to a few large blocks per page (typically hero + footer). Full-page fern is off-brand.
+- Tools and data-dense screens (e.g. the DCIM): fern only in brand moments such as splash or
+  about screens — never behind working areas, and never as a 3D floor or ground plane.
+
 ## 3. Logo, wordmark, icon
 
 ### Logo (FE · DDD · EV)
@@ -60,19 +83,21 @@ The D stack alone on a rounded-square tile in the mode's ground color (~22% corn
 | `fedddev-logo-dark.svg` / `fedddev-logo-light.svg` | Full logo, transparent background, for dark / light grounds. |
 | `fedddev-wordmark-dark.svg` / `fedddev-wordmark-light.svg` | Horizontal wordmark, transparent, for dark / light grounds. |
 | `fedddev-icon-dark.svg` / `fedddev-icon-light.svg` | App icon / avatar tiles. |
+| `fedddev-logo-fern.svg`, `fedddev-wordmark-fern.svg`, `fedddev-icon-fern.svg` | Artwork for fern brand blocks (both modes). |
 | `favicon.svg` | Favicon; switches between dark and light icon with the OS color scheme. |
 | `png/icon-512.png`, `png/icon-192.png`, `png/apple-touch-icon.png` | Manifest and iOS icons (dark). |
 | `png/icon-light-512.png` | Light icon, for light-mode store listings or docs. |
 | `png/favicon-32.png`, `png/favicon-16.png` | Legacy favicon fallbacks (dark). |
-| `png/logo-*-1200.png`, `png/wordmark-*-1200.png` | Raster artwork for email, docs, social. |
+| `png/logo-*-1200.png`, `png/wordmark-*-1200.png`, `png/icon-fern-512.png` | Raster artwork (dark, light, fern) for email, docs, social. |
 | `png/og-image-1200x630.png` | Open Graph / social share card (dark). |
 
 ### Which mark to use
 - **Logo:** hero moments, splash screens, about pages, cards. Minimum **120px tall**.
 - **Wordmark:** navigation bars, headers, footers, inline lockups. Minimum **16px tall**.
 - **Icon:** favicons, app icons, avatars, anywhere square or under 120px tall.
-- Use the `-dark` file on dark-mode grounds and the `-light` file on light-mode grounds. In apps
-  with a theme switch, swap them with the theme (see §9).
+- Use the `-dark` file on dark-mode grounds, the `-light` file on light-mode grounds, and the
+  `-fern` file on fern brand blocks in either mode. In apps with a theme switch, swap dark/light
+  with the theme (see §9); fern blocks use `-fern` regardless of theme.
 
 ### Rules
 - Clear space: at least the height of the logo's small E (or the wordmark's x-height) on every side.
@@ -90,13 +115,14 @@ The D stack alone on a rounded-square tile in the mode's ground color (~22% corn
 | `--fd-jungle` | `#0F2A24` | Dark ground; light-mode base. |
 | `--fd-jungle-surface` | `#173D34` | Raised surfaces (cards, panels) in dark mode. |
 | `--fd-frangipani` | `#F6EBD9` | Light ground; dark-mode base. |
-| `--fd-fern` | `#A9D8A0` | Dark-mode cool accent. |
+| `--fd-fern` | `#A9D8A0` | Dark-mode cool accent; the fern brand-surface ground in both modes. |
 | `--fd-mango` | `#F4B942` | Dark-mode warm accent 1. Never on light grounds. |
 | `--fd-papaya` | `#F2784B` | Dark-mode warm accent 2; light-mode warm accent 1; button fill in both modes. |
 | `--fd-lagoon` | `#2BA39B` | Light-mode cool accent; moiré pattern. |
 | `--fd-hibiscus` | `#E0457B` | Light-mode warm accent 2; moiré pattern. |
 | `--fd-muted-on-dark` | `#C9BFAE` | Secondary text, dark mode. |
 | `--fd-muted-on-light` | `#4A5A55` | Secondary text, light mode. |
+| `--fd-muted-on-fern` | `#2E5A4E` | Secondary text on fern blocks. |
 
 Use the semantic tokens (`--fd-bg`, `--fd-text`, `--fd-accent-cool`, `--fd-accent-warm-1`,
 `--fd-accent-warm-2`, …) in components; they switch with the mode automatically.
@@ -184,17 +210,18 @@ equipment takes base and warm colors, and any color that encodes data keeps its 
 | Secondary floor lines (pre-blended, opaque) | `#598365` | `#95D1CD` |
 | Neutral equipment (e.g. cabinets) | `#F6EBD9` | `#173D34` |
 | Dominant equipment (e.g. containment) | `#F2784B` | `#F2784B` |
-| Edge lines on equipment | `#0F2A24` at 50% | `#0F2A24` at 50% |
 | Title bar bottom border | `#264437` | `#D3CEBE` |
 
 - Never use fern (or any light color) as a large floor or ground plane in dark mode; it outshines
   the equipment.
-- Colors that encode data (status, feeds, categories) keep their encoding in both modes; give
-  those objects jungle edge lines so they separate from neighbors by outline, not hue alone.
+- Colors that encode data (status, feeds, categories) keep their encoding in both modes.
+- No edge/outline lines on equipment at rest; they make the scene read as comic-book line art.
+  Separate adjacent objects with lighting (a soft key light so faces shade differently) or a
+  small physical gap between meshes instead.
 - Floor-plan images: recolor to the exact opaque hexes above (at build time or in a shader) rather
   than relying on image opacity.
-- Selection: outline (fern in dark, jungle in light) and dim the rest of the scene; do not reuse a
-  data-encoding color. Alarms: outline + icon, never color alone.
+- Selection: a temporary outline on the selected object only (fern in dark, jungle in light), and
+  dim the rest of the scene; do not reuse a data-encoding color. Alarms: outline + icon, never color alone.
 
 ## 9. Implementing in an app
 
