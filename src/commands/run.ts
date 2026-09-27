@@ -1,22 +1,23 @@
-import { BUILT_IN, csvDataset } from '../data/datasets'
+import { csvDataset } from '../data/datasets'
 import { loadTable, queryRows } from '../data/duckdb'
 import { buildQuery } from '../data/query'
 import { computeLayout } from '../scene/layout'
 import { EMPTY_SPEC, getState, setState, type Vec3 } from '../store'
 import type { Column, Dataset, GeoFields, ViewSpec } from '../types'
 import { askAi, type AiContext } from './ai'
-import { appendLog, type LogEntry } from './log'
 import { HELP, parse, type ParseContext } from './parse'
 import type { Command, Filter, FlyTarget } from './types'
 
 const say = (message: string) => setState({ message })
 
-let booted = false
-export async function boot() {
-  if (booted) return
-  booted = true
-  await activate(BUILT_IN[0].id)
-  setState({ phase: getState().activeId ? 'ready' : 'error' })
+// Clear phrases that earlier builds stored in this browser.
+export function boot() {
+  try {
+    localStorage.removeItem('3db.commandLog')
+  } catch {
+    // Storage unavailable: nothing was stored either.
+  }
+  setState({ phase: 'ready' })
 }
 
 function detectGeo(columns: Column[]): GeoFields | null {
@@ -39,13 +40,13 @@ export async function activate(id: string) {
   const def = getState().defs.find((d) => d.id === id)
   if (!def) return say(`There's no world called "${id}".`)
   let ds = getState().datasets[id]
-  if (!ds || def.volatile) {
+  if (!ds) {
     setState({ loading: def.name, message: `Loading ${def.name}…` })
     try {
       const source = await def.load()
       if (source.kind === 'json' && source.rows.length === 0) {
         setState({ loading: null })
-        return say(`${def.name} is empty so far. Say or type a few commands first.`)
+        return say(`${def.name} has no rows.`)
       }
       const table = `t_${id.replace(/\W/g, '_')}`
       const columns = await loadTable(table, source, def.epochFields)
@@ -65,9 +66,9 @@ export async function activate(id: string) {
     }
   }
   setState({ activeId: id, loading: null, spec: { ...EMPTY_SPEC, ...defaultsFor(ds) }, selected: null, hovered: null })
+  // No camera flight: the world builds in front of and around wherever you stand.
   await refresh()
   say(def.blurb)
-  flyTo('overview')
 }
 
 export function addCsv(fileName: string, text: string) {
@@ -138,16 +139,13 @@ function aiContext(): AiContext {
 }
 
 // Free parser first; the AI only sees what the parser couldn't handle.
-export async function submit(raw: string, source: 'voice' | 'typed') {
+export async function submit(raw: string) {
   const text = raw.trim()
   if (!text) return
   setState({ heard: text })
-  const log = (handledBy: LogEntry['handled_by'], command = '') =>
-    appendLog({ at: Date.now(), text, source, understood: handledBy !== 'none', handled_by: handledBy, command })
 
   const result = parse(text, context())
   if (result && 'command' in result) {
-    log('parser', result.command.type)
     await runCommand(result.command)
     return
   }
@@ -156,11 +154,9 @@ export async function submit(raw: string, source: 'voice' | 'typed') {
   say('Thinking…')
   const ai = await askAi(text, aiContext())
   if ('error' in ai) {
-    log('none')
     if (result) return say(result.error)
     return say(`I don't know "${text}" yet (${ai.error}). Say "help" to hear what I understand.`)
   }
-  log(ai.commands.length ? 'ai' : 'none', ai.commands.map((c) => c.type).join(' '))
   let ok = true
   for (const cmd of ai.commands) ok = (await runCommand(cmd)) && ok
   // A rejected command already explained itself; otherwise the AI's reply narrates.

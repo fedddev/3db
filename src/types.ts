@@ -34,17 +34,15 @@ export interface DatasetDef {
   name: string
   // What the narrator says when you arrive. This is the editorial voice.
   blurb: string
-  // Spoken names for the dataset: "earthquakes", "quakes".
+  // Spoken names for the dataset: "sales", "the sales data".
   aliases: string[]
-  // Spoken names for fields: { mag: ['magnitude'] }.
+  // Spoken names for fields: { qty: ['quantity'] }.
   fieldAliases?: Record<string, string[]>
   // Numeric epoch-ms columns that should be treated as time.
   epochFields?: string[]
   timeField?: string
   geo?: GeoFields
   labelField?: string
-  // Reload on every visit instead of caching (for data that changes as you use the app).
-  volatile?: boolean
   defaults: Partial<ViewSpec>
   load: () => Promise<DataSource>
 }

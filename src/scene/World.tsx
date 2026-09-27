@@ -3,7 +3,9 @@ import { useFrame } from '@react-three/fiber'
 import { Suspense, useRef } from 'react'
 import type { Group } from 'three'
 import { useStore } from '../store'
-import { BACKGROUND } from './colors'
+import bodyFont from '@fontsource/figtree/files/figtree-latin-600-normal.woff?url'
+import displayFont from '@fontsource/bricolage-grotesque/files/bricolage-grotesque-latin-800-normal.woff?url'
+import { BACKGROUND, BASE, FLOOR_CELL, FLOOR_LINE, SURFACE } from './colors'
 import { Navigation } from './Navigation'
 import { Records } from './Records'
 
@@ -12,8 +14,8 @@ export function World() {
     <>
       <color attach="background" args={[BACKGROUND]} />
       <Fog />
-      <hemisphereLight args={['#b9d2ff', '#141826', 0.9]} />
-      <directionalLight position={[30, 60, 25]} intensity={1.6} />
+      <hemisphereLight args={[BASE, BACKGROUND, 1.1]} />
+      <directionalLight position={[30, 60, 25]} intensity={1.2} />
       <SlowSky />
       <Floor />
       <Records />
@@ -47,7 +49,7 @@ function SlowSky() {
   )
 }
 
-// A see-through floor: in the map layout, earthquakes hang below it at their depth.
+// A see-through floor: in the map layout, rows with a depth hang below it.
 function Floor() {
   return (
     <>
@@ -55,16 +57,16 @@ function Floor() {
         infiniteGrid
         cellSize={1.6}
         sectionSize={8}
-        cellColor="#16223a"
-        sectionColor="#284878"
-        cellThickness={0.6}
+        cellColor={FLOOR_CELL}
+        sectionColor={FLOOR_LINE}
+        cellThickness={0.5}
         sectionThickness={1}
         fadeDistance={260}
         fadeStrength={1.5}
       />
       <mesh rotation-x={-Math.PI / 2} position-y={-0.01} renderOrder={-1}>
         <planeGeometry args={[4000, 4000]} />
-        <meshBasicMaterial color={BACKGROUND} transparent opacity={0.55} depthWrite={false} />
+        <meshBasicMaterial color={SURFACE} transparent opacity={0.55} depthWrite={false} />
       </mesh>
     </>
   )
@@ -77,10 +79,11 @@ function GroupLabels() {
     <Billboard key={g.key} position={[g.center[0], g.top + 1, g.center[2]]}>
       <Text
         fontSize={Math.min(Math.max(g.width * 0.14, 0.6), 3)}
-        color="#e6ecff"
+        font={bodyFont}
+        color={BASE}
         anchorY="bottom"
         outlineWidth="4%"
-        outlineColor="#070b14"
+        outlineColor={BACKGROUND}
       >
         {`${g.key}  ·  ${g.count}`}
       </Text>
@@ -98,8 +101,10 @@ function Title() {
   return (
     <Text
       position={[(layout.min[0] + layout.max[0]) / 2, Math.max(layout.max[1], 0) + size * 1.5, layout.min[2] - 12]}
+      font={displayFont}
       fontSize={size}
-      color="#9fb6e8"
+      letterSpacing={-0.03}
+      color={BASE}
       anchorX="center"
       fillOpacity={0.85}
     >

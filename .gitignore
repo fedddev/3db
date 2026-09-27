@@ -24,4 +24,3 @@ dist-ssr
 *.sw?
 
 # Generated from git history before dev/build
-public/data/commits.json

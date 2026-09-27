@@ -54,7 +54,7 @@ function numericRange(rows: Row[], field: string) {
 }
 
 // Maps a numeric field to 0..1. Non-negative fields use a square root so a few
-// giant values (one huge commit, one big quake) don't flatten everything else.
+// giant values (one huge order, one outlier reading) don't flatten everything else.
 function heightUnit(rows: Row[], field: string): Unit {
   const r = numericRange(rows, field)
   if (!r) return () => null

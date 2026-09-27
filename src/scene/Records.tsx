@@ -3,6 +3,7 @@ import { useEffect, useMemo, useRef } from 'react'
 import { BoxGeometry, EdgesGeometry, InstancedMesh, LineSegments, Vector2 } from 'three'
 import { ROW_LIMIT } from '../data/query'
 import { getState, setState, useStore } from '../store'
+import { BASE, FERN } from './colors'
 
 // The animated state of every box, shared with the highlight outlines.
 // Boxes ease toward the layout's targets each frame, so every change to the
@@ -26,7 +27,8 @@ export function Records() {
   const { camera, raycaster } = useThree()
 
   useEffect(() => {
-    if (!layout) return
+    // No world yet: draw nothing, not a pile of unplaced boxes at the origin.
+    if (!layout) return void (mesh.current.count = 0)
     // New boxes rise out of the floor at their destination.
     for (let i = live.n; i < layout.n; i++) {
       const o = i * 3
@@ -49,8 +51,9 @@ export function Records() {
         const ds = layout.size[j] - live.size[j]
         live.pos[j] += dp * k
         live.size[j] += ds * k
-        live.color[j] += (layout.color[j] - live.color[j]) * k
-        moving = Math.max(moving, Math.abs(dp), Math.abs(ds))
+        const dc = layout.color[j] - live.color[j]
+        live.color[j] += dc * k
+        moving = Math.max(moving, Math.abs(dp), Math.abs(ds), Math.abs(dc))
       }
       const matrices = m.instanceMatrix.array as Float32Array
       for (let i = 0; i < layout.n; i++) {
@@ -105,10 +108,10 @@ export function Records() {
         onPointerOut={() => !getState().locked && setState({ hovered: null })}
       >
         <instancedBufferAttribute attach="instanceColor" args={[live.color, 3]} />
-        <meshStandardMaterial roughness={0.55} metalness={0.1} />
+        <meshStandardMaterial roughness={0.9} metalness={0} />
       </instancedMesh>
-      <Outline which="hovered" color="#ffffff" opacity={0.55} />
-      <Outline which="selected" color="#ffd166" opacity={1} />
+      <Outline which="hovered" color={BASE} opacity={0.6} />
+      <Outline which="selected" color={FERN} opacity={1} />
     </>
   )
 }

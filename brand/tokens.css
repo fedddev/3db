@@ -1,0 +1,85 @@
+/* fedddev design tokens — see BRAND.md. Dark mode by default; follows the OS; honors data-theme. */
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Michroma&display=swap");
+
+:root {
+  /* Palette */
+  --fd-jungle: #0F2A24;
+  --fd-jungle-surface: #173D34;
+  --fd-frangipani: #F6EBD9;
+  --fd-fern: #A9D8A0;
+  --fd-mango: #F4B942;
+  --fd-papaya: #F2784B;
+  --fd-lagoon: #2BA39B;   /* light-mode cool accent; moiré */
+  --fd-hibiscus: #E0457B; /* light-mode warm accent 2; moiré */
+  --fd-muted-on-dark: #C9BFAE;
+  --fd-muted-on-light: #4A5A55;
+
+  /* Type */
+  --fd-font-display: "Bricolage Grotesque", "Figtree", system-ui, sans-serif;
+  --fd-font-body: "Figtree", system-ui, sans-serif;
+  --fd-font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --fd-font-brand: "Michroma", "Figtree", system-ui, sans-serif;
+  --fd-text-13: 13px; --fd-text-15: 15px; --fd-text-17: 17px; --fd-text-20: 20px;
+  --fd-text-24: 24px; --fd-text-32: 32px; --fd-text-48: 48px; --fd-text-64: 64px; --fd-text-88: 88px;
+  --fd-tracking-display: -0.03em;
+  --fd-tracking-eyebrow: 0.12em;
+
+  /* Space, radius, sizes */
+  --fd-space-1: 8px; --fd-space-2: 16px; --fd-space-3: 24px; --fd-space-4: 32px;
+  --fd-space-6: 48px; --fd-space-8: 64px; --fd-space-12: 96px;
+  --fd-radius-sm: 12px; --fd-radius-card: 20px; --fd-radius-pill: 999px;
+  --fd-measure: 620px;
+  --fd-logo-min-height: 120px;
+  --fd-wordmark-min-height: 16px;
+
+  /* Semantic — dark mode (default) */
+  color-scheme: dark;
+  --fd-bg: var(--fd-jungle);
+  --fd-surface: var(--fd-jungle-surface);
+  --fd-text: var(--fd-frangipani);
+  --fd-text-muted: var(--fd-muted-on-dark);
+  --fd-accent-cool: var(--fd-fern);
+  --fd-accent-warm-1: var(--fd-mango);
+  --fd-accent-warm-2: var(--fd-papaya);
+  --fd-link: var(--fd-fern);
+  --fd-link-underline: var(--fd-fern);
+  --fd-button-bg: var(--fd-papaya);
+  --fd-button-text: var(--fd-jungle);
+  --fd-pattern-opacity: 0.5;
+}
+
+/* Light mode — from the OS unless the page forces dark */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+    --fd-bg: var(--fd-frangipani);
+    --fd-surface: #FFFFFF;
+    --fd-text: var(--fd-jungle);
+    --fd-text-muted: var(--fd-muted-on-light);
+    --fd-accent-cool: var(--fd-lagoon);     /* not for text in light mode */
+    --fd-accent-warm-1: var(--fd-papaya);   /* not for text in light mode */
+    --fd-accent-warm-2: var(--fd-hibiscus); /* not for text in light mode */
+    --fd-link: var(--fd-jungle);
+    --fd-link-underline: var(--fd-lagoon);
+    --fd-button-bg: var(--fd-papaya);
+    --fd-button-text: var(--fd-jungle);
+    --fd-pattern-opacity: 0.3;
+  }
+}
+
+/* Light mode — forced */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --fd-bg: var(--fd-frangipani);
+  --fd-surface: #FFFFFF;
+  --fd-text: var(--fd-jungle);
+  --fd-text-muted: var(--fd-muted-on-light);
+  --fd-accent-cool: var(--fd-lagoon);     /* not for text in light mode */
+  --fd-accent-warm-1: var(--fd-papaya);   /* not for text in light mode */
+  --fd-accent-warm-2: var(--fd-hibiscus); /* not for text in light mode */
+  --fd-link: var(--fd-jungle);
+  --fd-link-underline: var(--fd-lagoon);
+  --fd-button-bg: var(--fd-papaya);
+  --fd-button-text: var(--fd-jungle);
+  --fd-pattern-opacity: 0.3;
+}

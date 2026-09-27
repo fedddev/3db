@@ -9,7 +9,7 @@ import { useSpeech } from './voice/useSpeech'
 export default function App() {
   const inputRef = useRef<HTMLInputElement>(null)
   const [dragging, setDragging] = useState(false)
-  const { toggle } = useSpeech((text) => submit(text, 'voice'))
+  const { toggle } = useSpeech((text) => submit(text))
 
   useEffect(() => {
     boot()
@@ -45,7 +45,12 @@ export default function App() {
       }}
     >
       <div id="world">
-        <Canvas camera={{ fov: 70, near: 0.1, far: 3000, position: [0, 30, 60] }} dpr={[1, 2]}>
+        {/* Eye height (1.6 m), 10 m back from the origin, looking at it. */}
+        <Canvas
+          camera={{ fov: 70, near: 0.1, far: 3000, position: [0, 1.6, -10] }}
+          onCreated={({ camera }) => camera.lookAt(0, 0, 0)}
+          dpr={[1, 2]}
+        >
           <World />
         </Canvas>
       </div>

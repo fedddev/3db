@@ -1,5 +1,4 @@
 import { create } from 'zustand'
-import { BUILT_IN } from './data/datasets'
 import type { Layout } from './scene/layout'
 import type { Dataset, DatasetDef, Row, ViewSpec } from './types'
 
@@ -42,7 +41,7 @@ export const EMPTY_SPEC: ViewSpec = {
 
 export const useStore = create<State>(() => ({
   phase: 'booting',
-  defs: BUILT_IN,
+  defs: [],
   datasets: {},
   activeId: null,
   loading: null,
@@ -51,7 +50,7 @@ export const useStore = create<State>(() => ({
   layout: null,
   selected: null,
   hovered: null,
-  message: 'Welcome to 3db. Building the world…',
+  message: 'Welcome to 3db. Drop a CSV anywhere to turn it into a world.',
   heard: '',
   interim: '',
   listening: false,

@@ -1,17 +1,28 @@
 import { Color } from 'three'
 
-export const BACKGROUND = '#070b14'
+// fedddev dark mode (brand/BRAND.md §8, §8a). The world is always a night
+// jungle; records are the fruit.
+export const BACKGROUND = '#0F2A24' // jungle: clear color and fog
+export const SURFACE = '#173D34' // jungle-surface: floor
+export const BASE = '#F6EBD9' // frangipani: labels, hover outline
+export const FERN = '#A9D8A0' // selection outline
+// Floor lines stay recessive: fern is data colour 1 and would blend into a fern grid.
+export const FLOOR_LINE = '#598365'
+export const FLOOR_CELL = '#264437'
 
-// Tuned to stay distinct against the dark world.
-const CATEGORICAL = ['#4e9af1', '#f2a93b', '#e5566b', '#46c28e', '#b27cf0', '#f07ec8', '#5fd0dd', '#c9d35a', '#ff8a5c', '#a0aec8'].map(
+// Brand trio (fern, mango, papaya) plus five hues ordered so neighbours stay
+// apart under colour-blind simulation (dataviz validator, dark mode on jungle:
+// adjacent CVD ΔE ≥ 16, normal ΔE ≥ 27). A ninth category folds into "other".
+const CATEGORICAL = ['#A9D8A0', '#9C7BE0', '#F4B942', '#E0457B', '#5B9BE6', '#F2784B', '#4FC3D9', '#B5652F'].map(
   (hex) => new Color(hex),
 )
 export const CATEGORY_LIMIT = CATEGORICAL.length
-const OTHER = new Color('#5b6478')
-const RAMP = ['#3d63d6', '#2f9ee0', '#34cdb4', '#a6e36b', '#ffe45c'].map((hex) => new Color(hex))
+const OTHER = new Color('#6E7D74')
+// One hue (papaya), dim to bright: high values glow against the jungle.
+const RAMP = ['#A04528', '#CE5A33', '#F2784B', '#F7A67F', '#FBD3BC'].map((hex) => new Color(hex))
 
-export const DEFAULT_COLOR = new Color('#7aa2ff')
-export const MUTED = new Color('#1b2233')
+export const DEFAULT_COLOR = new Color('#F2784B') // papaya
+export const MUTED = new Color('#264437')
 
 export const categorical = (rank: number) => (rank < CATEGORICAL.length ? CATEGORICAL[rank] : OTHER)
 
@@ -21,5 +32,4 @@ export function sequential(t: number, out = new Color()) {
   return out.lerpColors(RAMP[i], RAMP[i + 1], x - i)
 }
 
-export const RAMP_CSS = `linear-gradient(90deg, ${RAMP.map((c) => `#${c.getHexString()}`).join(', ')})`
 export const toCss = (c: Color) => `#${c.getHexString()}`

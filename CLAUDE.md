@@ -12,11 +12,27 @@ voice control, a narrator/tutorial line, a world you move through.
   If a feature would work just as well as a 2D chart, it's the wrong feature.
 - **Change is motion.** Views never snap: boxes ease to new targets so you
   watch the data reorganize.
-- **Editorial data mix.** Built-in worlds pair data the project makes about
-  itself (its git history, its command log) with public data (USGS
-  earthquakes). Every dataset has a `blurb`: the narrator's voice on arrival.
+- **The world builds around you.** You start standing on an empty floor at eye
+  height; a dropped CSV builds in front of and around you, and loading it
+  never moves the camera. Every dataset has a `blurb`: the narrator's voice on
+  arrival.
 - **Voice costs nothing by default.** A free in-browser parser handles common
   phrases; only what it can't parse goes to the AI proxy (Claude Haiku 4.5).
+
+## Brand
+
+This project is built by fedddev. Follow `brand/BRAND.md` for all styling, color, typography,
+logo/wordmark usage and 3D scene decisions, and use the variables in `brand/tokens.css`
+(semantic tokens like `--fd-bg`, `--fd-accent-cool`) instead of hard-coded values. Artwork is in
+`public/brand/`; never redraw, retype or recolor it. Source of truth for the kit:
+`C:\Users\fedde\00_DEVELOPMENT\000_fedddev_branding` (re-copy on changes).
+
+- 3db is dark mode only (`data-theme="dark"`): the world is a night scene. Scene colors live in
+  `src/scene/colors.ts`.
+- Data colors: the brand trio plus five hues, ordered and checked with the dataviz palette
+  validator against jungle. Re-run it if you change the categorical list or the ramp.
+- The floor grid stays recessive (not fern), because fern is data color 1.
+- 3D `<Text>` must pass a brand font (`@fontsource` .woff via `?url`); drei defaults to Roboto.
 
 ## Architecture
 
@@ -40,20 +56,18 @@ speech / typed text
   descriptions and would let the model invent command types), then re-validated
   with Zod. Guardrails: 12 calls/min per IP, a daily cap, 300-char phrases.
 - `src/store.ts`: zustand. Non-React modules use `getState`/`setState`.
-- `src/data/datasets.ts`: dataset definitions (load, aliases, field aliases,
-  defaults, blurb). Add new worlds here.
+- `src/data/datasets.ts`: turns a dropped CSV into a dataset definition (load,
+  aliases, defaults, blurb). There are no built-in worlds.
+- Camera starts at (0, 1.6, -10) looking at the origin (`src/App.tsx`). Grid
+  and timeline layouts are centered on the origin, so data rises around it.
 - Filters don't remove rows: every row returns with `__match`, and misses sink.
 - Times are always epoch ms in the scene (`epochFields` or TIMESTAMP columns).
 
 ## Data
 
-- `scripts/gen-commits.mjs` runs before `dev`/`build` and writes
-  `public/data/commits.json` (gitignored) from this repo's history plus the
-  frozen `data/lineage/threedb-v2.json`. `package-lock.json` and `dist/` are
-  excluded from line counts. `ai_assisted` is true for commits with a Claude
-  Co-Authored-By trailer.
-- Earthquakes load live from the USGS weekly feed (CORS-open, no key).
-- The command log lives in localStorage (`3db.commandLog`); it will move server-side.
+- Worlds come only from CSVs the user drops on the page; they load into
+  DuckDB-WASM in the browser and never leave it.
+- Nothing the user says or types is stored.
 
 ## AI setup
 
@@ -73,7 +87,7 @@ prompts of 4096+ tokens and ours is ~1.5K, so every call pays full input
 ## Commands
 
 ```
-npm run dev        # regenerates commits.json, starts Vite
+npm run dev        # starts Vite
 npm run build      # typecheck + production build
 npm run lint       # oxlint
 ```
@@ -95,7 +109,7 @@ Shift to run, V for voice, / to type, Esc to release. Drop a CSV to explore it.
 ## Next
 
 1. Deploy the proxy (Firebase Functions next to Hosting; set VITE_AI_URL if
-   it lives on another origin) and move the command log server-side.
+   it lives on another origin).
 2. Coastline outline under the geo layout; stack order for weekday/month groups.
 3. Open a record in place (fields unfold around it) instead of only the side panel.
 4. Guided tour: the narrator walks first-time visitors through a world.

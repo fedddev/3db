@@ -147,7 +147,7 @@ const OPERATOR_RE = OPERATORS.map(([w]) => w.replace(/[<>=!]/g, (c) => `\\${c}`)
 const FILTER_RE = new RegExp(
   `^(?:filter(?: to| for| by)?|show(?: me)?(?: only)?|only(?: show)?|keep(?: only)?|where|just)(?: the)?(?: ones?| those| records| rows| items)?(?: where| with| whose| that are| that have)? (.+?) (${OPERATOR_RE}) (.+)$`,
 )
-// "show quakes over 5": no field named, so it means whatever height shows.
+// "show the ones over 5": no field named, so it means whatever height shows.
 const IMPLICIT_FILTER_RE = /^(?:show|only|filter|keep|just)(?: me)?(?: only)?(?: the)?(?: \w+)? (over|above|bigger than|larger than|greater than|more than|under|below|less than|smaller than) (.+)$/
 
 export function parse(input: string, ctx: ParseContext): ParseResult {
@@ -246,4 +246,4 @@ export function parse(input: string, ctx: ParseContext): ParseResult {
 }
 
 export const HELP =
-  'Try: "group by region" · "sort by magnitude" · "color by depth" · "height by churn" · "only mag above 4.5" · "clear filters" · "timeline" / "map" / "grid" · "overview" · "go to CA" · "earthquakes" / "commits" / "command log" · "reset"'
+  'Try: "group by <column>" · "sort by <column>" · "color by <column>" · "height by <column>" · "only <column> above 10" · "clear filters" · "timeline" / "map" / "grid" · "overview" · "go to <group>" · "reset"'
