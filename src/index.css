@@ -68,6 +68,143 @@ button {
   font-size: var(--fd-text-17);
 }
 
+.welcome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--fd-space-2);
+}
+
+.upload {
+  flex: none;
+  min-height: 36px;
+  padding: 6px var(--fd-space-2);
+  border-radius: var(--fd-radius-pill);
+  border: 1px solid var(--fd-accent-cool);
+  background: transparent;
+  color: var(--fd-accent-cool);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.upload:hover {
+  background: color-mix(in srgb, var(--fd-accent-cool) 15%, transparent);
+}
+
+/* Replies float above the keys and fade; they never push the layout around. */
+.toast {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(100% + var(--fd-space-1));
+  padding: 12px var(--fd-space-2);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+}
+
+.toast.on {
+  opacity: 1;
+  transform: none;
+}
+
+.keys {
+  max-height: 42vh;
+  overflow: auto;
+  padding: 12px var(--fd-space-2);
+  display: grid;
+  gap: 12px;
+}
+
+.keys-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--fd-space-2);
+  font: 700 var(--fd-text-20) / 1.1 var(--fd-font-display);
+  letter-spacing: var(--fd-tracking-display);
+}
+
+.keys-head .upload {
+  font: 600 var(--fd-text-13) var(--fd-font-body);
+  letter-spacing: 0;
+  min-height: 32px;
+}
+
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px var(--fd-space-2);
+  color: var(--fd-text-muted);
+  font-size: var(--fd-text-13);
+}
+
+.toggle {
+  margin-left: auto;
+  border: 0;
+  background: none;
+  padding: 0;
+  color: var(--fd-link);
+  font: 600 var(--fd-text-13) var(--fd-font-body);
+  text-decoration: underline 2px var(--fd-link-underline);
+  text-underline-offset: 4px;
+}
+
+.eyebrow {
+  margin-bottom: 6px;
+  color: var(--fd-text-muted);
+  font: 500 var(--fd-text-13) var(--fd-font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--fd-tracking-eyebrow);
+}
+
+.columns {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.columns li {
+  padding: 2px var(--fd-space-1);
+  border-radius: 6px;
+  background: var(--fd-bg);
+  color: var(--fd-accent-cool);
+  font: var(--fd-text-13) var(--fd-font-mono);
+}
+
+.columns li span {
+  color: var(--fd-text-muted);
+}
+
+.commands {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 4px var(--fd-space-2);
+  font-size: var(--fd-text-13);
+}
+
+.commands div {
+  display: flex;
+  gap: var(--fd-space-1);
+  align-items: baseline;
+}
+
+.commands dt {
+  color: var(--fd-text);
+  font-family: var(--fd-font-mono);
+  white-space: nowrap;
+}
+
+.commands dd {
+  margin: 0;
+  color: var(--fd-text-muted);
+}
+
 .heard {
   color: var(--fd-text-muted);
   font-style: italic;
@@ -231,6 +368,9 @@ button {
 @media (prefers-reduced-motion: reduce) {
   .mic.on {
     animation: none;
+  }
+  .toast {
+    transition: none;
   }
 }
 

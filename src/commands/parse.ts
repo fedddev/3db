@@ -158,6 +158,8 @@ export function parse(input: string, ctx: ParseContext): ParseResult {
 
   if (/^(help|what can i (say|do)|commands|options|what do you understand)$/.test(t)) return ok({ type: 'help' })
   if (/^(reset|start over|reset (the )?view|default view)$/.test(t)) return ok({ type: 'reset' })
+  if (/^(show|open|expand)( the)? (keys?|key panel|legend|columns)$/.test(t)) return ok({ type: 'keys', open: true })
+  if (/^(hide|close|collapse)( the)? (keys?|key panel|legend|columns)$/.test(t)) return ok({ type: 'keys', open: false })
   if (/^((clear|remove|reset|drop)( all)?( the)? filters?|show (me )?(everything|all)|unfilter|no filters?)$/.test(t))
     return ok({ type: 'clearFilters' })
   if (/^(ungroup|no group(ing)?|stop grouping|remove (the )?grouping|don t group)$/.test(t)) return ok({ type: 'groupBy', field: null })
@@ -200,7 +202,7 @@ export function parse(input: string, ctx: ParseContext): ParseResult {
   }
 
   if (/\b(overview|bird s eye|birds eye|zoom out|top view|big picture|go up high)\b/.test(t)) return ok({ type: 'flyTo', target: 'overview' })
-  if (/^((go|fly|take me) )?(home|back to (the )?start)$/.test(t)) return ok({ type: 'flyTo', target: 'home' })
+  if (/^((go|fly|take me) )?(home|back to (the )?start|re ?cent(er|re)( me)?|reset (the )?camera)$/.test(t)) return ok({ type: 'flyTo', target: 'home' })
   if (/^(go|fly|take me|zoom) (in )?(to )?(it|there|that( one)?|the selection|selected|this one)$/.test(t)) return ok({ type: 'flyTo', target: 'selected' })
 
   if ((m = t.match(/^(?:show(?: me)?|open|load|switch to|bring up|let me see|explore|visit)? ?(.+)$/))) {
@@ -245,5 +247,20 @@ export function parse(input: string, ctx: ParseContext): ParseResult {
   return null
 }
 
-export const HELP =
-  'Try: "group by <column>" · "sort by <column>" · "color by <column>" · "height by <column>" · "only <column> above 10" · "clear filters" · "timeline" / "map" / "grid" · "overview" · "go to <group>" · "reset"'
+// What you can say, shown in the keys panel and by "help".
+export const COMMANDS: { say: string; does: string }[] = [
+  { say: 'group by <column>', does: 'split into districts' },
+  { say: 'sort by <column>', does: 'order the records' },
+  { say: 'height by <column>', does: 'taller = bigger value' },
+  { say: 'color by <column>', does: 'color by value or category' },
+  { say: 'only <column> above 10', does: 'sink everything else' },
+  { say: 'clear filters', does: 'bring everything back up' },
+  { say: 'timeline / grid / map', does: 'change the layout' },
+  { say: 'go to <group>', does: 'fly to a district' },
+  { say: 'overview', does: "bird's-eye view" },
+  { say: 'recenter', does: 'back to the start' },
+  { say: 'reset', does: 'default view' },
+  { say: 'show keys / hide keys', does: 'open or close this key' },
+]
+
+export const HELP = `Try: ${COMMANDS.map((c) => `"${c.say}"`).join(' · ')}`

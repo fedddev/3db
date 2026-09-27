@@ -45,6 +45,8 @@ export interface DatasetDef {
   labelField?: string
   defaults: Partial<ViewSpec>
   load: () => Promise<DataSource>
+  // Facts about the source file, shown in the keys panel.
+  file?: { name: string; lastModified: number; rows: number; columns: number }
 }
 
 export interface Dataset {

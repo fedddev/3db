@@ -2,7 +2,8 @@ import { PointerLockControls } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { useEffect, useRef } from 'react'
 import { Matrix4, Quaternion, Vector3 } from 'three'
-import { getState, setState } from '../store'
+import { EYE_HEIGHT, getState, setState } from '../store'
+import { GAZE_RATE } from './layout'
 import { isTyping } from '../ui/keys'
 
 const UP = new Vector3(0, 1, 0)
@@ -12,12 +13,14 @@ const FLIGHT_SECONDS = 1.6
 
 const easeInOut = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2)
 
-// WASD walks, Space/E rises, C/Q sinks, Shift runs, arrow keys walk and turn
-// (so you can explore without pointer lock). Flights from commands animate the
-// camera, and any movement key takes control back.
+// FPS controls: the mouse looks (click to capture it), WASD or the arrow keys
+// walk and strafe, Space/E rises, C/Q sinks but never below eye height, Shift
+// runs. Flights from commands animate the camera, and a gaze turns it in place
+// (up to a new world's title); any movement key or mouse look takes control back.
 export function Navigation() {
   const keys = useRef(new Set<string>())
   const flight = useRef<{ id: number; from: Vector3; to: Vector3; qFrom: Quaternion; qTo: Quaternion; t: number } | null>(null)
+  const gaze = useRef<{ id: number; q: Quaternion } | null>(null)
   const tmp = useRef({ forward: new Vector3(), right: new Vector3(), m: new Matrix4() })
 
   useEffect(() => {
@@ -28,6 +31,13 @@ export function Navigation() {
     }
     const up = (e: KeyboardEvent) => keys.current.delete(e.code)
     const clear = () => keys.current.clear()
+    // Looking around with a captured mouse cancels a gaze in progress.
+    const look = (e: MouseEvent) => {
+      if (!getState().locked || !(e.movementX || e.movementY) || !gaze.current) return
+      gaze.current = null
+      setState({ gaze: null })
+    }
+    window.addEventListener('mousemove', look)
     window.addEventListener('keydown', down)
     window.addEventListener('keyup', up)
     window.addEventListener('blur', clear)
@@ -35,6 +45,7 @@ export function Navigation() {
       window.removeEventListener('keydown', down)
       window.removeEventListener('keyup', up)
       window.removeEventListener('blur', clear)
+      window.removeEventListener('mousemove', look)
     }
   }, [])
 
@@ -43,25 +54,42 @@ export function Navigation() {
     const k = keys.current
     const has = (...codes: string[]) => (codes.some((c) => k.has(c)) ? 1 : 0)
     const forward = has('KeyW', 'ArrowUp') - has('KeyS', 'ArrowDown')
-    const strafe = has('KeyD') - has('KeyA')
-    const turn = has('ArrowLeft') - has('ArrowRight')
+    const strafe = has('KeyD', 'ArrowRight') - has('KeyA', 'ArrowLeft')
     const rise = has('Space', 'KeyE') - has('KeyC', 'KeyQ')
-    const moving = forward || strafe || turn || rise
+    const moving = forward || strafe || rise
 
     if (moving) {
       if (flight.current) {
         flight.current = null
         setState({ flight: null })
       }
+      if (gaze.current) {
+        gaze.current = null
+        setState({ gaze: null })
+      }
       const speed = has('ShiftLeft', 'ShiftRight') ? RUN : WALK
       const { forward: f, right: r } = tmp.current
-      if (turn) camera.rotateOnWorldAxis(UP, turn * dt * 1.8)
       camera.getWorldDirection(f)
       f.y = 0
       f.normalize()
       r.crossVectors(f, UP)
       camera.position.addScaledVector(f, forward * speed * dt).addScaledVector(r, strafe * speed * dt)
-      camera.position.y += rise * speed * dt
+      camera.position.y = Math.max(EYE_HEIGHT, camera.position.y + rise * speed * dt)
+      return
+    }
+
+    const wanted = getState().gaze
+    if (wanted && gaze.current?.id !== wanted.id) {
+      tmp.current.m.lookAt(camera.position, new Vector3(...wanted.target), UP)
+      gaze.current = { id: wanted.id, q: new Quaternion().setFromRotationMatrix(tmp.current.m) }
+    }
+    const g = gaze.current
+    if (g && !getState().flight) {
+      camera.quaternion.slerp(g.q, 1 - Math.exp(-dt * GAZE_RATE))
+      if (camera.quaternion.angleTo(g.q) < 0.001) {
+        gaze.current = null
+        setState({ gaze: null })
+      }
       return
     }
 

@@ -13,7 +13,7 @@ voice control, a narrator/tutorial line, a world you move through.
 - **Change is motion.** Views never snap: boxes ease to new targets so you
   watch the data reorganize.
 - **The world builds around you.** You start standing on an empty floor at eye
-  height; a dropped CSV builds in front of and around you, and loading it
+  height; a dropped CSV builds in front of you, and loading it
   never moves the camera. Every dataset has a `blurb`: the narrator's voice on
   arrival.
 - **Voice costs nothing by default.** A free in-browser parser handles common
@@ -58,14 +58,36 @@ speech / typed text
 - `src/store.ts`: zustand. Non-React modules use `getState`/`setState`.
 - `src/data/datasets.ts`: turns a dropped CSV into a dataset definition (load,
   aliases, defaults, blurb). There are no built-in worlds.
-- Camera starts at (0, 1.6, -10) looking at the origin (`src/App.tsx`). Grid
-  and timeline layouts are centered on the origin, so data rises around it.
+- Camera starts at (0, 1.6, 10) looking at the origin (`START_POSITION` in
+  `src/store.ts`). Space/C never take it
+  below eye height.
+- Corner view: grid and timeline layouts are turned 45° (`CORNER_YAW`) with
+  their near corner at the origin, so you look straight at a corner and both
+  sides recede. Boxes, outlines and the floor grid share the turn; geo stays
+  unturned. The timeline is about as long as it is wide (same-period records
+  stack sideways) so both sides have depth.
+- The title hangs past the far end, high enough to clear every box as seen
+  from the start (`titlePlacement`). On load the camera turns in place toward
+  it, pitched so the title sits near the top of the screen and the skyline
+  above the keys (`titleGaze` in `run.ts`; a "gaze", `GAZE_RATE` = a third of the boxes' `EASE_RATE`); any movement
+  or mouse look cancels it.
+- Group names are painted flat on the floor like street names, in the gap left
+  of each group and reading along it (`GroupInfo.street`).
+- "recenter"/"home" fly back to the start and end looking at the title.
+- HUD (`src/ui/Hud.tsx`): before a world, the welcome box shows the narrator
+  line and an Upload CSV button; once loaded, a keys panel replaces it: name
+  and file facts, with columns and `COMMANDS` (from `parse.ts`) collapsed
+  until "Show keys" / "show keys" (`keys` command). Replies show as a toast
+  that fades after 4 s. Use `say()` from the store for narrator messages.
+- `src/data/validateCsv.ts` checks every dropped/uploaded file first (.csv,
+  ≤ 50 MB, named unique headers, at least one row, same field count on every
+  row, closed quotes) and returns a plain-sentence error.
 - Filters don't remove rows: every row returns with `__match`, and misses sink.
 - Times are always epoch ms in the scene (`epochFields` or TIMESTAMP columns).
 
 ## Data
 
-- Worlds come only from CSVs the user drops on the page; they load into
+- Worlds come only from CSVs the user drops or uploads; they load into
   DuckDB-WASM in the browser and never leave it.
 - Nothing the user says or types is stored.
 
@@ -92,8 +114,9 @@ npm run build      # typecheck + production build
 npm run lint       # oxlint
 ```
 
-Controls: click the world to capture the mouse, WASD + Space/C to fly,
-Shift to run, V for voice, / to type, Esc to release. Drop a CSV to explore it.
+Controls: click the world to capture the mouse (it looks around), WASD or
+arrows to walk and strafe, Space/C up/down (floor at eye height, 1.6 m),
+Shift to run, V for voice, / to type, Esc to release. Drop or upload a CSV to explore it.
 
 ## Decisions (2026-09-26)
 

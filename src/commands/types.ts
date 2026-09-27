@@ -25,3 +25,4 @@ export type Command =
   | { type: 'flyTo'; target: FlyTarget }
   | { type: 'reset' }
   | { type: 'help' }
+  | { type: 'keys'; open: boolean }

@@ -1,11 +1,12 @@
-import { Billboard, Grid, Stars, Text } from '@react-three/drei'
+import { Grid, Stars, Text } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
-import { Suspense, useRef } from 'react'
-import type { Group } from 'three'
-import { useStore } from '../store'
+import { Suspense, useMemo, useRef } from 'react'
+import { Matrix4, Quaternion, Vector3, type Group } from 'three'
+import { START_POSITION, useStore } from '../store'
 import bodyFont from '@fontsource/figtree/files/figtree-latin-600-normal.woff?url'
 import displayFont from '@fontsource/bricolage-grotesque/files/bricolage-grotesque-latin-800-normal.woff?url'
 import { BACKGROUND, BASE, FLOOR_CELL, FLOOR_LINE, SURFACE } from './colors'
+import { CORNER_YAW, titlePlacement } from './layout'
 import { Navigation } from './Navigation'
 import { Records } from './Records'
 
@@ -54,6 +55,7 @@ function Floor() {
   return (
     <>
       <Grid
+        rotation-y={CORNER_YAW}
         infiniteGrid
         cellSize={1.6}
         sectionSize={8}
@@ -72,35 +74,48 @@ function Floor() {
   )
 }
 
+// Group names are painted on the floor like street names, in the gap beside
+// each group and reading along it, so they never pile up in the distance.
 function GroupLabels() {
   const groups = useStore((s) => s.layout?.groups)
+  const yaw = useStore((s) => s.layout?.yaw ?? 0)
+  // Lying flat, turned with the layout, so the text runs along the group and
+  // reads away from the viewer (checked on screen from the start and overview).
+  const quaternion = useMemo(() => {
+    const turn = new Matrix4().makeRotationY(yaw)
+    const basis = new Matrix4().makeBasis(new Vector3(0, 0, 1), new Vector3(1, 0, 0), new Vector3(0, 1, 0))
+    return new Quaternion().setFromRotationMatrix(turn.multiply(basis))
+  }, [yaw])
   if (!groups?.length) return null
-  return groups.map((g) => (
-    <Billboard key={g.key} position={[g.center[0], g.top + 1, g.center[2]]}>
+  return groups.map((g) => {
+    const text = `${g.key}  ·  ${g.count}`
+    return (
       <Text
-        fontSize={Math.min(Math.max(g.width * 0.14, 0.6), 3)}
+        key={g.key}
+        position={[g.street.at[0], 0.02, g.street.at[2]]}
+        quaternion={quaternion}
+        fontSize={Math.max(0.4, Math.min(1.4, g.street.length / (text.length * 0.6)))}
         font={bodyFont}
         color={BASE}
-        anchorY="bottom"
-        outlineWidth="4%"
-        outlineColor={BACKGROUND}
+        anchorX="center"
+        anchorY="middle"
       >
-        {`${g.key}  ·  ${g.count}`}
+        {text}
       </Text>
-    </Billboard>
-  ))
+    )
+  })
 }
 
-// The world's name hangs at the far end, like the 2018 app's "THREE DB" sign.
+// The world's name, like the 2018 app's "THREE DB" sign.
 function Title() {
   const layout = useStore((s) => s.layout)
   const name = useStore((s) => (s.activeId ? s.datasets[s.activeId]?.def.name : null))
   if (!layout || !name) return null
-  const width = layout.max[0] - layout.min[0]
-  const size = Math.min(Math.max(width * 0.06, 2.5), 14)
+  const { position, size } = titlePlacement(layout, START_POSITION)
   return (
     <Text
-      position={[(layout.min[0] + layout.max[0]) / 2, Math.max(layout.max[1], 0) + size * 1.5, layout.min[2] - 12]}
+      position={position}
+      anchorY="bottom"
       font={displayFont}
       fontSize={size}
       letterSpacing={-0.03}

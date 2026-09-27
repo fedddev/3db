@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef } from 'react'
-import { getState, setState } from '../store'
+import { getState, say, setState } from '../store'
 
 // Minimal typing for the Web Speech API, which TypeScript's DOM lib doesn't
 // fully cover (and which Chrome still ships prefixed).
@@ -47,7 +47,7 @@ export function useSpeech(onPhrase: (text: string) => void) {
 
   const start = useCallback(() => {
     if (!Ctor) {
-      setState({ message: "This browser doesn't do speech recognition (try Chrome, Edge or Safari). You can still type commands." })
+      say("This browser doesn't do speech recognition (try Chrome, Edge or Safari). You can still type commands.")
       return
     }
     if (!rec.current) {
@@ -75,7 +75,7 @@ export function useSpeech(onPhrase: (text: string) => void) {
       r.onerror = (e) => {
         if (e.error === 'not-allowed' || e.error === 'service-not-allowed') {
           stop()
-          setState({ message: 'Microphone access was blocked. Allow it in the address bar to talk to 3db.' })
+          say('Microphone access was blocked. Allow it in the address bar to talk to 3db.')
         }
       }
       rec.current = r

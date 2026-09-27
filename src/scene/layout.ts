@@ -12,6 +12,10 @@ export interface GroupInfo {
   key: string
   count: number
   center: [number, number, number]
+  // A street name on the floor in the gap left of the group, reading along it
+  // (away from the viewer). `at` is its center; the text lies flat, turned by
+  // the layout's yaw.
+  street: { at: [number, number, number]; length: number }
   top: number
   width: number
 }
@@ -30,12 +34,24 @@ export interface Layout {
   min: [number, number, number]
   max: [number, number, number]
   mode: LayoutMode
+  yaw: number // rotation of every box about y (the corner view turns them 45°)
   legend: Legend | null
   note: string | null
 }
 
+// How fast boxes ease toward their targets: the remaining distance shrinks by
+// e^-EASE_RATE per second. The camera's glance up to a new world's title is
+// slower, so the skyline is mostly built by the time you're looking at it.
+export const EASE_RATE = 5
+export const GAZE_RATE = EASE_RATE / 3
+
 const SPACING = 1.6
 const GAP = 4
+// Grid and timeline worlds are turned 45° with their near corner here, so from
+// the start point (0, 1.6, 10) you look straight at a corner and both sides
+// recede to their own vanishing point.
+const FRONT_Z = 0
+export const CORNER_YAW = Math.PI / 4
 const MAX_GROUPS = 40
 
 type Unit = (v: Value) => number | null
@@ -190,9 +206,20 @@ export function computeLayout(rows: Row[], spec: ViewSpec, ds: Dataset): Layout 
     color.set([c.r, c.g, c.b], i * 3)
   })
 
-  if (mode === 'geo') placeGeo(rows, ds, pos, size)
-  else if (mode === 'timeline') placeTimeline(rows, ds.timeField!, groups, pos)
-  else placeGrid(groups, pos)
+  let yaw = 0
+  let streets: GroupInfo['street'][] = []
+  if (mode === 'geo') {
+    placeGeo(rows, ds, pos, size)
+    streets = groups.map((g) => streetFor(g.indices, pos))
+  } else {
+    if (mode === 'timeline') placeTimeline(rows, ds.timeField!, groups, pos)
+    else placeGrid(groups, pos)
+    // Streets are found in the unturned frame, then turned with everything else.
+    streets = groups.map((g) => streetFor(g.indices, pos))
+    const turn = turnToCorner(pos, n)
+    for (const s of streets) s.at = turn(s.at)
+    yaw = CORNER_YAW
+  }
 
   // Bounds and per-group label anchors come from the final placement.
   const min: [number, number, number] = [Infinity, Infinity, Infinity]
@@ -211,7 +238,7 @@ export function computeLayout(rows: Row[], spec: ViewSpec, ds: Dataset): Layout 
   }
 
   const groupInfo: GroupInfo[] = groupCol
-    ? groups.map((g) => {
+    ? groups.map((g, gi) => {
         let sx = 0, sz = 0, top = 0, x0 = Infinity, x1 = -Infinity
         for (const i of g.indices) {
           const x = pos[i * 3]
@@ -222,11 +249,68 @@ export function computeLayout(rows: Row[], spec: ViewSpec, ds: Dataset): Layout 
           x1 = Math.max(x1, x)
         }
         const c = g.indices.length || 1
-        return { key: g.key, count: g.indices.length, center: [sx / c, 0, sz / c], top, width: Math.max(x1 - x0, 1) }
+        return { key: g.key, count: g.indices.length, center: [sx / c, 0, sz / c], street: streets[gi], top, width: Math.max(x1 - x0, 1) }
       })
     : []
 
-  return { n, pos, size, color, matches, groups: groupInfo, min, max, mode, legend, note }
+  return { n, pos, size, color, matches, groups: groupInfo, min, max, mode, yaw, legend, note }
+}
+
+type Vec3 = [number, number, number]
+
+// The world's name hangs past the far end, high enough that from the eye point
+// it clears every box. Returns the text's bottom-center anchor and font size.
+export function titlePlacement(layout: Layout, eye: Vec3): { position: Vec3; size: number } {
+  const width = layout.max[0] - layout.min[0]
+  const size = Math.min(Math.max(width * 0.06, 2.5), 14)
+  const x = (layout.min[0] + layout.max[0]) / 2
+  const z = layout.min[2] - 4
+  const [ex, ey, ez] = eye
+  // Steepest sightline from the eye to the top of any box.
+  let slope = 0
+  for (let i = 0; i < layout.n; i++) {
+    const o = i * 3
+    const d = Math.hypot(layout.pos[o] - ex, layout.pos[o + 2] - ez)
+    slope = Math.max(slope, (layout.pos[o + 1] + layout.size[o + 1] - ey) / Math.max(d, 1))
+  }
+  const y = Math.max(ey + slope * Math.hypot(x - ex, z - ez) + size * 0.3, layout.max[1] + size * 0.5)
+  return { position: [x, y, z], size }
+}
+
+// The gap left of a group (its min x), halfway along its z extent.
+function streetFor(indices: number[], pos: Float32Array): GroupInfo['street'] {
+  let x0 = Infinity, z0 = Infinity, z1 = -Infinity
+  for (const i of indices) {
+    x0 = Math.min(x0, pos[i * 3])
+    z0 = Math.min(z0, pos[i * 3 + 2])
+    z1 = Math.max(z1, pos[i * 3 + 2])
+  }
+  if (!indices.length) return { at: [0, 0, 0], length: 0 }
+  return { at: [x0 - SPACING / 2 - GAP / 2, 0, (z0 + z1) / 2], length: z1 - z0 + SPACING }
+}
+
+// Pin the front-left corner (min x, max z) at (0, FRONT_Z) and turn the world
+// about it: its x side runs off to the right, its -z side off to the left.
+// Returns the same transform for other points (e.g. street labels).
+function turnToCorner(pos: Float32Array, n: number): (p: Vec3) => Vec3 {
+  let x0 = Infinity, z0 = -Infinity
+  for (let i = 0; i < n; i++) {
+    x0 = Math.min(x0, pos[i * 3])
+    z0 = Math.max(z0, pos[i * 3 + 2])
+  }
+  x0 = n ? x0 - SPACING / 2 : 0
+  z0 = n ? z0 + SPACING / 2 : 0
+  const c = Math.cos(CORNER_YAW), s = Math.sin(CORNER_YAW)
+  const turn = ([px, py, pz]: Vec3): Vec3 => {
+    const x = px - x0, z = pz - z0
+    return [x * c + z * s, py, -x * s + z * c + FRONT_Z]
+  }
+  for (let i = 0; i < n; i++) {
+    const [x, , z] = turn([pos[i * 3], 0, pos[i * 3 + 2]])
+    pos[i * 3] = x
+    pos[i * 3 + 2] = z
+  }
+  return turn
 }
 
 // Groups become districts: square blocks packed onto shelves, biggest first.
@@ -266,7 +350,9 @@ function placeGrid(groups: { indices: number[] }[], pos: Float32Array) {
 function placeTimeline(rows: Row[], timeField: string, groups: { indices: number[] }[], pos: Float32Array) {
   const range = numericRange(rows, timeField) ?? { min: 0, max: 1 }
   const span = range.max - range.min || 1
-  const length = Math.min(Math.max(rows.length * 0.6, 30), 400)
+  // About as long as it is wide: records from the same period stack sideways,
+  // so a short time axis gives a squarer block with depth on both sides.
+  const length = Math.min(Math.max(SPACING * Math.sqrt(rows.length), 10), 400)
   let laneX = 0
   const lanes = groups.map((g) => {
     const stacks = new Map<number, number>()

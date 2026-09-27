@@ -4,6 +4,7 @@ import { BoxGeometry, EdgesGeometry, InstancedMesh, LineSegments, Vector2 } from
 import { ROW_LIMIT } from '../data/query'
 import { getState, setState, useStore } from '../store'
 import { BASE, FERN } from './colors'
+import { EASE_RATE } from './layout'
 
 // The animated state of every box, shared with the highlight outlines.
 // Boxes ease toward the layout's targets each frame, so every change to the
@@ -12,6 +13,7 @@ const live = {
   pos: new Float32Array(ROW_LIMIT * 3),
   size: new Float32Array(ROW_LIMIT * 3),
   color: new Float32Array(ROW_LIMIT * 3),
+  yaw: 0,
   n: 0,
   settled: true,
 }
@@ -29,6 +31,8 @@ export function Records() {
   useEffect(() => {
     // No world yet: draw nothing, not a pile of unplaced boxes at the origin.
     if (!layout) return void (mesh.current.count = 0)
+    // The first world arrives already turned; later layout changes turn smoothly.
+    if (live.n === 0) live.yaw = layout.yaw
     // New boxes rise out of the floor at their destination.
     for (let i = live.n; i < layout.n; i++) {
       const o = i * 3
@@ -44,7 +48,7 @@ export function Records() {
   useFrame((_, dt) => {
     const m = mesh.current
     if (layout && !live.settled) {
-      const k = 1 - Math.exp(-Math.min(dt, 0.1) * 5)
+      const k = 1 - Math.exp(-Math.min(dt, 0.1) * EASE_RATE)
       let moving = 0
       for (let j = 0; j < layout.n * 3; j++) {
         const dp = layout.pos[j] - live.pos[j]
@@ -55,14 +59,21 @@ export function Records() {
         live.color[j] += dc * k
         moving = Math.max(moving, Math.abs(dp), Math.abs(ds), Math.abs(dc))
       }
+      const dy = layout.yaw - live.yaw
+      live.yaw += dy * k
+      moving = Math.max(moving, Math.abs(dy))
+      const cos = Math.cos(live.yaw), sin = Math.sin(live.yaw)
       const matrices = m.instanceMatrix.array as Float32Array
       for (let i = 0; i < layout.n; i++) {
         const o = i * 3
         const e = i * 16
         matrices.fill(0, e, e + 16)
-        matrices[e] = live.size[o]
+        // Rotation about y times scale, column-major.
+        matrices[e] = cos * live.size[o]
+        matrices[e + 2] = -sin * live.size[o]
         matrices[e + 5] = Math.max(live.size[o + 1], 0.001)
-        matrices[e + 10] = live.size[o + 2]
+        matrices[e + 8] = sin * live.size[o + 2]
+        matrices[e + 10] = cos * live.size[o + 2]
         matrices[e + 12] = live.pos[o]
         matrices[e + 13] = live.pos[o + 1]
         matrices[e + 14] = live.pos[o + 2]
@@ -127,6 +138,7 @@ function Outline({ which, color, opacity }: { which: 'hovered' | 'selected'; col
     if (!line.visible) return
     const o = index! * 3
     line.position.set(live.pos[o], live.pos[o + 1] - 0.03, live.pos[o + 2])
+    line.rotation.y = live.yaw
     line.scale.set(live.size[o] + 0.12, Math.max(live.size[o + 1], 0.01) + 0.08, live.size[o + 2] + 0.12)
   })
 

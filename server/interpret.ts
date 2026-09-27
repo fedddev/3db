@@ -35,6 +35,7 @@ const CommandSchema = z.discriminatedUnion('type', [
   }),
   z.object({ type: z.literal('reset') }),
   z.object({ type: z.literal('help') }),
+  z.object({ type: z.literal('keys'), open: z.boolean() }),
 ])
 const ResponseSchema = z.object({
   commands: z.array(CommandSchema).describe('Commands to run in order. Empty if nothing fits.'),
@@ -65,8 +66,9 @@ What each command does:
 - clearFilters: raise everything back up.
 - encode: map a column to box height (numbers only) or color (any column). null clears it.
 - layout: grid (districts), timeline (time runs away from the viewer), geo (map, with depth below the floor; only when the data has lat/lon).
-- flyTo: move the camera to "overview", "home", "selected" (the clicked record), or {group} (a current group name from "groups").
+- flyTo: move the camera to "overview", "home" (the starting point; also "recenter"), "selected" (the clicked record), or {group} (a current group name from "groups").
 - reset: back to the world's default view. help: list what the visitor can say.
+- keys: open (true) or close (false) the on-screen key of columns and commands.
 
 Rules:
 - Use only column names from "columns", dataset ids from "datasets", and group names from "groups".

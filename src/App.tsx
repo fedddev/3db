@@ -2,6 +2,7 @@ import { Canvas } from '@react-three/fiber'
 import { useEffect, useRef, useState } from 'react'
 import { addCsv, boot, submit } from './commands/run'
 import { World } from './scene/World'
+import { START_LOOK_AT, START_POSITION } from './store'
 import { Hud } from './ui/Hud'
 import { isTyping } from './ui/keys'
 import { useSpeech } from './voice/useSpeech'
@@ -40,15 +41,14 @@ export default function App() {
       onDrop={async (e) => {
         e.preventDefault()
         setDragging(false)
-        const file = [...e.dataTransfer.files].find((f) => /\.(csv|tsv|txt)$/i.test(f.name))
-        if (file) await addCsv(file.name, await file.text())
+        const file = e.dataTransfer.files[0]
+        if (file) await addCsv(file)
       }}
     >
       <div id="world">
-        {/* Eye height (1.6 m), 10 m back from the origin, looking at it. */}
         <Canvas
-          camera={{ fov: 70, near: 0.1, far: 3000, position: [0, 1.6, -10] }}
-          onCreated={({ camera }) => camera.lookAt(0, 0, 0)}
+          camera={{ fov: 70, near: 0.1, far: 3000, position: START_POSITION }}
+          onCreated={({ camera }) => camera.lookAt(...START_LOOK_AT)}
           dpr={[1, 2]}
         >
           <World />

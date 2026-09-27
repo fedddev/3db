@@ -1,14 +1,15 @@
 import { csvDataset } from '../data/datasets'
 import { loadTable, queryRows } from '../data/duckdb'
 import { buildQuery } from '../data/query'
-import { computeLayout } from '../scene/layout'
-import { EMPTY_SPEC, getState, setState, type Vec3 } from '../store'
+import { validateCsv } from '../data/validateCsv'
+import { computeLayout, titlePlacement, type Layout } from '../scene/layout'
+import { EMPTY_SPEC, START_LOOK_AT, START_POSITION, getState, say, setState, type Vec3 } from '../store'
 import type { Column, Dataset, GeoFields, ViewSpec } from '../types'
 import { askAi, type AiContext } from './ai'
 import { HELP, parse, type ParseContext } from './parse'
 import type { Command, Filter, FlyTarget } from './types'
 
-const say = (message: string) => setState({ message })
+
 
 // Clear phrases that earlier builds stored in this browser.
 export function boot() {
@@ -41,7 +42,8 @@ export async function activate(id: string) {
   if (!def) return say(`There's no world called "${id}".`)
   let ds = getState().datasets[id]
   if (!ds) {
-    setState({ loading: def.name, message: `Loading ${def.name}…` })
+    setState({ loading: def.name })
+    say(`Loading ${def.name}…`)
     try {
       const source = await def.load()
       if (source.kind === 'json' && source.rows.length === 0) {
@@ -66,13 +68,33 @@ export async function activate(id: string) {
     }
   }
   setState({ activeId: id, loading: null, spec: { ...EMPTY_SPEC, ...defaultsFor(ds) }, selected: null, hovered: null })
-  // No camera flight: the world builds in front of and around wherever you stand.
+  // No camera flight: the world builds in front of you while you look up at
+  // its title (GAZE_RATE, a third of the boxes' easing rate).
   await refresh()
   say(def.blurb)
+  const layout = getState().layout
+  if (layout) setState({ gaze: { id: ++gazeId, target: titleGaze(layout) } })
+}
+let gazeId = 0
+
+// Where to look from the start point: toward the title, but pitched lower so
+// the title sits near the top of the screen and the skyline fills the middle,
+// above the keys panel. (The camera's vertical field of view is 70°.)
+const TITLE_ABOVE_CENTER = (22 * Math.PI) / 180
+function titleGaze(layout: Layout): Vec3 {
+  const { position: [x, y, z], size } = titlePlacement(layout, START_POSITION)
+  const [ex, ey, ez] = START_POSITION
+  const dx = x - ex, dz = z - ez
+  const flat = Math.hypot(dx, dz) || 1
+  const pitch = Math.max(Math.atan2(y + size * 0.4 - ey, flat) - TITLE_ABOVE_CENTER, -Math.PI / 6)
+  return [x, ey + Math.tan(pitch) * flat, z]
 }
 
-export function addCsv(fileName: string, text: string) {
-  const def = csvDataset(fileName, text)
+// Dropped or uploaded: validate first, so a bad file gets a plain sentence.
+export async function addCsv(file: File) {
+  const check = await validateCsv(file)
+  if (!check.ok) return say(check.error)
+  const def = csvDataset(file.name, check.text, { name: file.name, lastModified: file.lastModified, rows: check.rows, columns: check.columns })
   const { defs, datasets } = getState()
   const rest = { ...datasets }
   delete rest[def.id]
@@ -194,6 +216,7 @@ export async function runCommand(cmd: Command): Promise<boolean> {
 async function apply(cmd: Command) {
   const ds = active()
   if (cmd.type === 'help') return say(HELP)
+  if (cmd.type === 'keys') return setState({ keysOpen: cmd.open })
   if (cmd.type === 'dataset') return activate(cmd.id)
   if (!ds) return
 
@@ -236,6 +259,10 @@ async function apply(cmd: Command) {
 
 let flightId = 0
 export function flyTo(target: FlyTarget) {
+  if (target === 'home') {
+    const { layout } = getState()
+    return setState({ flight: { id: ++flightId, position: START_POSITION, lookAt: layout ? titleGaze(layout) : START_LOOK_AT } })
+  }
   const { layout, selected } = getState()
   if (!layout) return
   const [x0, , z0] = layout.min
@@ -249,9 +276,6 @@ export function flyTo(target: FlyTarget) {
   if (target === 'overview') {
     position = [cx, Math.max(y1, 0) + extent * 0.45 + 6, z1 + extent * 0.35 + 8]
     lookAt = [cx, 0, cz]
-  } else if (target === 'home') {
-    position = [cx, 2, z1 + 8]
-    lookAt = [cx, 1.5, cz]
   } else if (target === 'selected') {
     if (selected === null) return say('Nothing is selected. Aim at something and click it first.')
     const o = selected * 3
