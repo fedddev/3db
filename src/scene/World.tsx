@@ -50,8 +50,10 @@ function SlowSky() {
   )
 }
 
-// A see-through floor: in the map layout, rows with a depth hang below it.
+// A solid floor, so the stars are only a sky. In the map layout it turns
+// see-through, because rows with a depth hang below it.
 function Floor() {
+  const seeThrough = useStore((s) => s.layout?.mode === 'geo')
   return (
     <>
       <Grid
@@ -66,9 +68,9 @@ function Floor() {
         fadeDistance={260}
         fadeStrength={1.5}
       />
-      <mesh rotation-x={-Math.PI / 2} position-y={-0.01} renderOrder={-1}>
+      <mesh rotation-x={-Math.PI / 2} position-y={-0.01}>
         <planeGeometry args={[4000, 4000]} />
-        <meshBasicMaterial color={SURFACE} transparent opacity={0.55} depthWrite={false} />
+        <meshBasicMaterial color={SURFACE} transparent={seeThrough} opacity={seeThrough ? 0.55 : 1} depthWrite={!seeThrough} />
       </mesh>
     </>
   )

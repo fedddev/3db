@@ -151,6 +151,68 @@ button {
   text-underline-offset: 4px;
 }
 
+.view-key {
+  display: grid;
+  gap: 6px;
+  font-size: var(--fd-text-13);
+}
+
+.view-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
+}
+
+.view-label {
+  color: var(--fd-text-muted);
+  font: 500 var(--fd-text-13) var(--fd-font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--fd-tracking-eyebrow);
+}
+
+.view-item button {
+  margin-left: auto;
+  border: 0;
+  background: none;
+  color: var(--fd-text-muted);
+  font-size: var(--fd-text-17);
+  line-height: 1;
+  padding: 0 4px;
+}
+
+.view-item button:hover {
+  color: var(--fd-text);
+}
+
+.swatch {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.swatch i {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+
+.group-name span {
+  color: var(--fd-text-muted);
+}
+
+.ramp-key {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--fd-space-1);
+}
+
+.ramp-key i {
+  width: 96px;
+  height: 10px;
+  border-radius: 3px;
+}
+
 .eyebrow {
   margin-bottom: 6px;
   color: var(--fd-text-muted);

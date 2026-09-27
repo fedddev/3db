@@ -56,7 +56,7 @@ const MAX_GROUPS = 40
 
 type Unit = (v: Value) => number | null
 
-function numericRange(rows: Row[], field: string) {
+export function numericRange(rows: Row[], field: string) {
   let min = Infinity
   let max = -Infinity
   for (const r of rows) {

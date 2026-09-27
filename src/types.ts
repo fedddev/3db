@@ -56,4 +56,6 @@ export interface Dataset {
   timeField: string | null
   geo: GeoFields | null
   labelField: string | null
+  // Distinct values per text/bool column, counted once at load.
+  distinct: Record<string, number>
 }

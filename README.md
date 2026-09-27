@@ -5,8 +5,10 @@ Grouping builds districts, sorting builds skylines, filtering sinks what doesn't
 match, and time stretches into distance. Drive it with your voice or a command bar.
 
 You start on an empty floor. Drop a CSV onto the page (or use Upload CSV) and it
-builds in front of you. Once it loads, a key lists its columns, what you can
-say, and facts about the file.
+builds in front of you, already colored by one of its columns. Once it loads, a
+key shows facts about the file and whatever is applied (color, height, groups,
+sort, filters); "show keys" adds its columns and what you can say. "clear all"
+undoes what you've added.
 
 ```bash
 npm install

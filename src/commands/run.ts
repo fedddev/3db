@@ -1,7 +1,8 @@
 import { csvDataset } from '../data/datasets'
-import { loadTable, queryRows } from '../data/duckdb'
+import { loadTable, queryRows, quoteIdent } from '../data/duckdb'
 import { buildQuery } from '../data/query'
 import { validateCsv } from '../data/validateCsv'
+import { CATEGORY_LIMIT } from '../scene/colors'
 import { computeLayout, titlePlacement, type Layout } from '../scene/layout'
 import { EMPTY_SPEC, START_LOOK_AT, START_POSITION, getState, say, setState, type Vec3 } from '../store'
 import type { Column, Dataset, GeoFields, ViewSpec } from '../types'
@@ -33,8 +34,28 @@ function detectGeo(columns: Column[]): GeoFields | null {
 function defaultsFor(ds: Dataset): Partial<ViewSpec> {
   if (Object.keys(ds.def.defaults).length) return ds.def.defaults
   const skip = new Set([ds.geo?.lat, ds.geo?.lon])
-  const height = ds.columns.find((c) => c.kind === 'number' && !skip.has(c.name))?.name ?? null
-  return { layout: ds.geo ? 'geo' : ds.timeField ? 'timeline' : 'grid', height }
+  const numbers = ds.columns.filter((c) => c.kind === 'number' && !skip.has(c.name)).map((c) => c.name)
+  const height = numbers[0] ?? null
+  return { layout: ds.geo ? 'geo' : ds.timeField ? 'timeline' : 'grid', height, color: defaultColor(ds, numbers, height) }
+}
+
+// Every world arrives in color: the category column with the most values that
+// still fit the palette (genre over format over channel), else another number
+// on the ramp, else the height itself.
+function defaultColor(ds: Dataset, numbers: string[], height: string | null): string | null {
+  let best: string | null = null
+  for (const c of ds.columns) {
+    const n = ds.distinct[c.name] ?? 0
+    if (n >= 2 && n <= CATEGORY_LIMIT && n > (best ? ds.distinct[best] : 0)) best = c.name
+  }
+  return best ?? numbers.find((n) => n !== height) ?? height
+}
+
+async function countDistinct(table: string, columns: Column[]): Promise<Record<string, number>> {
+  const cats = columns.filter((c) => c.kind === 'text' || c.kind === 'bool')
+  if (!cats.length) return {}
+  const [row] = await queryRows(`SELECT ${cats.map((c, i) => `COUNT(DISTINCT ${quoteIdent(c.name)}) AS c${i}`).join(', ')} FROM ${quoteIdent(table)}`)
+  return Object.fromEntries(cats.map((c, i) => [c.name, Number(row?.[`c${i}`] ?? 0)]))
 }
 
 export async function activate(id: string) {
@@ -52,7 +73,9 @@ export async function activate(id: string) {
       }
       const table = `t_${id.replace(/\W/g, '_')}`
       const columns = await loadTable(table, source, def.epochFields)
+      const distinct = await countDistinct(table, columns)
       ds = {
+        distinct,
         def,
         table,
         columns,
@@ -188,7 +211,7 @@ export async function submit(raw: string) {
 const OP_WORDS: Record<Filter['op'], string> = {
   eq: 'is', neq: 'is not', gt: 'above', gte: 'at least', lt: 'below', lte: 'at most', contains: 'contains',
 }
-const describeFilter = (f: Filter) => `${f.field} ${OP_WORDS[f.op]} ${f.value}`
+export const describeFilter = (f: Filter) => `${f.field} ${OP_WORDS[f.op]} ${f.value}`
 
 async function updateSpec(patch: Partial<ViewSpec>) {
   setState({ spec: { ...getState().spec, ...patch } })
@@ -249,6 +272,10 @@ async function apply(cmd: Command) {
       return flyTo('overview')
     case 'flyTo':
       return flyTo(cmd.target)
+    case 'clearAll':
+      setState({ spec: { ...EMPTY_SPEC, ...defaultsFor(ds) } })
+      await refresh()
+      return say('Cleared. Back to how it arrived.')
     case 'reset':
       setState({ spec: { ...EMPTY_SPEC, ...defaultsFor(ds) } })
       await refresh()

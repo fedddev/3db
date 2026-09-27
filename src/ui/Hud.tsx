@@ -1,6 +1,9 @@
-import { useEffect, useRef, useState, type RefObject } from 'react'
+import { useEffect, useRef, useState, type ReactNode, type RefObject } from 'react'
 import { COMMANDS } from '../commands/parse'
-import { addCsv, runCommand, submit } from '../commands/run'
+import { addCsv, describeFilter, runCommand, submit } from '../commands/run'
+import type { Command } from '../commands/types'
+import { RAMP_CSS } from '../scene/colors'
+import { numericRange, type GroupInfo } from '../scene/layout'
 import { setState, useStore } from '../store'
 import { speechSupported } from '../voice/useSpeech'
 import { formatValue } from './format'
@@ -104,6 +107,7 @@ function Keys() {
           {open ? 'Hide keys' : 'Show keys'}
         </button>
       </div>
+      <ViewKey />
       {open && (
         <>
           <div className="keys-section">
@@ -214,6 +218,91 @@ function Peek() {
         <span key={f}>
           {f}: {formatValue(row[f], col(f))}
         </span>
+      ))}
+    </div>
+  )
+}
+
+const GROUPS_SHOWN = 12
+const NO_GROUPS: GroupInfo[] = []
+
+// What's applied right now, one item per channel, each clearable. Empty when
+// nothing is applied (e.g. after a color and height are cleared).
+function ViewKey() {
+  const spec = useStore((s) => s.spec)
+  const legend = useStore((s) => s.layout?.legend ?? null)
+  const groups = useStore((s) => s.layout?.groups) ?? NO_GROUPS
+  const rows = useStore((s) => s.rows)
+  const ds = useStore((s) => (s.activeId ? s.datasets[s.activeId] : null))
+  const col = (name: string) => ds?.columns.find((c) => c.name === name)
+  const heightRange = spec.height ? numericRange(rows, spec.height) : null
+
+  const items: { label: string; body: ReactNode; clear: Command }[] = []
+  if (spec.color && legend)
+    items.push({
+      label: `color · ${spec.color}`,
+      clear: { type: 'encode', channel: 'color', field: null },
+      body:
+        legend.kind === 'sequential' ? (
+          <span className="ramp-key">
+            {formatValue(legend.min, legend.column)}
+            <i style={{ background: RAMP_CSS }} />
+            {formatValue(legend.max, legend.column)}
+          </span>
+        ) : (
+          legend.entries.map((e) => (
+            <span key={e.label} className="swatch">
+              <i style={{ background: e.color }} />
+              {e.label}
+            </span>
+          ))
+        ),
+    })
+  if (spec.height)
+    items.push({
+      label: `height · ${spec.height}`,
+      clear: { type: 'encode', channel: 'height', field: null },
+      body: heightRange && (
+        <span>
+          {formatValue(heightRange.min, col(spec.height))} to {formatValue(heightRange.max, col(spec.height))}
+        </span>
+      ),
+    })
+  if (spec.groupBy)
+    items.push({
+      label: `group · ${spec.groupBy}`,
+      clear: { type: 'groupBy', field: null },
+      body: (
+        <>
+          {groups.slice(0, GROUPS_SHOWN).map((g) => (
+            <span key={g.key} className="group-name">
+              {g.key} <span>{g.count}</span>
+            </span>
+          ))}
+          {groups.length > GROUPS_SHOWN && <span className="group-name">+{groups.length - GROUPS_SHOWN} more</span>}
+        </>
+      ),
+    })
+  if (spec.sortBy)
+    items.push({
+      label: `sort · ${spec.sortBy.field}`,
+      clear: { type: 'sortBy', field: null, dir: 'asc' },
+      body: <span>{spec.sortBy.dir === 'desc' ? 'biggest first' : 'smallest first'}</span>,
+    })
+  if (spec.filters.length)
+    items.push({ label: 'filter', clear: { type: 'clearFilters' }, body: <span>{spec.filters.map(describeFilter).join(' and ')}</span> })
+  if (!items.length) return null
+
+  return (
+    <div className="view-key">
+      {items.map((it) => (
+        <div key={it.label} className="view-item">
+          <span className="view-label">{it.label}</span>
+          {it.body}
+          <button type="button" aria-label={`Clear ${it.label}`} onClick={() => runCommand(it.clear)}>
+            ×
+          </button>
+        </div>
       ))}
     </div>
   )

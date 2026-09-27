@@ -160,6 +160,8 @@ export function parse(input: string, ctx: ParseContext): ParseResult {
   if (/^(reset|start over|reset (the )?view|default view)$/.test(t)) return ok({ type: 'reset' })
   if (/^(show|open|expand)( the)? (keys?|key panel|legend|columns)$/.test(t)) return ok({ type: 'keys', open: true })
   if (/^(hide|close|collapse)( the)? (keys?|key panel|legend|columns)$/.test(t)) return ok({ type: 'keys', open: false })
+  if (/^((clear|remove|undo|drop) (all|everything)|clear it all|undo all( (of )?(that|those))?|back to (how it|the way it) (arrived|was|loaded))$/.test(t))
+    return ok({ type: 'clearAll' })
   if (/^((clear|remove|reset|drop)( all)?( the)? filters?|show (me )?(everything|all)|unfilter|no filters?)$/.test(t))
     return ok({ type: 'clearFilters' })
   if (/^(ungroup|no group(ing)?|stop grouping|remove (the )?grouping|don t group)$/.test(t)) return ok({ type: 'groupBy', field: null })
@@ -259,7 +261,8 @@ export const COMMANDS: { say: string; does: string }[] = [
   { say: 'go to <group>', does: 'fly to a district' },
   { say: 'overview', does: "bird's-eye view" },
   { say: 'recenter', does: 'back to the start' },
-  { say: 'reset', does: 'default view' },
+  { say: 'clear all', does: 'undo what you added' },
+  { say: 'reset', does: 'default view + overview' },
   { say: 'show keys / hide keys', does: 'open or close this key' },
 ]
 

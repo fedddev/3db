@@ -13,9 +13,9 @@ voice control, a narrator/tutorial line, a world you move through.
 - **Change is motion.** Views never snap: boxes ease to new targets so you
   watch the data reorganize.
 - **The world builds around you.** You start standing on an empty floor at eye
-  height; a dropped CSV builds in front of you, and loading it
-  never moves the camera. Every dataset has a `blurb`: the narrator's voice on
-  arrival.
+  height; a dropped CSV builds in front of you, arrives already colored, and
+  loading it never moves you (the camera only glances up at the title). Every
+  dataset has a `blurb`: the narrator's voice on arrival.
 - **Voice costs nothing by default.** A free in-browser parser handles common
   phrases; only what it can't parse goes to the AI proxy (Claude Haiku 4.5).
 
@@ -29,9 +29,12 @@ logo/wordmark usage and 3D scene decisions, and use the variables in `brand/toke
 
 - 3db is dark mode only (`data-theme="dark"`): the world is a night scene. Scene colors live in
   `src/scene/colors.ts`.
-- Data colors: the brand trio plus five hues, ordered and checked with the dataviz palette
-  validator against jungle. Re-run it if you change the categorical list or the ramp.
-- The floor grid stays recessive (not fern), because fern is data color 1.
+- Brand colors only, data included: six categorical colors (papaya, frangipani, lagoon,
+  mango, hibiscus, fern; ordered with the dataviz palette validator against jungle) and a
+  papaya → mango → frangipani magnitude ramp. Re-run the validator if you change either.
+- Every world loads colored: the text/bool column with the most distinct values that fit
+  the palette (2-6), else another number, else the height column (`defaultColor` in run.ts).
+- The floor grid stays recessive (brand §8a secondary lines), because fern is a data color.
 - 3D `<Text>` must pass a brand font (`@fontsource` .woff via `?url`); drei defaults to Roboto.
 
 ## Architecture
@@ -71,14 +74,20 @@ speech / typed text
   it, pitched so the title sits near the top of the screen and the skyline
   above the keys (`titleGaze` in `run.ts`; a "gaze", `GAZE_RATE` = a third of the boxes' `EASE_RATE`); any movement
   or mouse look cancels it.
+- The floor is opaque so the stars are only a sky; in the map (geo) layout it
+  turns see-through, since rows with a depth hang below it.
 - Group names are painted flat on the floor like street names, in the gap left
   of each group and reading along it (`GroupInfo.street`).
 - "recenter"/"home" fly back to the start and end looking at the title.
 - HUD (`src/ui/Hud.tsx`): before a world, the welcome box shows the narrator
   line and an Upload CSV button; once loaded, a keys panel replaces it: name
   and file facts, with columns and `COMMANDS` (from `parse.ts`) collapsed
-  until "Show keys" / "show keys" (`keys` command). Replies show as a toast
-  that fades after 4 s. Use `say()` from the store for narrator messages.
+  until "Show keys" / "show keys" (`keys` command). A current-view key
+  (`ViewKey`) is always visible there: color legend, height range, group names
+  with counts,
+  sort and filters, each with an × to clear it. "clear all" (`clearAll`)
+  undoes what the visitor added without moving the camera; "reset" does the
+  same and flies to the overview. Replies show as a toast that fades after 4 s. Use `say()` from the store for narrator messages.
 - `src/data/validateCsv.ts` checks every dropped/uploaded file first (.csv,
   ≤ 50 MB, named unique headers, at least one row, same field count on every
   row, closed quotes) and returns a plain-sentence error.
@@ -137,3 +146,6 @@ Shift to run, V for voice, / to type, Esc to release. Drop or upload a CSV to ex
 3. Open a record in place (fields unfold around it) instead of only the side panel.
 4. Guided tour: the narrator walks first-time visitors through a world.
 5. Deploy (Firebase Hosting; the project `three-db` exists from 2018).
+6. Year gridlines along the timeline, so time reads as distance at a glance.
+7. Keep the keys panel from covering the street names when a view is grouped
+   and several view-key items are applied.

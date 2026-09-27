@@ -26,3 +26,4 @@ export type Command =
   | { type: 'reset' }
   | { type: 'help' }
   | { type: 'keys'; open: boolean }
+  | { type: 'clearAll' }
