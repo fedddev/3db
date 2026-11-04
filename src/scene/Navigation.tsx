@@ -1,8 +1,9 @@
 import { PointerLockControls } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { useEffect, useRef } from 'react'
-import { Matrix4, Quaternion, Vector3 } from 'three'
-import { EYE_HEIGHT, getState, setState } from '../store'
+import { Euler, MathUtils, Matrix4, Quaternion, Vector3 } from 'three'
+import { EYE_HEIGHT, getState, say, setState, useStore } from '../store'
+import { headView, type Orientation } from './head'
 import { GAZE_RATE } from './layout'
 import { isTyping } from '../ui/keys'
 
@@ -10,6 +11,8 @@ const UP = new Vector3(0, 1, 0)
 const WALK = 12
 const RUN = 45
 const FLIGHT_SECONDS = 1.6
+// Turning the phone this much (leaky sum, radians) takes a gaze back from it; hand tremor stays below.
+const HEAD_CANCEL = 0.03
 
 const easeInOut = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2)
 
@@ -17,7 +20,14 @@ const easeInOut = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 
 // walk and strafe, Space/E rises, C/Q sinks but never below eye height, Shift
 // runs. Flights from commands animate the camera, and a gaze turns it in place
 // (up to a new world's title); any movement key or mouse look takes control back.
+// On a phone, turning the device looks around (head tracking) and cancels a gaze too.
 export function Navigation() {
+  const head = useStore((s) => s.head)
+  const orientation = useRef<Orientation | null>(null)
+  const lastView = useRef<{ yaw: number; pitch: number } | null>(null)
+  const view = useRef({ yaw: 0, pitch: 0 })
+  const headMoved = useRef(0)
+  const euler = useRef(new Euler())
   const keys = useRef(new Set<string>())
   const flight = useRef<{ id: number; from: Vector3; to: Vector3; qFrom: Quaternion; qTo: Quaternion; t: number } | null>(null)
   const gaze = useRef<{ id: number; q: Quaternion } | null>(null)
@@ -49,8 +59,55 @@ export function Navigation() {
     }
   }, [])
 
+  useEffect(() => {
+    if (!head) {
+      orientation.current = null
+      lastView.current = null
+      return
+    }
+    const on = (e: DeviceOrientationEvent) => {
+      if (e.alpha === null || e.beta === null || e.gamma === null) {
+        setState({ head: false })
+        say("This device doesn't report its motion, so it can't look around.")
+        return
+      }
+      orientation.current = { alpha: e.alpha, beta: e.beta, gamma: e.gamma }
+    }
+    window.addEventListener('deviceorientation', on)
+    return () => window.removeEventListener('deviceorientation', on)
+  }, [head])
+
   useFrame(({ camera }, rawDt) => {
     const dt = Math.min(rawDt, 0.1)
+
+    // Head tracking: add the phone's turn since last frame to the camera's own
+    // yaw and pitch (never roll). Flights and held gazes own the camera, so the
+    // turn is ignored then, but a real turn ends a gaze.
+    const o = orientation.current
+    if (o) {
+      const v = view.current
+      headView(o, v)
+      const last = lastView.current
+      if (last) {
+        let dYaw = v.yaw - last.yaw
+        if (dYaw > Math.PI) dYaw -= 2 * Math.PI
+        else if (dYaw < -Math.PI) dYaw += 2 * Math.PI
+        const dPitch = v.pitch - last.pitch
+        headMoved.current = headMoved.current * 0.9 + Math.abs(dYaw) + Math.abs(dPitch)
+        if (headMoved.current > HEAD_CANCEL && (gaze.current || getState().gaze)) {
+          gaze.current = null
+          setState({ gaze: null })
+        }
+        if (!gaze.current && !getState().gaze && !flight.current && !getState().flight) {
+          const e = euler.current.setFromQuaternion(camera.quaternion, 'YXZ')
+          e.y += dYaw
+          e.x = MathUtils.clamp(e.x + dPitch, -1.5, 1.5)
+          e.z = 0
+          camera.quaternion.setFromEuler(e)
+        }
+      }
+      lastView.current = { yaw: v.yaw, pitch: v.pitch }
+    }
     const k = keys.current
     const has = (...codes: string[]) => (codes.some((c) => k.has(c)) ? 1 : 0)
     const forward = has('KeyW', 'ArrowUp') - has('KeyS', 'ArrowDown')

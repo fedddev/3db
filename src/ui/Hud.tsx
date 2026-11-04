@@ -5,6 +5,7 @@ import type { Command } from '../commands/types'
 import { RAMP_CSS } from '../scene/colors'
 import { numericRange, type GroupInfo } from '../scene/layout'
 import { setState, useStore } from '../store'
+import { disableHead, enableHead, headSupported } from '../scene/head'
 import { speechSupported } from '../voice/useSpeech'
 import { formatValue } from './format'
 
@@ -146,6 +147,7 @@ const PLACEHOLDER = 'Type a command: "group by <column>", "color by <column>", "
 function CommandBar({ inputRef, onToggleVoice }: { inputRef: RefObject<HTMLInputElement | null>; onToggleVoice: () => void }) {
   const [text, setText] = useState('')
   const listening = useStore((s) => s.listening)
+  const head = useStore((s) => s.head)
   return (
     <form
       className="command panel fd-fern"
@@ -168,6 +170,17 @@ function CommandBar({ inputRef, onToggleVoice }: { inputRef: RefObject<HTMLInput
           size={1}
         />
       </span>
+      {headSupported && (
+        <button
+          type="button"
+          className={`head ${head ? 'on' : ''}`}
+          onClick={() => (head ? disableHead() : void enableHead())}
+          title="Look around by moving your phone"
+          aria-pressed={head}
+        >
+          look
+        </button>
+      )}
       <button
         type="button"
         className={`mic ${listening ? 'on' : ''}`}

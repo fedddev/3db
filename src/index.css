@@ -348,7 +348,8 @@ button {
   opacity: 1;
 }
 
-.mic {
+.mic,
+.head {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -363,7 +364,8 @@ button {
   flex: none;
 }
 
-.mic.on {
+.mic.on,
+.head.on {
   background: var(--fd-jungle);
   color: var(--fd-fern);
   animation: pulse 1.4s ease-in-out infinite;

@@ -34,6 +34,8 @@ interface State {
   interim: string
   listening: boolean
   locked: boolean
+  // Phone head tracking: the gyroscope turns the camera (src/scene/head.ts).
+  head: boolean
   flight: Flight | null
   // The keys panel starts collapsed so it doesn't cover the world.
   keysOpen: boolean
@@ -69,6 +71,7 @@ export const useStore = create<State>(() => ({
   interim: '',
   listening: false,
   locked: false,
+  head: false,
   flight: null,
   keysOpen: false,
   gaze: null,
