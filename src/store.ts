@@ -52,6 +52,9 @@ export const EMPTY_SPEC: ViewSpec = {
   color: null,
 }
 
+// Touch-first devices (phones, tablets) can't drag a file onto the page.
+const canDrop = !matchMedia('(pointer: coarse)').matches
+
 export const say = (message: string) => useStore.setState((s) => ({ message, messageId: s.messageId + 1 }))
 
 export const useStore = create<State>(() => ({
@@ -65,7 +68,9 @@ export const useStore = create<State>(() => ({
   layout: null,
   selected: null,
   hovered: null,
-  message: 'Welcome to 3db. Drop a CSV anywhere, or upload one, to turn it into a world.',
+  message: canDrop
+    ? 'Welcome to 3db. Drop a CSV anywhere, or upload one, to turn it into a world.'
+    : 'Welcome to 3db. Upload a CSV to turn it into a world.',
   messageId: 0,
   heard: '',
   interim: '',
