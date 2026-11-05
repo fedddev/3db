@@ -70,6 +70,7 @@ button {
 
 .welcome {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: var(--fd-space-3);
@@ -92,6 +93,13 @@ button {
   display: block;
   height: 18px;
   margin: 0 auto 12px;
+}
+
+.welcome-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--fd-space-1);
 }
 
 .fd-fern .upload {

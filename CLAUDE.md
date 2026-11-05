@@ -65,7 +65,7 @@ speech / typed text
   with Zod. Guardrails: 12 calls/min per IP, a daily cap, 300-char phrases.
 - `src/store.ts`: zustand. Non-React modules use `getState`/`setState`.
 - `src/data/datasets.ts`: turns a dropped CSV into a dataset definition (load,
-  aliases, defaults, blurb). There are no built-in worlds.
+  aliases, defaults, blurb). There are no built-in worlds, only a demo CSV (below).
 - Camera starts at (0, 1.6, 10) looking at the origin (`START_POSITION` in
   `src/store.ts`). Space/C never take it
   below eye height.
@@ -112,9 +112,17 @@ speech / typed text
 
 ## Data
 
-- Worlds come only from CSVs the user drops or uploads; they load into
+- Worlds come only from CSVs the user drops or uploads, or the demo; they load into
   DuckDB-WASM in the browser and never leave it.
 - Nothing the user says or types is stored.
+
+- Demo: the welcome box's "Try a demo" button (`loadDemo` in run.ts) fetches
+  `public/national-parks.csv` and loads it through `addCsv` like an upload, with
+  its own blurb. 996 rows: 59 US national parks, one row per park per year,
+  2000-2016 (NPS visitation via TidyTuesday 2019-09-17, public domain; lat/lon
+  and acres from Wikipedia's list of national parks; Denali's duplicate unit
+  rows and zero-visitor rows removed). It opens as the map. Touch-first
+  devices get welcome text without "drop".
 
 ## AI setup
 

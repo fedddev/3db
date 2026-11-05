@@ -6,7 +6,7 @@ match, and time stretches into distance. Drive it with your voice or a command b
 
 **Try it: https://fedddev-3db.web.app**
 
-You start on an empty floor. Drop a CSV onto the page (or use Upload CSV) and it
+You start on an empty floor. Drop a CSV onto the page (or use Upload CSV, or Try a demo) and it
 builds in front of you, already colored by one of its columns. Once it loads, a
 key shows facts about the file and whatever is applied (color, height, groups,
 sort, filters); "show keys" adds its columns and what you can say. "clear all"

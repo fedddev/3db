@@ -114,15 +114,30 @@ function titleGaze(layout: Layout): Vec3 {
 }
 
 // Dropped or uploaded: validate first, so a bad file gets a plain sentence.
-export async function addCsv(file: File) {
+export async function addCsv(file: File, blurb?: string) {
   const check = await validateCsv(file)
   if (!check.ok) return say(check.error)
-  const def = csvDataset(file.name, check.text, { name: file.name, lastModified: file.lastModified, rows: check.rows, columns: check.columns })
+  const def = csvDataset(file.name, check.text, { name: file.name, lastModified: file.lastModified, rows: check.rows, columns: check.columns }, blurb)
   const { defs, datasets } = getState()
   const rest = { ...datasets }
   delete rest[def.id]
   setState({ defs: [...defs.filter((d) => d.id !== def.id), def], datasets: rest })
   return activate(def.id)
+}
+
+// The sample world for visitors with no CSV of their own: a file served from our
+// own host, loaded exactly like an upload.
+const DEMO_BLURB =
+  'National parks, 2000 to 2016: one box per park per year, standing on the map. Try "group by region", "height by acres", or "timeline".'
+export async function loadDemo() {
+  say('Fetching the demo…')
+  try {
+    const res = await fetch('/national-parks.csv')
+    if (!res.ok) throw new Error(String(res.status))
+    return await addCsv(new File([await res.blob()], 'national-parks.csv'), DEMO_BLURB)
+  } catch {
+    say("Couldn't fetch the demo. Check your connection and try again.")
+  }
 }
 
 let querySeq = 0

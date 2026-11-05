@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode, type RefObject } from 'react'
 import { COMMANDS } from '../commands/parse'
-import { addCsv, describeFilter, runCommand, submit } from '../commands/run'
+import { addCsv, describeFilter, loadDemo, runCommand, submit } from '../commands/run'
 import type { Command } from '../commands/types'
 import { RAMP_CSS } from '../scene/colors'
 import { numericRange, type GroupInfo } from '../scene/layout'
@@ -40,7 +40,12 @@ function Welcome() {
       {(interim || heard) && <div className="heard">{interim ? `…${interim}` : `“${heard}”`}</div>}
       <div className="welcome">
         <div>{message}</div>
-        <UploadButton label="Upload CSV" />
+        <div className="welcome-actions">
+          <UploadButton label="Upload CSV" />
+          <button type="button" className="upload" onClick={() => void loadDemo()}>
+            Try a demo
+          </button>
+        </div>
       </div>
     </div>
   )

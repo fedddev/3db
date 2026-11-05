@@ -1,0 +1,997 @@
+park,region,state,date,visitors,acres,lat,lon
+Acadia,Northeast,ME,2000-01-01,2469238,49071,44.35,-68.21
+Acadia,Northeast,ME,2001-01-01,2516551,49071,44.35,-68.21
+Acadia,Northeast,ME,2002-01-01,2558572,49071,44.35,-68.21
+Acadia,Northeast,ME,2003-01-01,2431062,49071,44.35,-68.21
+Acadia,Northeast,ME,2004-01-01,2207847,49071,44.35,-68.21
+Acadia,Northeast,ME,2005-01-01,2051484,49071,44.35,-68.21
+Acadia,Northeast,ME,2006-01-01,2083588,49071,44.35,-68.21
+Acadia,Northeast,ME,2007-01-01,2202228,49071,44.35,-68.21
+Acadia,Northeast,ME,2008-01-01,2075857,49071,44.35,-68.21
+Acadia,Northeast,ME,2009-01-01,2227698,49071,44.35,-68.21
+Acadia,Northeast,ME,2010-01-01,2504208,49071,44.35,-68.21
+Acadia,Northeast,ME,2011-01-01,2374645,49071,44.35,-68.21
+Acadia,Northeast,ME,2012-01-01,2431052,49071,44.35,-68.21
+Acadia,Northeast,ME,2013-01-01,2254922,49071,44.35,-68.21
+Acadia,Northeast,ME,2014-01-01,2563129,49071,44.35,-68.21
+Acadia,Northeast,ME,2015-01-01,2811184,49071,44.35,-68.21
+Acadia,Northeast,ME,2016-01-01,3303393,49071,44.35,-68.21
+American Samoa,Pacific West,AS,2002-01-01,1938,8257,-14.25,-170.68
+American Samoa,Pacific West,AS,2006-01-01,1239,8257,-14.25,-170.68
+American Samoa,Pacific West,AS,2007-01-01,6774,8257,-14.25,-170.68
+American Samoa,Pacific West,AS,2008-01-01,3683,8257,-14.25,-170.68
+American Samoa,Pacific West,AS,2009-01-01,3242,8257,-14.25,-170.68
+American Samoa,Pacific West,AS,2010-01-01,3006,8257,-14.25,-170.68
+American Samoa,Pacific West,AS,2011-01-01,8716,8257,-14.25,-170.68
+American Samoa,Pacific West,AS,2012-01-01,10440,8257,-14.25,-170.68
+American Samoa,Pacific West,AS,2013-01-01,17919,8257,-14.25,-170.68
+American Samoa,Pacific West,AS,2014-01-01,13953,8257,-14.25,-170.68
+American Samoa,Pacific West,AS,2015-01-01,13892,8257,-14.25,-170.68
+American Samoa,Pacific West,AS,2016-01-01,28892,8257,-14.25,-170.68
+Arches,Intermountain,UT,2000-01-01,786429,76679,38.68,-109.57
+Arches,Intermountain,UT,2001-01-01,754026,76679,38.68,-109.57
+Arches,Intermountain,UT,2002-01-01,769672,76679,38.68,-109.57
+Arches,Intermountain,UT,2003-01-01,757781,76679,38.68,-109.57
+Arches,Intermountain,UT,2004-01-01,733131,76679,38.68,-109.57
+Arches,Intermountain,UT,2005-01-01,781670,76679,38.68,-109.57
+Arches,Intermountain,UT,2006-01-01,833049,76679,38.68,-109.57
+Arches,Intermountain,UT,2007-01-01,860181,76679,38.68,-109.57
+Arches,Intermountain,UT,2008-01-01,928795,76679,38.68,-109.57
+Arches,Intermountain,UT,2009-01-01,996312,76679,38.68,-109.57
+Arches,Intermountain,UT,2010-01-01,1014405,76679,38.68,-109.57
+Arches,Intermountain,UT,2011-01-01,1040758,76679,38.68,-109.57
+Arches,Intermountain,UT,2012-01-01,1070577,76679,38.68,-109.57
+Arches,Intermountain,UT,2013-01-01,1082866,76679,38.68,-109.57
+Arches,Intermountain,UT,2014-01-01,1284767,76679,38.68,-109.57
+Arches,Intermountain,UT,2015-01-01,1399247,76679,38.68,-109.57
+Arches,Intermountain,UT,2016-01-01,1585718,76679,38.68,-109.57
+Badlands,Midwest,SD,2000-01-01,1105824,242756,43.75,-102.5
+Badlands,Midwest,SD,2001-01-01,955469,242756,43.75,-102.5
+Badlands,Midwest,SD,2002-01-01,908898,242756,43.75,-102.5
+Badlands,Midwest,SD,2003-01-01,871034,242756,43.75,-102.5
+Badlands,Midwest,SD,2004-01-01,936030,242756,43.75,-102.5
+Badlands,Midwest,SD,2005-01-01,909146,242756,43.75,-102.5
+Badlands,Midwest,SD,2006-01-01,840118,242756,43.75,-102.5
+Badlands,Midwest,SD,2007-01-01,886654,242756,43.75,-102.5
+Badlands,Midwest,SD,2008-01-01,845734,242756,43.75,-102.5
+Badlands,Midwest,SD,2009-01-01,933918,242756,43.75,-102.5
+Badlands,Midwest,SD,2010-01-01,977778,242756,43.75,-102.5
+Badlands,Midwest,SD,2011-01-01,870741,242756,43.75,-102.5
+Badlands,Midwest,SD,2012-01-01,883406,242756,43.75,-102.5
+Badlands,Midwest,SD,2013-01-01,892372,242756,43.75,-102.5
+Badlands,Midwest,SD,2014-01-01,868094,242756,43.75,-102.5
+Badlands,Midwest,SD,2015-01-01,989354,242756,43.75,-102.5
+Badlands,Midwest,SD,2016-01-01,996263,242756,43.75,-102.5
+Big Bend,Intermountain,TX,2000-01-01,262320,801163,29.25,-103.25
+Big Bend,Intermountain,TX,2001-01-01,328927,801163,29.25,-103.25
+Big Bend,Intermountain,TX,2002-01-01,327747,801163,29.25,-103.25
+Big Bend,Intermountain,TX,2003-01-01,312384,801163,29.25,-103.25
+Big Bend,Intermountain,TX,2004-01-01,357723,801163,29.25,-103.25
+Big Bend,Intermountain,TX,2005-01-01,398583,801163,29.25,-103.25
+Big Bend,Intermountain,TX,2006-01-01,298717,801163,29.25,-103.25
+Big Bend,Intermountain,TX,2007-01-01,364856,801163,29.25,-103.25
+Big Bend,Intermountain,TX,2008-01-01,362512,801163,29.25,-103.25
+Big Bend,Intermountain,TX,2009-01-01,363905,801163,29.25,-103.25
+Big Bend,Intermountain,TX,2010-01-01,372330,801163,29.25,-103.25
+Big Bend,Intermountain,TX,2011-01-01,361862,801163,29.25,-103.25
+Big Bend,Intermountain,TX,2012-01-01,292055,801163,29.25,-103.25
+Big Bend,Intermountain,TX,2013-01-01,316953,801163,29.25,-103.25
+Big Bend,Intermountain,TX,2014-01-01,314102,801163,29.25,-103.25
+Big Bend,Intermountain,TX,2015-01-01,381747,801163,29.25,-103.25
+Big Bend,Intermountain,TX,2016-01-01,388290,801163,29.25,-103.25
+Biscayne,Southeast,FL,2000-01-01,393151,172971,25.65,-80.08
+Biscayne,Southeast,FL,2001-01-01,489343,172971,25.65,-80.08
+Biscayne,Southeast,FL,2002-01-01,513397,172971,25.65,-80.08
+Biscayne,Southeast,FL,2003-01-01,490031,172971,25.65,-80.08
+Biscayne,Southeast,FL,2004-01-01,478304,172971,25.65,-80.08
+Biscayne,Southeast,FL,2005-01-01,563728,172971,25.65,-80.08
+Biscayne,Southeast,FL,2006-01-01,608836,172971,25.65,-80.08
+Biscayne,Southeast,FL,2007-01-01,517442,172971,25.65,-80.08
+Biscayne,Southeast,FL,2008-01-01,686062,172971,25.65,-80.08
+Biscayne,Southeast,FL,2009-01-01,437745,172971,25.65,-80.08
+Biscayne,Southeast,FL,2010-01-01,467612,172971,25.65,-80.08
+Biscayne,Southeast,FL,2011-01-01,476077,172971,25.65,-80.08
+Biscayne,Southeast,FL,2012-01-01,495613,172971,25.65,-80.08
+Biscayne,Southeast,FL,2013-01-01,486848,172971,25.65,-80.08
+Biscayne,Southeast,FL,2014-01-01,525745,172971,25.65,-80.08
+Biscayne,Southeast,FL,2015-01-01,508164,172971,25.65,-80.08
+Biscayne,Southeast,FL,2016-01-01,514709,172971,25.65,-80.08
+Black Canyon of the Gunnison,Intermountain,CO,2000-01-01,191506,30780,38.57,-107.72
+Black Canyon of the Gunnison,Intermountain,CO,2001-01-01,181018,30780,38.57,-107.72
+Black Canyon of the Gunnison,Intermountain,CO,2002-01-01,173687,30780,38.57,-107.72
+Black Canyon of the Gunnison,Intermountain,CO,2003-01-01,167247,30780,38.57,-107.72
+Black Canyon of the Gunnison,Intermountain,CO,2004-01-01,175581,30780,38.57,-107.72
+Black Canyon of the Gunnison,Intermountain,CO,2005-01-01,180814,30780,38.57,-107.72
+Black Canyon of the Gunnison,Intermountain,CO,2006-01-01,160450,30780,38.57,-107.72
+Black Canyon of the Gunnison,Intermountain,CO,2007-01-01,219576,30780,38.57,-107.72
+Black Canyon of the Gunnison,Intermountain,CO,2008-01-01,160185,30780,38.57,-107.72
+Black Canyon of the Gunnison,Intermountain,CO,2009-01-01,171451,30780,38.57,-107.72
+Black Canyon of the Gunnison,Intermountain,CO,2010-01-01,176344,30780,38.57,-107.72
+Black Canyon of the Gunnison,Intermountain,CO,2011-01-01,168336,30780,38.57,-107.72
+Black Canyon of the Gunnison,Intermountain,CO,2012-01-01,192570,30780,38.57,-107.72
+Black Canyon of the Gunnison,Intermountain,CO,2013-01-01,175852,30780,38.57,-107.72
+Black Canyon of the Gunnison,Intermountain,CO,2014-01-01,183045,30780,38.57,-107.72
+Black Canyon of the Gunnison,Intermountain,CO,2015-01-01,209166,30780,38.57,-107.72
+Black Canyon of the Gunnison,Intermountain,CO,2016-01-01,238018,30780,38.57,-107.72
+Bryce Canyon,Intermountain,UT,2000-01-01,1099275,35835,37.57,-112.18
+Bryce Canyon,Intermountain,UT,2001-01-01,1068619,35835,37.57,-112.18
+Bryce Canyon,Intermountain,UT,2002-01-01,886436,35835,37.57,-112.18
+Bryce Canyon,Intermountain,UT,2003-01-01,903760,35835,37.57,-112.18
+Bryce Canyon,Intermountain,UT,2004-01-01,987253,35835,37.57,-112.18
+Bryce Canyon,Intermountain,UT,2005-01-01,1017681,35835,37.57,-112.18
+Bryce Canyon,Intermountain,UT,2006-01-01,890676,35835,37.57,-112.18
+Bryce Canyon,Intermountain,UT,2007-01-01,1012563,35835,37.57,-112.18
+Bryce Canyon,Intermountain,UT,2008-01-01,1043321,35835,37.57,-112.18
+Bryce Canyon,Intermountain,UT,2009-01-01,1216377,35835,37.57,-112.18
+Bryce Canyon,Intermountain,UT,2010-01-01,1285492,35835,37.57,-112.18
+Bryce Canyon,Intermountain,UT,2011-01-01,1296000,35835,37.57,-112.18
+Bryce Canyon,Intermountain,UT,2012-01-01,1385352,35835,37.57,-112.18
+Bryce Canyon,Intermountain,UT,2013-01-01,1311875,35835,37.57,-112.18
+Bryce Canyon,Intermountain,UT,2014-01-01,1435741,35835,37.57,-112.18
+Bryce Canyon,Intermountain,UT,2015-01-01,1745804,35835,37.57,-112.18
+Bryce Canyon,Intermountain,UT,2016-01-01,2365110,35835,37.57,-112.18
+Canyonlands,Intermountain,UT,2000-01-01,401558,337598,38.2,-109.93
+Canyonlands,Intermountain,UT,2001-01-01,368592,337598,38.2,-109.93
+Canyonlands,Intermountain,UT,2002-01-01,367078,337598,38.2,-109.93
+Canyonlands,Intermountain,UT,2003-01-01,386986,337598,38.2,-109.93
+Canyonlands,Intermountain,UT,2004-01-01,371706,337598,38.2,-109.93
+Canyonlands,Intermountain,UT,2005-01-01,393381,337598,38.2,-109.93
+Canyonlands,Intermountain,UT,2006-01-01,392537,337598,38.2,-109.93
+Canyonlands,Intermountain,UT,2007-01-01,417560,337598,38.2,-109.93
+Canyonlands,Intermountain,UT,2008-01-01,436715,337598,38.2,-109.93
+Canyonlands,Intermountain,UT,2009-01-01,436241,337598,38.2,-109.93
+Canyonlands,Intermountain,UT,2010-01-01,435908,337598,38.2,-109.93
+Canyonlands,Intermountain,UT,2011-01-01,473773,337598,38.2,-109.93
+Canyonlands,Intermountain,UT,2012-01-01,452952,337598,38.2,-109.93
+Canyonlands,Intermountain,UT,2013-01-01,462242,337598,38.2,-109.93
+Canyonlands,Intermountain,UT,2014-01-01,542431,337598,38.2,-109.93
+Canyonlands,Intermountain,UT,2015-01-01,634607,337598,38.2,-109.93
+Canyonlands,Intermountain,UT,2016-01-01,776218,337598,38.2,-109.93
+Capitol Reef,Intermountain,UT,2000-01-01,612656,241904,38.2,-111.17
+Capitol Reef,Intermountain,UT,2001-01-01,527760,241904,38.2,-111.17
+Capitol Reef,Intermountain,UT,2002-01-01,525646,241904,38.2,-111.17
+Capitol Reef,Intermountain,UT,2003-01-01,535441,241904,38.2,-111.17
+Capitol Reef,Intermountain,UT,2004-01-01,549708,241904,38.2,-111.17
+Capitol Reef,Intermountain,UT,2005-01-01,550255,241904,38.2,-111.17
+Capitol Reef,Intermountain,UT,2006-01-01,511511,241904,38.2,-111.17
+Capitol Reef,Intermountain,UT,2007-01-01,554907,241904,38.2,-111.17
+Capitol Reef,Intermountain,UT,2008-01-01,604811,241904,38.2,-111.17
+Capitol Reef,Intermountain,UT,2009-01-01,617208,241904,38.2,-111.17
+Capitol Reef,Intermountain,UT,2010-01-01,662661,241904,38.2,-111.17
+Capitol Reef,Intermountain,UT,2011-01-01,668834,241904,38.2,-111.17
+Capitol Reef,Intermountain,UT,2012-01-01,673345,241904,38.2,-111.17
+Capitol Reef,Intermountain,UT,2013-01-01,663670,241904,38.2,-111.17
+Capitol Reef,Intermountain,UT,2014-01-01,786514,241904,38.2,-111.17
+Capitol Reef,Intermountain,UT,2015-01-01,941029,241904,38.2,-111.17
+Capitol Reef,Intermountain,UT,2016-01-01,1064904,241904,38.2,-111.17
+Carlsbad Caverns,Intermountain,NM,2000-01-01,469303,46766,32.17,-104.44
+Carlsbad Caverns,Intermountain,NM,2001-01-01,455621,46766,32.17,-104.44
+Carlsbad Caverns,Intermountain,NM,2002-01-01,476259,46766,32.17,-104.44
+Carlsbad Caverns,Intermountain,NM,2003-01-01,457631,46766,32.17,-104.44
+Carlsbad Caverns,Intermountain,NM,2004-01-01,419599,46766,32.17,-104.44
+Carlsbad Caverns,Intermountain,NM,2005-01-01,413786,46766,32.17,-104.44
+Carlsbad Caverns,Intermountain,NM,2006-01-01,407367,46766,32.17,-104.44
+Carlsbad Caverns,Intermountain,NM,2007-01-01,409560,46766,32.17,-104.44
+Carlsbad Caverns,Intermountain,NM,2008-01-01,400381,46766,32.17,-104.44
+Carlsbad Caverns,Intermountain,NM,2009-01-01,432639,46766,32.17,-104.44
+Carlsbad Caverns,Intermountain,NM,2010-01-01,428524,46766,32.17,-104.44
+Carlsbad Caverns,Intermountain,NM,2011-01-01,365000,46766,32.17,-104.44
+Carlsbad Caverns,Intermountain,NM,2012-01-01,381058,46766,32.17,-104.44
+Carlsbad Caverns,Intermountain,NM,2013-01-01,388566,46766,32.17,-104.44
+Carlsbad Caverns,Intermountain,NM,2014-01-01,397309,46766,32.17,-104.44
+Carlsbad Caverns,Intermountain,NM,2015-01-01,445720,46766,32.17,-104.44
+Carlsbad Caverns,Intermountain,NM,2016-01-01,466773,46766,32.17,-104.44
+Channel Islands,Pacific West,CA,2000-01-01,482571,249561,34.01,-119.42
+Channel Islands,Pacific West,CA,2001-01-01,520428,249561,34.01,-119.42
+Channel Islands,Pacific West,CA,2002-01-01,613935,249561,34.01,-119.42
+Channel Islands,Pacific West,CA,2003-01-01,585919,249561,34.01,-119.42
+Channel Islands,Pacific West,CA,2004-01-01,537716,249561,34.01,-119.42
+Channel Islands,Pacific West,CA,2005-01-01,434107,249561,34.01,-119.42
+Channel Islands,Pacific West,CA,2006-01-01,375256,249561,34.01,-119.42
+Channel Islands,Pacific West,CA,2007-01-01,360806,249561,34.01,-119.42
+Channel Islands,Pacific West,CA,2008-01-01,332177,249561,34.01,-119.42
+Channel Islands,Pacific West,CA,2009-01-01,348745,249561,34.01,-119.42
+Channel Islands,Pacific West,CA,2010-01-01,277515,249561,34.01,-119.42
+Channel Islands,Pacific West,CA,2011-01-01,242756,249561,34.01,-119.42
+Channel Islands,Pacific West,CA,2012-01-01,249594,249561,34.01,-119.42
+Channel Islands,Pacific West,CA,2013-01-01,212029,249561,34.01,-119.42
+Channel Islands,Pacific West,CA,2014-01-01,342161,249561,34.01,-119.42
+Channel Islands,Pacific West,CA,2015-01-01,324816,249561,34.01,-119.42
+Channel Islands,Pacific West,CA,2016-01-01,364807,249561,34.01,-119.42
+Congaree,Southeast,SC,2000-01-01,95619,26693,33.78,-80.78
+Congaree,Southeast,SC,2001-01-01,119738,26693,33.78,-80.78
+Congaree,Southeast,SC,2002-01-01,101620,26693,33.78,-80.78
+Congaree,Southeast,SC,2003-01-01,107114,26693,33.78,-80.78
+Congaree,Southeast,SC,2004-01-01,126247,26693,33.78,-80.78
+Congaree,Southeast,SC,2005-01-01,84301,26693,33.78,-80.78
+Congaree,Southeast,SC,2006-01-01,134045,26693,33.78,-80.78
+Congaree,Southeast,SC,2007-01-01,115524,26693,33.78,-80.78
+Congaree,Southeast,SC,2008-01-01,104913,26693,33.78,-80.78
+Congaree,Southeast,SC,2009-01-01,122970,26693,33.78,-80.78
+Congaree,Southeast,SC,2010-01-01,121208,26693,33.78,-80.78
+Congaree,Southeast,SC,2011-01-01,120166,26693,33.78,-80.78
+Congaree,Southeast,SC,2012-01-01,109685,26693,33.78,-80.78
+Congaree,Southeast,SC,2013-01-01,120340,26693,33.78,-80.78
+Congaree,Southeast,SC,2014-01-01,120122,26693,33.78,-80.78
+Congaree,Southeast,SC,2015-01-01,87513,26693,33.78,-80.78
+Congaree,Southeast,SC,2016-01-01,143843,26693,33.78,-80.78
+Crater Lake,Pacific West,OR,2000-01-01,426883,183224,42.94,-122.1
+Crater Lake,Pacific West,OR,2001-01-01,457373,183224,42.94,-122.1
+Crater Lake,Pacific West,OR,2002-01-01,456620,183224,42.94,-122.1
+Crater Lake,Pacific West,OR,2003-01-01,479183,183224,42.94,-122.1
+Crater Lake,Pacific West,OR,2004-01-01,417066,183224,42.94,-122.1
+Crater Lake,Pacific West,OR,2005-01-01,447240,183224,42.94,-122.1
+Crater Lake,Pacific West,OR,2006-01-01,388972,183224,42.94,-122.1
+Crater Lake,Pacific West,OR,2007-01-01,468958,183224,42.94,-122.1
+Crater Lake,Pacific West,OR,2008-01-01,415686,183224,42.94,-122.1
+Crater Lake,Pacific West,OR,2009-01-01,446516,183224,42.94,-122.1
+Crater Lake,Pacific West,OR,2010-01-01,448319,183224,42.94,-122.1
+Crater Lake,Pacific West,OR,2011-01-01,423551,183224,42.94,-122.1
+Crater Lake,Pacific West,OR,2012-01-01,447251,183224,42.94,-122.1
+Crater Lake,Pacific West,OR,2013-01-01,523027,183224,42.94,-122.1
+Crater Lake,Pacific West,OR,2014-01-01,535508,183224,42.94,-122.1
+Crater Lake,Pacific West,OR,2015-01-01,614712,183224,42.94,-122.1
+Crater Lake,Pacific West,OR,2016-01-01,756344,183224,42.94,-122.1
+Cuyahoga Valley,Midwest,OH,2000-01-01,3324918,32572,41.24,-81.55
+Cuyahoga Valley,Midwest,OH,2001-01-01,3123353,32572,41.24,-81.55
+Cuyahoga Valley,Midwest,OH,2002-01-01,3217935,32572,41.24,-81.55
+Cuyahoga Valley,Midwest,OH,2003-01-01,2879591,32572,41.24,-81.55
+Cuyahoga Valley,Midwest,OH,2004-01-01,3306175,32572,41.24,-81.55
+Cuyahoga Valley,Midwest,OH,2005-01-01,2533827,32572,41.24,-81.55
+Cuyahoga Valley,Midwest,OH,2006-01-01,2468816,32572,41.24,-81.55
+Cuyahoga Valley,Midwest,OH,2007-01-01,2486656,32572,41.24,-81.55
+Cuyahoga Valley,Midwest,OH,2008-01-01,2828233,32572,41.24,-81.55
+Cuyahoga Valley,Midwest,OH,2009-01-01,2589288,32572,41.24,-81.55
+Cuyahoga Valley,Midwest,OH,2010-01-01,2492670,32572,41.24,-81.55
+Cuyahoga Valley,Midwest,OH,2011-01-01,2161185,32572,41.24,-81.55
+Cuyahoga Valley,Midwest,OH,2012-01-01,2299722,32572,41.24,-81.55
+Cuyahoga Valley,Midwest,OH,2013-01-01,2103010,32572,41.24,-81.55
+Cuyahoga Valley,Midwest,OH,2014-01-01,2189849,32572,41.24,-81.55
+Cuyahoga Valley,Midwest,OH,2015-01-01,2284612,32572,41.24,-81.55
+Cuyahoga Valley,Midwest,OH,2016-01-01,2423390,32572,41.24,-81.55
+Death Valley,Pacific West,CA,2000-01-01,1179094,3408396,36.24,-116.82
+Death Valley,Pacific West,CA,2001-01-01,1014636,3408396,36.24,-116.82
+Death Valley,Pacific West,CA,2002-01-01,897596,3408396,36.24,-116.82
+Death Valley,Pacific West,CA,2003-01-01,890375,3408396,36.24,-116.82
+Death Valley,Pacific West,CA,2004-01-01,764820,3408396,36.24,-116.82
+Death Valley,Pacific West,CA,2005-01-01,800113,3408396,36.24,-116.82
+Death Valley,Pacific West,CA,2006-01-01,744440,3408396,36.24,-116.82
+Death Valley,Pacific West,CA,2007-01-01,704122,3408396,36.24,-116.82
+Death Valley,Pacific West,CA,2008-01-01,871938,3408396,36.24,-116.82
+Death Valley,Pacific West,CA,2009-01-01,828574,3408396,36.24,-116.82
+Death Valley,Pacific West,CA,2010-01-01,984775,3408396,36.24,-116.82
+Death Valley,Pacific West,CA,2011-01-01,946867,3408396,36.24,-116.82
+Death Valley,Pacific West,CA,2012-01-01,984568,3408396,36.24,-116.82
+Death Valley,Pacific West,CA,2013-01-01,951972,3408396,36.24,-116.82
+Death Valley,Pacific West,CA,2014-01-01,1101312,3408396,36.24,-116.82
+Death Valley,Pacific West,CA,2015-01-01,1154843,3408396,36.24,-116.82
+Death Valley,Pacific West,CA,2016-01-01,1296283,3408396,36.24,-116.82
+Denali,Alaska,AK,2000-01-01,363983,4740911,63.33,-150.5
+Denali,Alaska,AK,2001-01-01,360191,4740911,63.33,-150.5
+Denali,Alaska,AK,2002-01-01,311335,4740911,63.33,-150.5
+Denali,Alaska,AK,2003-01-01,360189,4740911,63.33,-150.5
+Denali,Alaska,AK,2004-01-01,404236,4740911,63.33,-150.5
+Denali,Alaska,AK,2005-01-01,403520,4740911,63.33,-150.5
+Denali,Alaska,AK,2006-01-01,415935,4740911,63.33,-150.5
+Denali,Alaska,AK,2007-01-01,458308,4740911,63.33,-150.5
+Denali,Alaska,AK,2008-01-01,432309,4740911,63.33,-150.5
+Denali,Alaska,AK,2009-01-01,358041,4740911,63.33,-150.5
+Denali,Alaska,AK,2010-01-01,378855,4740911,63.33,-150.5
+Denali,Alaska,AK,2011-01-01,406582,4740911,63.33,-150.5
+Denali,Alaska,AK,2012-01-01,388433,4740911,63.33,-150.5
+Denali,Alaska,AK,2013-01-01,530922,4740911,63.33,-150.5
+Denali,Alaska,AK,2014-01-01,531315,4740911,63.33,-150.5
+Denali,Alaska,AK,2015-01-01,560757,4740911,63.33,-150.5
+Denali,Alaska,AK,2016-01-01,587412,4740911,63.33,-150.5
+Dry Tortugas,Southeast,FL,2000-01-01,83704,64701,24.63,-82.87
+Dry Tortugas,Southeast,FL,2001-01-01,79186,64701,24.63,-82.87
+Dry Tortugas,Southeast,FL,2002-01-01,79582,64701,24.63,-82.87
+Dry Tortugas,Southeast,FL,2003-01-01,74741,64701,24.63,-82.87
+Dry Tortugas,Southeast,FL,2004-01-01,67917,64701,24.63,-82.87
+Dry Tortugas,Southeast,FL,2005-01-01,61765,64701,24.63,-82.87
+Dry Tortugas,Southeast,FL,2006-01-01,64122,64701,24.63,-82.87
+Dry Tortugas,Southeast,FL,2007-01-01,60895,64701,24.63,-82.87
+Dry Tortugas,Southeast,FL,2008-01-01,63947,64701,24.63,-82.87
+Dry Tortugas,Southeast,FL,2009-01-01,52011,64701,24.63,-82.87
+Dry Tortugas,Southeast,FL,2010-01-01,53890,64701,24.63,-82.87
+Dry Tortugas,Southeast,FL,2011-01-01,75171,64701,24.63,-82.87
+Dry Tortugas,Southeast,FL,2012-01-01,60550,64701,24.63,-82.87
+Dry Tortugas,Southeast,FL,2013-01-01,58401,64701,24.63,-82.87
+Dry Tortugas,Southeast,FL,2014-01-01,64865,64701,24.63,-82.87
+Dry Tortugas,Southeast,FL,2015-01-01,70862,64701,24.63,-82.87
+Dry Tortugas,Southeast,FL,2016-01-01,73661,64701,24.63,-82.87
+Everglades,Southeast,FL,2000-01-01,995390,1508939,25.32,-80.93
+Everglades,Southeast,FL,2001-01-01,1049851,1508939,25.32,-80.93
+Everglades,Southeast,FL,2002-01-01,968909,1508939,25.32,-80.93
+Everglades,Southeast,FL,2003-01-01,1040648,1508939,25.32,-80.93
+Everglades,Southeast,FL,2004-01-01,1181355,1508939,25.32,-80.93
+Everglades,Southeast,FL,2005-01-01,1233837,1508939,25.32,-80.93
+Everglades,Southeast,FL,2006-01-01,954022,1508939,25.32,-80.93
+Everglades,Southeast,FL,2007-01-01,1074764,1508939,25.32,-80.93
+Everglades,Southeast,FL,2008-01-01,822118,1508939,25.32,-80.93
+Everglades,Southeast,FL,2009-01-01,900882,1508939,25.32,-80.93
+Everglades,Southeast,FL,2010-01-01,915538,1508939,25.32,-80.93
+Everglades,Southeast,FL,2011-01-01,934351,1508939,25.32,-80.93
+Everglades,Southeast,FL,2012-01-01,1141906,1508939,25.32,-80.93
+Everglades,Southeast,FL,2013-01-01,1047116,1508939,25.32,-80.93
+Everglades,Southeast,FL,2014-01-01,1110901,1508939,25.32,-80.93
+Everglades,Southeast,FL,2015-01-01,1077427,1508939,25.32,-80.93
+Everglades,Southeast,FL,2016-01-01,930907,1508939,25.32,-80.93
+Gates of the Arctic,Alaska,AK,2000-01-01,11278,7523897,67.78,-153.3
+Gates of the Arctic,Alaska,AK,2001-01-01,4505,7523897,67.78,-153.3
+Gates of the Arctic,Alaska,AK,2002-01-01,6648,7523897,67.78,-153.3
+Gates of the Arctic,Alaska,AK,2003-01-01,5075,7523897,67.78,-153.3
+Gates of the Arctic,Alaska,AK,2004-01-01,10282,7523897,67.78,-153.3
+Gates of the Arctic,Alaska,AK,2005-01-01,9459,7523897,67.78,-153.3
+Gates of the Arctic,Alaska,AK,2006-01-01,9982,7523897,67.78,-153.3
+Gates of the Arctic,Alaska,AK,2007-01-01,10942,7523897,67.78,-153.3
+Gates of the Arctic,Alaska,AK,2008-01-01,11397,7523897,67.78,-153.3
+Gates of the Arctic,Alaska,AK,2009-01-01,9975,7523897,67.78,-153.3
+Gates of the Arctic,Alaska,AK,2010-01-01,10840,7523897,67.78,-153.3
+Gates of the Arctic,Alaska,AK,2011-01-01,11623,7523897,67.78,-153.3
+Gates of the Arctic,Alaska,AK,2012-01-01,10899,7523897,67.78,-153.3
+Gates of the Arctic,Alaska,AK,2013-01-01,11012,7523897,67.78,-153.3
+Gates of the Arctic,Alaska,AK,2014-01-01,12669,7523897,67.78,-153.3
+Gates of the Arctic,Alaska,AK,2015-01-01,10745,7523897,67.78,-153.3
+Gates of the Arctic,Alaska,AK,2016-01-01,10047,7523897,67.78,-153.3
+Glacier,Intermountain,MT,2000-01-01,1728693,1013126,48.8,-114.0
+Glacier,Intermountain,MT,2001-01-01,1680614,1013126,48.8,-114.0
+Glacier,Intermountain,MT,2002-01-01,1905689,1013126,48.8,-114.0
+Glacier,Intermountain,MT,2003-01-01,1664046,1013126,48.8,-114.0
+Glacier,Intermountain,MT,2004-01-01,2033933,1013126,48.8,-114.0
+Glacier,Intermountain,MT,2005-01-01,1925101,1013126,48.8,-114.0
+Glacier,Intermountain,MT,2006-01-01,1964399,1013126,48.8,-114.0
+Glacier,Intermountain,MT,2007-01-01,2083329,1013126,48.8,-114.0
+Glacier,Intermountain,MT,2008-01-01,1808027,1013126,48.8,-114.0
+Glacier,Intermountain,MT,2009-01-01,2031348,1013126,48.8,-114.0
+Glacier,Intermountain,MT,2010-01-01,2200048,1013126,48.8,-114.0
+Glacier,Intermountain,MT,2011-01-01,1853564,1013126,48.8,-114.0
+Glacier,Intermountain,MT,2012-01-01,2162035,1013126,48.8,-114.0
+Glacier,Intermountain,MT,2013-01-01,2190374,1013126,48.8,-114.0
+Glacier,Intermountain,MT,2014-01-01,2338528,1013126,48.8,-114.0
+Glacier,Intermountain,MT,2015-01-01,2366056,1013126,48.8,-114.0
+Glacier,Intermountain,MT,2016-01-01,2946681,1013126,48.8,-114.0
+Glacier Bay,Alaska,AK,2000-01-01,384684,3223383,58.5,-137.0
+Glacier Bay,Alaska,AK,2001-01-01,380114,3223383,58.5,-137.0
+Glacier Bay,Alaska,AK,2002-01-01,408143,3223383,58.5,-137.0
+Glacier Bay,Alaska,AK,2003-01-01,366319,3223383,58.5,-137.0
+Glacier Bay,Alaska,AK,2004-01-01,353686,3223383,58.5,-137.0
+Glacier Bay,Alaska,AK,2005-01-01,359829,3223383,58.5,-137.0
+Glacier Bay,Alaska,AK,2006-01-01,413382,3223383,58.5,-137.0
+Glacier Bay,Alaska,AK,2007-01-01,438211,3223383,58.5,-137.0
+Glacier Bay,Alaska,AK,2008-01-01,418911,3223383,58.5,-137.0
+Glacier Bay,Alaska,AK,2009-01-01,438361,3223383,58.5,-137.0
+Glacier Bay,Alaska,AK,2010-01-01,444530,3223383,58.5,-137.0
+Glacier Bay,Alaska,AK,2011-01-01,431986,3223383,58.5,-137.0
+Glacier Bay,Alaska,AK,2012-01-01,454337,3223383,58.5,-137.0
+Glacier Bay,Alaska,AK,2013-01-01,500590,3223383,58.5,-137.0
+Glacier Bay,Alaska,AK,2014-01-01,500727,3223383,58.5,-137.0
+Glacier Bay,Alaska,AK,2015-01-01,551353,3223383,58.5,-137.0
+Glacier Bay,Alaska,AK,2016-01-01,520171,3223383,58.5,-137.0
+Grand Canyon,Intermountain,AZ,2000-01-01,4460228,1201647,36.06,-112.14
+Grand Canyon,Intermountain,AZ,2001-01-01,4104809,1201647,36.06,-112.14
+Grand Canyon,Intermountain,AZ,2002-01-01,4001974,1201647,36.06,-112.14
+Grand Canyon,Intermountain,AZ,2003-01-01,4124900,1201647,36.06,-112.14
+Grand Canyon,Intermountain,AZ,2004-01-01,4326234,1201647,36.06,-112.14
+Grand Canyon,Intermountain,AZ,2005-01-01,4401522,1201647,36.06,-112.14
+Grand Canyon,Intermountain,AZ,2006-01-01,4279439,1201647,36.06,-112.14
+Grand Canyon,Intermountain,AZ,2007-01-01,4413668,1201647,36.06,-112.14
+Grand Canyon,Intermountain,AZ,2008-01-01,4425314,1201647,36.06,-112.14
+Grand Canyon,Intermountain,AZ,2009-01-01,4348068,1201647,36.06,-112.14
+Grand Canyon,Intermountain,AZ,2010-01-01,4388386,1201647,36.06,-112.14
+Grand Canyon,Intermountain,AZ,2011-01-01,4298178,1201647,36.06,-112.14
+Grand Canyon,Intermountain,AZ,2012-01-01,4421352,1201647,36.06,-112.14
+Grand Canyon,Intermountain,AZ,2013-01-01,4564840,1201647,36.06,-112.14
+Grand Canyon,Intermountain,AZ,2014-01-01,4756771,1201647,36.06,-112.14
+Grand Canyon,Intermountain,AZ,2015-01-01,5520736,1201647,36.06,-112.14
+Grand Canyon,Intermountain,AZ,2016-01-01,5969811,1201647,36.06,-112.14
+Grand Teton,Intermountain,WY,2000-01-01,2590624,310044,43.73,-110.8
+Grand Teton,Intermountain,WY,2001-01-01,2535108,310044,43.73,-110.8
+Grand Teton,Intermountain,WY,2002-01-01,2612629,310044,43.73,-110.8
+Grand Teton,Intermountain,WY,2003-01-01,2355693,310044,43.73,-110.8
+Grand Teton,Intermountain,WY,2004-01-01,2360373,310044,43.73,-110.8
+Grand Teton,Intermountain,WY,2005-01-01,2463442,310044,43.73,-110.8
+Grand Teton,Intermountain,WY,2006-01-01,2406476,310044,43.73,-110.8
+Grand Teton,Intermountain,WY,2007-01-01,2588574,310044,43.73,-110.8
+Grand Teton,Intermountain,WY,2008-01-01,2485987,310044,43.73,-110.8
+Grand Teton,Intermountain,WY,2009-01-01,2580081,310044,43.73,-110.8
+Grand Teton,Intermountain,WY,2010-01-01,2669374,310044,43.73,-110.8
+Grand Teton,Intermountain,WY,2011-01-01,2587437,310044,43.73,-110.8
+Grand Teton,Intermountain,WY,2012-01-01,2705256,310044,43.73,-110.8
+Grand Teton,Intermountain,WY,2013-01-01,2688794,310044,43.73,-110.8
+Grand Teton,Intermountain,WY,2014-01-01,2791392,310044,43.73,-110.8
+Grand Teton,Intermountain,WY,2015-01-01,3149921,310044,43.73,-110.8
+Grand Teton,Intermountain,WY,2016-01-01,3270076,310044,43.73,-110.8
+Great Basin,Pacific West,NV,2000-01-01,81045,77180,38.98,-114.3
+Great Basin,Pacific West,NV,2001-01-01,81712,77180,38.98,-114.3
+Great Basin,Pacific West,NV,2002-01-01,85777,77180,38.98,-114.3
+Great Basin,Pacific West,NV,2003-01-01,87020,77180,38.98,-114.3
+Great Basin,Pacific West,NV,2004-01-01,79879,77180,38.98,-114.3
+Great Basin,Pacific West,NV,2005-01-01,77741,77180,38.98,-114.3
+Great Basin,Pacific West,NV,2006-01-01,78524,77180,38.98,-114.3
+Great Basin,Pacific West,NV,2007-01-01,81364,77180,38.98,-114.3
+Great Basin,Pacific West,NV,2008-01-01,69235,77180,38.98,-114.3
+Great Basin,Pacific West,NV,2009-01-01,84974,77180,38.98,-114.3
+Great Basin,Pacific West,NV,2010-01-01,88870,77180,38.98,-114.3
+Great Basin,Pacific West,NV,2011-01-01,91451,77180,38.98,-114.3
+Great Basin,Pacific West,NV,2012-01-01,94850,77180,38.98,-114.3
+Great Basin,Pacific West,NV,2013-01-01,92893,77180,38.98,-114.3
+Great Basin,Pacific West,NV,2014-01-01,107526,77180,38.98,-114.3
+Great Basin,Pacific West,NV,2015-01-01,116123,77180,38.98,-114.3
+Great Basin,Pacific West,NV,2016-01-01,144846,77180,38.98,-114.3
+Great Sand Dunes,Intermountain,CO,2000-01-01,260789,107346,37.73,-105.51
+Great Sand Dunes,Intermountain,CO,2001-01-01,277523,107346,37.73,-105.51
+Great Sand Dunes,Intermountain,CO,2002-01-01,234776,107346,37.73,-105.51
+Great Sand Dunes,Intermountain,CO,2003-01-01,251375,107346,37.73,-105.51
+Great Sand Dunes,Intermountain,CO,2004-01-01,267204,107346,37.73,-105.51
+Great Sand Dunes,Intermountain,CO,2005-01-01,279589,107346,37.73,-105.51
+Great Sand Dunes,Intermountain,CO,2006-01-01,258660,107346,37.73,-105.51
+Great Sand Dunes,Intermountain,CO,2007-01-01,285121,107346,37.73,-105.51
+Great Sand Dunes,Intermountain,CO,2008-01-01,273903,107346,37.73,-105.51
+Great Sand Dunes,Intermountain,CO,2009-01-01,289955,107346,37.73,-105.51
+Great Sand Dunes,Intermountain,CO,2010-01-01,283284,107346,37.73,-105.51
+Great Sand Dunes,Intermountain,CO,2011-01-01,280058,107346,37.73,-105.51
+Great Sand Dunes,Intermountain,CO,2012-01-01,254674,107346,37.73,-105.51
+Great Sand Dunes,Intermountain,CO,2013-01-01,242841,107346,37.73,-105.51
+Great Sand Dunes,Intermountain,CO,2014-01-01,271774,107346,37.73,-105.51
+Great Sand Dunes,Intermountain,CO,2015-01-01,299513,107346,37.73,-105.51
+Great Sand Dunes,Intermountain,CO,2016-01-01,388308,107346,37.73,-105.51
+Great Smoky Mountains,Southeast,NC,2000-01-01,10175812,522427,35.68,-83.53
+Great Smoky Mountains,Southeast,NC,2001-01-01,9197697,522427,35.68,-83.53
+Great Smoky Mountains,Southeast,NC,2002-01-01,9316420,522427,35.68,-83.53
+Great Smoky Mountains,Southeast,NC,2003-01-01,9366845,522427,35.68,-83.53
+Great Smoky Mountains,Southeast,NC,2004-01-01,9167046,522427,35.68,-83.53
+Great Smoky Mountains,Southeast,NC,2005-01-01,9192477,522427,35.68,-83.53
+Great Smoky Mountains,Southeast,NC,2006-01-01,9289215,522427,35.68,-83.53
+Great Smoky Mountains,Southeast,NC,2007-01-01,9372253,522427,35.68,-83.53
+Great Smoky Mountains,Southeast,NC,2008-01-01,9044010,522427,35.68,-83.53
+Great Smoky Mountains,Southeast,NC,2009-01-01,9491437,522427,35.68,-83.53
+Great Smoky Mountains,Southeast,NC,2010-01-01,9463538,522427,35.68,-83.53
+Great Smoky Mountains,Southeast,NC,2011-01-01,9008830,522427,35.68,-83.53
+Great Smoky Mountains,Southeast,NC,2012-01-01,9685829,522427,35.68,-83.53
+Great Smoky Mountains,Southeast,NC,2013-01-01,9354695,522427,35.68,-83.53
+Great Smoky Mountains,Southeast,NC,2014-01-01,10099276,522427,35.68,-83.53
+Great Smoky Mountains,Southeast,NC,2015-01-01,10712674,522427,35.68,-83.53
+Great Smoky Mountains,Southeast,NC,2016-01-01,11312786,522427,35.68,-83.53
+Guadalupe Mountains,Intermountain,TX,2000-01-01,198762,86367,31.92,-104.87
+Guadalupe Mountains,Intermountain,TX,2001-01-01,222307,86367,31.92,-104.87
+Guadalupe Mountains,Intermountain,TX,2002-01-01,202911,86367,31.92,-104.87
+Guadalupe Mountains,Intermountain,TX,2003-01-01,181357,86367,31.92,-104.87
+Guadalupe Mountains,Intermountain,TX,2004-01-01,182351,86367,31.92,-104.87
+Guadalupe Mountains,Intermountain,TX,2005-01-01,170383,86367,31.92,-104.87
+Guadalupe Mountains,Intermountain,TX,2006-01-01,174157,86367,31.92,-104.87
+Guadalupe Mountains,Intermountain,TX,2007-01-01,165110,86367,31.92,-104.87
+Guadalupe Mountains,Intermountain,TX,2008-01-01,163709,86367,31.92,-104.87
+Guadalupe Mountains,Intermountain,TX,2009-01-01,198882,86367,31.92,-104.87
+Guadalupe Mountains,Intermountain,TX,2010-01-01,192210,86367,31.92,-104.87
+Guadalupe Mountains,Intermountain,TX,2011-01-01,152546,86367,31.92,-104.87
+Guadalupe Mountains,Intermountain,TX,2012-01-01,159360,86367,31.92,-104.87
+Guadalupe Mountains,Intermountain,TX,2013-01-01,145670,86367,31.92,-104.87
+Guadalupe Mountains,Intermountain,TX,2014-01-01,166868,86367,31.92,-104.87
+Guadalupe Mountains,Intermountain,TX,2015-01-01,169535,86367,31.92,-104.87
+Guadalupe Mountains,Intermountain,TX,2016-01-01,181839,86367,31.92,-104.87
+Haleakalā,Pacific West,HI,2000-01-01,1620083,33489,20.72,-156.17
+Haleakalā,Pacific West,HI,2001-01-01,1410974,33489,20.72,-156.17
+Haleakalā,Pacific West,HI,2002-01-01,1521080,33489,20.72,-156.17
+Haleakalā,Pacific West,HI,2003-01-01,1444668,33489,20.72,-156.17
+Haleakalā,Pacific West,HI,2004-01-01,1455477,33489,20.72,-156.17
+Haleakalā,Pacific West,HI,2005-01-01,1474681,33489,20.72,-156.17
+Haleakalā,Pacific West,HI,2006-01-01,1426068,33489,20.72,-156.17
+Haleakalā,Pacific West,HI,2007-01-01,1322817,33489,20.72,-156.17
+Haleakalā,Pacific West,HI,2008-01-01,1185068,33489,20.72,-156.17
+Haleakalā,Pacific West,HI,2009-01-01,1109104,33489,20.72,-156.17
+Haleakalā,Pacific West,HI,2010-01-01,1105606,33489,20.72,-156.17
+Haleakalā,Pacific West,HI,2011-01-01,956989,33489,20.72,-156.17
+Haleakalā,Pacific West,HI,2012-01-01,1094668,33489,20.72,-156.17
+Haleakalā,Pacific West,HI,2013-01-01,785300,33489,20.72,-156.17
+Haleakalā,Pacific West,HI,2014-01-01,1142040,33489,20.72,-156.17
+Haleakalā,Pacific West,HI,2015-01-01,1216772,33489,20.72,-156.17
+Haleakalā,Pacific West,HI,2016-01-01,1263558,33489,20.72,-156.17
+Hawaiʻi Volcanoes,Pacific West,HI,2000-01-01,1514636,344812,19.38,-155.2
+Hawaiʻi Volcanoes,Pacific West,HI,2001-01-01,1343286,344812,19.38,-155.2
+Hawaiʻi Volcanoes,Pacific West,HI,2002-01-01,1110998,344812,19.38,-155.2
+Hawaiʻi Volcanoes,Pacific West,HI,2003-01-01,1122524,344812,19.38,-155.2
+Hawaiʻi Volcanoes,Pacific West,HI,2004-01-01,1307391,344812,19.38,-155.2
+Hawaiʻi Volcanoes,Pacific West,HI,2005-01-01,1661196,344812,19.38,-155.2
+Hawaiʻi Volcanoes,Pacific West,HI,2006-01-01,1612246,344812,19.38,-155.2
+Hawaiʻi Volcanoes,Pacific West,HI,2007-01-01,1467779,344812,19.38,-155.2
+Hawaiʻi Volcanoes,Pacific West,HI,2008-01-01,1270538,344812,19.38,-155.2
+Hawaiʻi Volcanoes,Pacific West,HI,2009-01-01,1233105,344812,19.38,-155.2
+Hawaiʻi Volcanoes,Pacific West,HI,2010-01-01,1304667,344812,19.38,-155.2
+Hawaiʻi Volcanoes,Pacific West,HI,2011-01-01,1352123,344812,19.38,-155.2
+Hawaiʻi Volcanoes,Pacific West,HI,2012-01-01,1483928,344812,19.38,-155.2
+Hawaiʻi Volcanoes,Pacific West,HI,2013-01-01,1583209,344812,19.38,-155.2
+Hawaiʻi Volcanoes,Pacific West,HI,2014-01-01,1693005,344812,19.38,-155.2
+Hawaiʻi Volcanoes,Pacific West,HI,2015-01-01,1832660,344812,19.38,-155.2
+Hawaiʻi Volcanoes,Pacific West,HI,2016-01-01,1887580,344812,19.38,-155.2
+Hot Springs,Midwest,AR,2000-01-01,1338156,5554,34.51,-93.05
+Hot Springs,Midwest,AR,2001-01-01,1296786,5554,34.51,-93.05
+Hot Springs,Midwest,AR,2002-01-01,1440227,5554,34.51,-93.05
+Hot Springs,Midwest,AR,2003-01-01,1561311,5554,34.51,-93.05
+Hot Springs,Midwest,AR,2004-01-01,1418735,5554,34.51,-93.05
+Hot Springs,Midwest,AR,2005-01-01,1340160,5554,34.51,-93.05
+Hot Springs,Midwest,AR,2006-01-01,1273456,5554,34.51,-93.05
+Hot Springs,Midwest,AR,2007-01-01,1300152,5554,34.51,-93.05
+Hot Springs,Midwest,AR,2008-01-01,1238147,5554,34.51,-93.05
+Hot Springs,Midwest,AR,2009-01-01,1284707,5554,34.51,-93.05
+Hot Springs,Midwest,AR,2010-01-01,1311807,5554,34.51,-93.05
+Hot Springs,Midwest,AR,2011-01-01,1396354,5554,34.51,-93.05
+Hot Springs,Midwest,AR,2012-01-01,1302505,5554,34.51,-93.05
+Hot Springs,Midwest,AR,2013-01-01,1325719,5554,34.51,-93.05
+Hot Springs,Midwest,AR,2014-01-01,1424484,5554,34.51,-93.05
+Hot Springs,Midwest,AR,2015-01-01,1418162,5554,34.51,-93.05
+Hot Springs,Midwest,AR,2016-01-01,1544300,5554,34.51,-93.05
+Isle Royale,Midwest,MI,2000-01-01,21096,571790,48.1,-88.55
+Isle Royale,Midwest,MI,2001-01-01,19431,571790,48.1,-88.55
+Isle Royale,Midwest,MI,2002-01-01,19463,571790,48.1,-88.55
+Isle Royale,Midwest,MI,2003-01-01,17800,571790,48.1,-88.55
+Isle Royale,Midwest,MI,2004-01-01,17276,571790,48.1,-88.55
+Isle Royale,Midwest,MI,2005-01-01,17398,571790,48.1,-88.55
+Isle Royale,Midwest,MI,2006-01-01,17070,571790,48.1,-88.55
+Isle Royale,Midwest,MI,2007-01-01,15973,571790,48.1,-88.55
+Isle Royale,Midwest,MI,2008-01-01,14038,571790,48.1,-88.55
+Isle Royale,Midwest,MI,2009-01-01,14653,571790,48.1,-88.55
+Isle Royale,Midwest,MI,2010-01-01,15793,571790,48.1,-88.55
+Isle Royale,Midwest,MI,2011-01-01,15892,571790,48.1,-88.55
+Isle Royale,Midwest,MI,2012-01-01,16663,571790,48.1,-88.55
+Isle Royale,Midwest,MI,2013-01-01,16274,571790,48.1,-88.55
+Isle Royale,Midwest,MI,2014-01-01,14560,571790,48.1,-88.55
+Isle Royale,Midwest,MI,2015-01-01,18684,571790,48.1,-88.55
+Isle Royale,Midwest,MI,2016-01-01,24966,571790,48.1,-88.55
+Joshua Tree,Pacific West,CA,2000-01-01,1233935,795156,33.79,-115.9
+Joshua Tree,Pacific West,CA,2001-01-01,1280917,795156,33.79,-115.9
+Joshua Tree,Pacific West,CA,2002-01-01,1178376,795156,33.79,-115.9
+Joshua Tree,Pacific West,CA,2003-01-01,1283346,795156,33.79,-115.9
+Joshua Tree,Pacific West,CA,2004-01-01,1243659,795156,33.79,-115.9
+Joshua Tree,Pacific West,CA,2005-01-01,1375111,795156,33.79,-115.9
+Joshua Tree,Pacific West,CA,2006-01-01,1256421,795156,33.79,-115.9
+Joshua Tree,Pacific West,CA,2007-01-01,1298979,795156,33.79,-115.9
+Joshua Tree,Pacific West,CA,2008-01-01,1392446,795156,33.79,-115.9
+Joshua Tree,Pacific West,CA,2009-01-01,1304471,795156,33.79,-115.9
+Joshua Tree,Pacific West,CA,2010-01-01,1434976,795156,33.79,-115.9
+Joshua Tree,Pacific West,CA,2011-01-01,1396237,795156,33.79,-115.9
+Joshua Tree,Pacific West,CA,2012-01-01,1396117,795156,33.79,-115.9
+Joshua Tree,Pacific West,CA,2013-01-01,1383340,795156,33.79,-115.9
+Joshua Tree,Pacific West,CA,2014-01-01,1589904,795156,33.79,-115.9
+Joshua Tree,Pacific West,CA,2015-01-01,2025756,795156,33.79,-115.9
+Joshua Tree,Pacific West,CA,2016-01-01,2505286,795156,33.79,-115.9
+Katmai,Alaska,AK,2000-01-01,71389,3674529,58.5,-155.0
+Katmai,Alaska,AK,2001-01-01,67038,3674529,58.5,-155.0
+Katmai,Alaska,AK,2002-01-01,59025,3674529,58.5,-155.0
+Katmai,Alaska,AK,2003-01-01,51589,3674529,58.5,-155.0
+Katmai,Alaska,AK,2004-01-01,56787,3674529,58.5,-155.0
+Katmai,Alaska,AK,2005-01-01,54274,3674529,58.5,-155.0
+Katmai,Alaska,AK,2006-01-01,68630,3674529,58.5,-155.0
+Katmai,Alaska,AK,2007-01-01,82634,3674529,58.5,-155.0
+Katmai,Alaska,AK,2008-01-01,7970,3674529,58.5,-155.0
+Katmai,Alaska,AK,2009-01-01,43035,3674529,58.5,-155.0
+Katmai,Alaska,AK,2010-01-01,55172,3674529,58.5,-155.0
+Katmai,Alaska,AK,2011-01-01,48939,3674529,58.5,-155.0
+Katmai,Alaska,AK,2012-01-01,39818,3674529,58.5,-155.0
+Katmai,Alaska,AK,2013-01-01,28966,3674529,58.5,-155.0
+Katmai,Alaska,AK,2014-01-01,30896,3674529,58.5,-155.0
+Katmai,Alaska,AK,2015-01-01,37818,3674529,58.5,-155.0
+Katmai,Alaska,AK,2016-01-01,37818,3674529,58.5,-155.0
+Kenai Fjords,Alaska,AK,2000-01-01,254790,669650,59.92,-149.65
+Kenai Fjords,Alaska,AK,2001-01-01,262353,669650,59.92,-149.65
+Kenai Fjords,Alaska,AK,2002-01-01,251799,669650,59.92,-149.65
+Kenai Fjords,Alaska,AK,2003-01-01,243719,669650,59.92,-149.65
+Kenai Fjords,Alaska,AK,2004-01-01,244232,669650,59.92,-149.65
+Kenai Fjords,Alaska,AK,2005-01-01,258297,669650,59.92,-149.65
+Kenai Fjords,Alaska,AK,2006-01-01,251630,669650,59.92,-149.65
+Kenai Fjords,Alaska,AK,2007-01-01,284604,669650,59.92,-149.65
+Kenai Fjords,Alaska,AK,2008-01-01,272190,669650,59.92,-149.65
+Kenai Fjords,Alaska,AK,2009-01-01,218358,669650,59.92,-149.65
+Kenai Fjords,Alaska,AK,2010-01-01,297596,669650,59.92,-149.65
+Kenai Fjords,Alaska,AK,2011-01-01,346852,669650,59.92,-149.65
+Kenai Fjords,Alaska,AK,2012-01-01,281279,669650,59.92,-149.65
+Kenai Fjords,Alaska,AK,2013-01-01,283502,669650,59.92,-149.65
+Kenai Fjords,Alaska,AK,2014-01-01,270666,669650,59.92,-149.65
+Kenai Fjords,Alaska,AK,2015-01-01,296697,669650,59.92,-149.65
+Kenai Fjords,Alaska,AK,2016-01-01,346534,669650,59.92,-149.65
+Kings Canyon,Pacific West,CA,2000-01-01,528987,461901,36.8,-118.55
+Kings Canyon,Pacific West,CA,2001-01-01,541787,461901,36.8,-118.55
+Kings Canyon,Pacific West,CA,2002-01-01,545420,461901,36.8,-118.55
+Kings Canyon,Pacific West,CA,2003-01-01,555987,461901,36.8,-118.55
+Kings Canyon,Pacific West,CA,2004-01-01,525035,461901,36.8,-118.55
+Kings Canyon,Pacific West,CA,2005-01-01,594893,461901,36.8,-118.55
+Kings Canyon,Pacific West,CA,2006-01-01,552766,461901,36.8,-118.55
+Kings Canyon,Pacific West,CA,2007-01-01,580129,461901,36.8,-118.55
+Kings Canyon,Pacific West,CA,2008-01-01,574870,461901,36.8,-118.55
+Kings Canyon,Pacific West,CA,2009-01-01,609296,461901,36.8,-118.55
+Kings Canyon,Pacific West,CA,2010-01-01,598205,461901,36.8,-118.55
+Kings Canyon,Pacific West,CA,2011-01-01,566810,461901,36.8,-118.55
+Kings Canyon,Pacific West,CA,2012-01-01,591033,461901,36.8,-118.55
+Kings Canyon,Pacific West,CA,2013-01-01,567544,461901,36.8,-118.55
+Kings Canyon,Pacific West,CA,2014-01-01,502268,461901,36.8,-118.55
+Kings Canyon,Pacific West,CA,2015-01-01,468106,461901,36.8,-118.55
+Kings Canyon,Pacific West,CA,2016-01-01,607479,461901,36.8,-118.55
+Kobuk Valley,Alaska,AK,2000-01-01,2646,1750716,67.55,-159.28
+Kobuk Valley,Alaska,AK,2001-01-01,4217,1750716,67.55,-159.28
+Kobuk Valley,Alaska,AK,2002-01-01,4046,1750716,67.55,-159.28
+Kobuk Valley,Alaska,AK,2003-01-01,4006,1750716,67.55,-159.28
+Kobuk Valley,Alaska,AK,2004-01-01,4744,1750716,67.55,-159.28
+Kobuk Valley,Alaska,AK,2005-01-01,5037,1750716,67.55,-159.28
+Kobuk Valley,Alaska,AK,2006-01-01,3005,1750716,67.55,-159.28
+Kobuk Valley,Alaska,AK,2007-01-01,847,1750716,67.55,-159.28
+Kobuk Valley,Alaska,AK,2008-01-01,1565,1750716,67.55,-159.28
+Kobuk Valley,Alaska,AK,2009-01-01,1879,1750716,67.55,-159.28
+Kobuk Valley,Alaska,AK,2010-01-01,3164,1750716,67.55,-159.28
+Kobuk Valley,Alaska,AK,2011-01-01,11485,1750716,67.55,-159.28
+Kobuk Valley,Alaska,AK,2012-01-01,29550,1750716,67.55,-159.28
+Kobuk Valley,Alaska,AK,2013-01-01,16875,1750716,67.55,-159.28
+Kobuk Valley,Alaska,AK,2016-01-01,15500,1750716,67.55,-159.28
+Lake Clark,Alaska,AK,2000-01-01,6493,2619816,60.97,-153.42
+Lake Clark,Alaska,AK,2001-01-01,4397,2619816,60.97,-153.42
+Lake Clark,Alaska,AK,2002-01-01,4325,2619816,60.97,-153.42
+Lake Clark,Alaska,AK,2003-01-01,4505,2619816,60.97,-153.42
+Lake Clark,Alaska,AK,2004-01-01,4906,2619816,60.97,-153.42
+Lake Clark,Alaska,AK,2005-01-01,5408,2619816,60.97,-153.42
+Lake Clark,Alaska,AK,2006-01-01,5320,2619816,60.97,-153.42
+Lake Clark,Alaska,AK,2007-01-01,5549,2619816,60.97,-153.42
+Lake Clark,Alaska,AK,2008-01-01,6802,2619816,60.97,-153.42
+Lake Clark,Alaska,AK,2009-01-01,9711,2619816,60.97,-153.42
+Lake Clark,Alaska,AK,2010-01-01,9931,2619816,60.97,-153.42
+Lake Clark,Alaska,AK,2011-01-01,5158,2619816,60.97,-153.42
+Lake Clark,Alaska,AK,2012-01-01,11639,2619816,60.97,-153.42
+Lake Clark,Alaska,AK,2013-01-01,13000,2619816,60.97,-153.42
+Lake Clark,Alaska,AK,2014-01-01,16100,2619816,60.97,-153.42
+Lake Clark,Alaska,AK,2015-01-01,17818,2619816,60.97,-153.42
+Lake Clark,Alaska,AK,2016-01-01,21102,2619816,60.97,-153.42
+Lassen Volcanic,Pacific West,CA,2000-01-01,374911,106589,40.49,-121.51
+Lassen Volcanic,Pacific West,CA,2001-01-01,376695,106589,40.49,-121.51
+Lassen Volcanic,Pacific West,CA,2002-01-01,388149,106589,40.49,-121.51
+Lassen Volcanic,Pacific West,CA,2003-01-01,404384,106589,40.49,-121.51
+Lassen Volcanic,Pacific West,CA,2004-01-01,379667,106589,40.49,-121.51
+Lassen Volcanic,Pacific West,CA,2005-01-01,365535,106589,40.49,-121.51
+Lassen Volcanic,Pacific West,CA,2006-01-01,388741,106589,40.49,-121.51
+Lassen Volcanic,Pacific West,CA,2007-01-01,395057,106589,40.49,-121.51
+Lassen Volcanic,Pacific West,CA,2008-01-01,377361,106589,40.49,-121.51
+Lassen Volcanic,Pacific West,CA,2009-01-01,365639,106589,40.49,-121.51
+Lassen Volcanic,Pacific West,CA,2010-01-01,384570,106589,40.49,-121.51
+Lassen Volcanic,Pacific West,CA,2011-01-01,351269,106589,40.49,-121.51
+Lassen Volcanic,Pacific West,CA,2012-01-01,407653,106589,40.49,-121.51
+Lassen Volcanic,Pacific West,CA,2013-01-01,427409,106589,40.49,-121.51
+Lassen Volcanic,Pacific West,CA,2014-01-01,432977,106589,40.49,-121.51
+Lassen Volcanic,Pacific West,CA,2015-01-01,468092,106589,40.49,-121.51
+Lassen Volcanic,Pacific West,CA,2016-01-01,536068,106589,40.49,-121.51
+Mammoth Cave,Southeast,KY,2000-01-01,1749268,72473,37.18,-86.1
+Mammoth Cave,Southeast,KY,2001-01-01,1883580,72473,37.18,-86.1
+Mammoth Cave,Southeast,KY,2002-01-01,1891307,72473,37.18,-86.1
+Mammoth Cave,Southeast,KY,2003-01-01,1869137,72473,37.18,-86.1
+Mammoth Cave,Southeast,KY,2004-01-01,1888267,72473,37.18,-86.1
+Mammoth Cave,Southeast,KY,2005-01-01,1878006,72473,37.18,-86.1
+Mammoth Cave,Southeast,KY,2006-01-01,597934,72473,37.18,-86.1
+Mammoth Cave,Southeast,KY,2007-01-01,487305,72473,37.18,-86.1
+Mammoth Cave,Southeast,KY,2008-01-01,446174,72473,37.18,-86.1
+Mammoth Cave,Southeast,KY,2009-01-01,503856,72473,37.18,-86.1
+Mammoth Cave,Southeast,KY,2010-01-01,497225,72473,37.18,-86.1
+Mammoth Cave,Southeast,KY,2011-01-01,483319,72473,37.18,-86.1
+Mammoth Cave,Southeast,KY,2012-01-01,508054,72473,37.18,-86.1
+Mammoth Cave,Southeast,KY,2013-01-01,494541,72473,37.18,-86.1
+Mammoth Cave,Southeast,KY,2014-01-01,522628,72473,37.18,-86.1
+Mammoth Cave,Southeast,KY,2015-01-01,566895,72473,37.18,-86.1
+Mammoth Cave,Southeast,KY,2016-01-01,586514,72473,37.18,-86.1
+Mesa Verde,Intermountain,CO,2000-01-01,452287,52485,37.18,-108.49
+Mesa Verde,Intermountain,CO,2001-01-01,513409,52485,37.18,-108.49
+Mesa Verde,Intermountain,CO,2002-01-01,406385,52485,37.18,-108.49
+Mesa Verde,Intermountain,CO,2003-01-01,438590,52485,37.18,-108.49
+Mesa Verde,Intermountain,CO,2004-01-01,446811,52485,37.18,-108.49
+Mesa Verde,Intermountain,CO,2005-01-01,498333,52485,37.18,-108.49
+Mesa Verde,Intermountain,CO,2006-01-01,557248,52485,37.18,-108.49
+Mesa Verde,Intermountain,CO,2007-01-01,541102,52485,37.18,-108.49
+Mesa Verde,Intermountain,CO,2008-01-01,551446,52485,37.18,-108.49
+Mesa Verde,Intermountain,CO,2009-01-01,550377,52485,37.18,-108.49
+Mesa Verde,Intermountain,CO,2010-01-01,559712,52485,37.18,-108.49
+Mesa Verde,Intermountain,CO,2011-01-01,572329,52485,37.18,-108.49
+Mesa Verde,Intermountain,CO,2012-01-01,488860,52485,37.18,-108.49
+Mesa Verde,Intermountain,CO,2013-01-01,460237,52485,37.18,-108.49
+Mesa Verde,Intermountain,CO,2014-01-01,501563,52485,37.18,-108.49
+Mesa Verde,Intermountain,CO,2015-01-01,547325,52485,37.18,-108.49
+Mesa Verde,Intermountain,CO,2016-01-01,583527,52485,37.18,-108.49
+Mount Rainier,Pacific West,WA,2000-01-01,1344833,236382,46.85,-121.75
+Mount Rainier,Pacific West,WA,2001-01-01,1301103,236382,46.85,-121.75
+Mount Rainier,Pacific West,WA,2002-01-01,1310390,236382,46.85,-121.75
+Mount Rainier,Pacific West,WA,2003-01-01,1262351,236382,46.85,-121.75
+Mount Rainier,Pacific West,WA,2004-01-01,1217750,236382,46.85,-121.75
+Mount Rainier,Pacific West,WA,2005-01-01,1173897,236382,46.85,-121.75
+Mount Rainier,Pacific West,WA,2006-01-01,1113601,236382,46.85,-121.75
+Mount Rainier,Pacific West,WA,2007-01-01,1047685,236382,46.85,-121.75
+Mount Rainier,Pacific West,WA,2008-01-01,1163227,236382,46.85,-121.75
+Mount Rainier,Pacific West,WA,2009-01-01,1151654,236382,46.85,-121.75
+Mount Rainier,Pacific West,WA,2010-01-01,1191754,236382,46.85,-121.75
+Mount Rainier,Pacific West,WA,2011-01-01,1038229,236382,46.85,-121.75
+Mount Rainier,Pacific West,WA,2012-01-01,1049178,236382,46.85,-121.75
+Mount Rainier,Pacific West,WA,2013-01-01,1148552,236382,46.85,-121.75
+Mount Rainier,Pacific West,WA,2014-01-01,1264259,236382,46.85,-121.75
+Mount Rainier,Pacific West,WA,2015-01-01,1237231,236382,46.85,-121.75
+Mount Rainier,Pacific West,WA,2016-01-01,1356913,236382,46.85,-121.75
+North Cascades,Pacific West,WA,2000-01-01,25704,504781,48.7,-121.2
+North Cascades,Pacific West,WA,2001-01-01,27739,504781,48.7,-121.2
+North Cascades,Pacific West,WA,2002-01-01,20691,504781,48.7,-121.2
+North Cascades,Pacific West,WA,2003-01-01,20724,504781,48.7,-121.2
+North Cascades,Pacific West,WA,2004-01-01,16912,504781,48.7,-121.2
+North Cascades,Pacific West,WA,2005-01-01,18686,504781,48.7,-121.2
+North Cascades,Pacific West,WA,2006-01-01,19167,504781,48.7,-121.2
+North Cascades,Pacific West,WA,2007-01-01,19534,504781,48.7,-121.2
+North Cascades,Pacific West,WA,2008-01-01,18725,504781,48.7,-121.2
+North Cascades,Pacific West,WA,2009-01-01,26972,504781,48.7,-121.2
+North Cascades,Pacific West,WA,2010-01-01,24659,504781,48.7,-121.2
+North Cascades,Pacific West,WA,2011-01-01,19208,504781,48.7,-121.2
+North Cascades,Pacific West,WA,2012-01-01,26935,504781,48.7,-121.2
+North Cascades,Pacific West,WA,2013-01-01,21623,504781,48.7,-121.2
+North Cascades,Pacific West,WA,2014-01-01,23865,504781,48.7,-121.2
+North Cascades,Pacific West,WA,2015-01-01,20677,504781,48.7,-121.2
+North Cascades,Pacific West,WA,2016-01-01,28646,504781,48.7,-121.2
+Olympic,Pacific West,WA,2000-01-01,3327722,922649,47.97,-123.5
+Olympic,Pacific West,WA,2001-01-01,3416069,922649,47.97,-123.5
+Olympic,Pacific West,WA,2002-01-01,3691310,922649,47.97,-123.5
+Olympic,Pacific West,WA,2003-01-01,3225327,922649,47.97,-123.5
+Olympic,Pacific West,WA,2004-01-01,3073722,922649,47.97,-123.5
+Olympic,Pacific West,WA,2005-01-01,3142774,922649,47.97,-123.5
+Olympic,Pacific West,WA,2006-01-01,2749197,922649,47.97,-123.5
+Olympic,Pacific West,WA,2007-01-01,2988686,922649,47.97,-123.5
+Olympic,Pacific West,WA,2008-01-01,3081451,922649,47.97,-123.5
+Olympic,Pacific West,WA,2009-01-01,3276459,922649,47.97,-123.5
+Olympic,Pacific West,WA,2010-01-01,2844563,922649,47.97,-123.5
+Olympic,Pacific West,WA,2011-01-01,2966502,922649,47.97,-123.5
+Olympic,Pacific West,WA,2012-01-01,2824908,922649,47.97,-123.5
+Olympic,Pacific West,WA,2013-01-01,3085340,922649,47.97,-123.5
+Olympic,Pacific West,WA,2014-01-01,3243872,922649,47.97,-123.5
+Olympic,Pacific West,WA,2015-01-01,3263761,922649,47.97,-123.5
+Olympic,Pacific West,WA,2016-01-01,3390221,922649,47.97,-123.5
+Petrified Forest,Intermountain,AZ,2000-01-01,605192,221390,35.07,-109.78
+Petrified Forest,Intermountain,AZ,2001-01-01,583904,221390,35.07,-109.78
+Petrified Forest,Intermountain,AZ,2002-01-01,571586,221390,35.07,-109.78
+Petrified Forest,Intermountain,AZ,2003-01-01,586245,221390,35.07,-109.78
+Petrified Forest,Intermountain,AZ,2004-01-01,580000,221390,35.07,-109.78
+Petrified Forest,Intermountain,AZ,2005-01-01,598378,221390,35.07,-109.78
+Petrified Forest,Intermountain,AZ,2006-01-01,581681,221390,35.07,-109.78
+Petrified Forest,Intermountain,AZ,2007-01-01,563590,221390,35.07,-109.78
+Petrified Forest,Intermountain,AZ,2008-01-01,543714,221390,35.07,-109.78
+Petrified Forest,Intermountain,AZ,2009-01-01,631613,221390,35.07,-109.78
+Petrified Forest,Intermountain,AZ,2010-01-01,664725,221390,35.07,-109.78
+Petrified Forest,Intermountain,AZ,2011-01-01,614054,221390,35.07,-109.78
+Petrified Forest,Intermountain,AZ,2012-01-01,664857,221390,35.07,-109.78
+Petrified Forest,Intermountain,AZ,2013-01-01,644648,221390,35.07,-109.78
+Petrified Forest,Intermountain,AZ,2014-01-01,836799,221390,35.07,-109.78
+Petrified Forest,Intermountain,AZ,2015-01-01,793225,221390,35.07,-109.78
+Petrified Forest,Intermountain,AZ,2016-01-01,643274,221390,35.07,-109.78
+Pinnacles,Pacific West,CA,2000-01-01,162110,26686,36.48,-121.16
+Pinnacles,Pacific West,CA,2001-01-01,178243,26686,36.48,-121.16
+Pinnacles,Pacific West,CA,2002-01-01,162266,26686,36.48,-121.16
+Pinnacles,Pacific West,CA,2003-01-01,162791,26686,36.48,-121.16
+Pinnacles,Pacific West,CA,2004-01-01,157397,26686,36.48,-121.16
+Pinnacles,Pacific West,CA,2005-01-01,170994,26686,36.48,-121.16
+Pinnacles,Pacific West,CA,2006-01-01,158824,26686,36.48,-121.16
+Pinnacles,Pacific West,CA,2007-01-01,161019,26686,36.48,-121.16
+Pinnacles,Pacific West,CA,2008-01-01,166988,26686,36.48,-121.16
+Pinnacles,Pacific West,CA,2009-01-01,171112,26686,36.48,-121.16
+Pinnacles,Pacific West,CA,2010-01-01,246575,26686,36.48,-121.16
+Pinnacles,Pacific West,CA,2011-01-01,393219,26686,36.48,-121.16
+Pinnacles,Pacific West,CA,2012-01-01,224476,26686,36.48,-121.16
+Pinnacles,Pacific West,CA,2013-01-01,237677,26686,36.48,-121.16
+Pinnacles,Pacific West,CA,2014-01-01,196635,26686,36.48,-121.16
+Pinnacles,Pacific West,CA,2015-01-01,206533,26686,36.48,-121.16
+Pinnacles,Pacific West,CA,2016-01-01,215555,26686,36.48,-121.16
+Redwood,Pacific West,CA,2000-01-01,383253,138999,41.3,-124.0
+Redwood,Pacific West,CA,2001-01-01,388352,138999,41.3,-124.0
+Redwood,Pacific West,CA,2002-01-01,404789,138999,41.3,-124.0
+Redwood,Pacific West,CA,2003-01-01,408126,138999,41.3,-124.0
+Redwood,Pacific West,CA,2004-01-01,392029,138999,41.3,-124.0
+Redwood,Pacific West,CA,2005-01-01,394144,138999,41.3,-124.0
+Redwood,Pacific West,CA,2006-01-01,383780,138999,41.3,-124.0
+Redwood,Pacific West,CA,2007-01-01,385171,138999,41.3,-124.0
+Redwood,Pacific West,CA,2008-01-01,396899,138999,41.3,-124.0
+Redwood,Pacific West,CA,2009-01-01,444426,138999,41.3,-124.0
+Redwood,Pacific West,CA,2010-01-01,418820,138999,41.3,-124.0
+Redwood,Pacific West,CA,2011-01-01,380167,138999,41.3,-124.0
+Redwood,Pacific West,CA,2012-01-01,352517,138999,41.3,-124.0
+Redwood,Pacific West,CA,2013-01-01,393364,138999,41.3,-124.0
+Redwood,Pacific West,CA,2014-01-01,429166,138999,41.3,-124.0
+Redwood,Pacific West,CA,2015-01-01,527143,138999,41.3,-124.0
+Redwood,Pacific West,CA,2016-01-01,536297,138999,41.3,-124.0
+Rocky Mountain,Intermountain,CO,2000-01-01,3185392,265848,40.4,-105.58
+Rocky Mountain,Intermountain,CO,2001-01-01,3139685,265848,40.4,-105.58
+Rocky Mountain,Intermountain,CO,2002-01-01,2988475,265848,40.4,-105.58
+Rocky Mountain,Intermountain,CO,2003-01-01,3067256,265848,40.4,-105.58
+Rocky Mountain,Intermountain,CO,2004-01-01,2781899,265848,40.4,-105.58
+Rocky Mountain,Intermountain,CO,2005-01-01,2798368,265848,40.4,-105.58
+Rocky Mountain,Intermountain,CO,2006-01-01,2743676,265848,40.4,-105.58
+Rocky Mountain,Intermountain,CO,2007-01-01,2895383,265848,40.4,-105.58
+Rocky Mountain,Intermountain,CO,2008-01-01,2757390,265848,40.4,-105.58
+Rocky Mountain,Intermountain,CO,2009-01-01,2822325,265848,40.4,-105.58
+Rocky Mountain,Intermountain,CO,2010-01-01,2955821,265848,40.4,-105.58
+Rocky Mountain,Intermountain,CO,2011-01-01,3176941,265848,40.4,-105.58
+Rocky Mountain,Intermountain,CO,2012-01-01,3229617,265848,40.4,-105.58
+Rocky Mountain,Intermountain,CO,2013-01-01,2991141,265848,40.4,-105.58
+Rocky Mountain,Intermountain,CO,2014-01-01,3434751,265848,40.4,-105.58
+Rocky Mountain,Intermountain,CO,2015-01-01,4155916,265848,40.4,-105.58
+Rocky Mountain,Intermountain,CO,2016-01-01,4517585,265848,40.4,-105.58
+Saguaro,Intermountain,AZ,2000-01-01,765195,92877,32.25,-110.5
+Saguaro,Intermountain,AZ,2001-01-01,725874,92877,32.25,-110.5
+Saguaro,Intermountain,AZ,2002-01-01,615045,92877,32.25,-110.5
+Saguaro,Intermountain,AZ,2003-01-01,643697,92877,32.25,-110.5
+Saguaro,Intermountain,AZ,2004-01-01,651464,92877,32.25,-110.5
+Saguaro,Intermountain,AZ,2005-01-01,727208,92877,32.25,-110.5
+Saguaro,Intermountain,AZ,2006-01-01,619983,92877,32.25,-110.5
+Saguaro,Intermountain,AZ,2007-01-01,658477,92877,32.25,-110.5
+Saguaro,Intermountain,AZ,2008-01-01,699137,92877,32.25,-110.5
+Saguaro,Intermountain,AZ,2009-01-01,665234,92877,32.25,-110.5
+Saguaro,Intermountain,AZ,2010-01-01,717614,92877,32.25,-110.5
+Saguaro,Intermountain,AZ,2011-01-01,610045,92877,32.25,-110.5
+Saguaro,Intermountain,AZ,2012-01-01,634286,92877,32.25,-110.5
+Saguaro,Intermountain,AZ,2013-01-01,678261,92877,32.25,-110.5
+Saguaro,Intermountain,AZ,2014-01-01,673572,92877,32.25,-110.5
+Saguaro,Intermountain,AZ,2015-01-01,753446,92877,32.25,-110.5
+Saguaro,Intermountain,AZ,2016-01-01,820426,92877,32.25,-110.5
+Sequoia,Pacific West,CA,2000-01-01,838947,404063,36.43,-118.68
+Sequoia,Pacific West,CA,2001-01-01,870327,404063,36.43,-118.68
+Sequoia,Pacific West,CA,2002-01-01,920292,404063,36.43,-118.68
+Sequoia,Pacific West,CA,2003-01-01,979297,404063,36.43,-118.68
+Sequoia,Pacific West,CA,2004-01-01,1000177,404063,36.43,-118.68
+Sequoia,Pacific West,CA,2005-01-01,1004843,404063,36.43,-118.68
+Sequoia,Pacific West,CA,2006-01-01,954507,404063,36.43,-118.68
+Sequoia,Pacific West,CA,2007-01-01,979537,404063,36.43,-118.68
+Sequoia,Pacific West,CA,2008-01-01,930011,404063,36.43,-118.68
+Sequoia,Pacific West,CA,2009-01-01,965170,404063,36.43,-118.68
+Sequoia,Pacific West,CA,2010-01-01,1002979,404063,36.43,-118.68
+Sequoia,Pacific West,CA,2011-01-01,1006583,404063,36.43,-118.68
+Sequoia,Pacific West,CA,2012-01-01,1106584,404063,36.43,-118.68
+Sequoia,Pacific West,CA,2013-01-01,909274,404063,36.43,-118.68
+Sequoia,Pacific West,CA,2014-01-01,1039137,404063,36.43,-118.68
+Sequoia,Pacific West,CA,2015-01-01,1097464,404063,36.43,-118.68
+Sequoia,Pacific West,CA,2016-01-01,1254688,404063,36.43,-118.68
+Shenandoah,Northeast,VA,2000-01-01,1419579,200446,38.53,-78.35
+Shenandoah,Northeast,VA,2001-01-01,1498561,200446,38.53,-78.35
+Shenandoah,Northeast,VA,2002-01-01,1389244,200446,38.53,-78.35
+Shenandoah,Northeast,VA,2003-01-01,1163950,200446,38.53,-78.35
+Shenandoah,Northeast,VA,2004-01-01,1261000,200446,38.53,-78.35
+Shenandoah,Northeast,VA,2005-01-01,1094912,200446,38.53,-78.35
+Shenandoah,Northeast,VA,2006-01-01,1076150,200446,38.53,-78.35
+Shenandoah,Northeast,VA,2007-01-01,1107227,200446,38.53,-78.35
+Shenandoah,Northeast,VA,2008-01-01,1075878,200446,38.53,-78.35
+Shenandoah,Northeast,VA,2009-01-01,1120981,200446,38.53,-78.35
+Shenandoah,Northeast,VA,2010-01-01,1253386,200446,38.53,-78.35
+Shenandoah,Northeast,VA,2011-01-01,1209883,200446,38.53,-78.35
+Shenandoah,Northeast,VA,2012-01-01,1210200,200446,38.53,-78.35
+Shenandoah,Northeast,VA,2013-01-01,1136505,200446,38.53,-78.35
+Shenandoah,Northeast,VA,2014-01-01,1255321,200446,38.53,-78.35
+Shenandoah,Northeast,VA,2015-01-01,1321873,200446,38.53,-78.35
+Shenandoah,Northeast,VA,2016-01-01,1437341,200446,38.53,-78.35
+Theodore Roosevelt,Midwest,ND,2000-01-01,431813,70447,46.97,-103.45
+Theodore Roosevelt,Midwest,ND,2001-01-01,446609,70447,46.97,-103.45
+Theodore Roosevelt,Midwest,ND,2002-01-01,471551,70447,46.97,-103.45
+Theodore Roosevelt,Midwest,ND,2003-01-01,490295,70447,46.97,-103.45
+Theodore Roosevelt,Midwest,ND,2004-01-01,474589,70447,46.97,-103.45
+Theodore Roosevelt,Midwest,ND,2005-01-01,493198,70447,46.97,-103.45
+Theodore Roosevelt,Midwest,ND,2006-01-01,435359,70447,46.97,-103.45
+Theodore Roosevelt,Midwest,ND,2007-01-01,456588,70447,46.97,-103.45
+Theodore Roosevelt,Midwest,ND,2008-01-01,516804,70447,46.97,-103.45
+Theodore Roosevelt,Midwest,ND,2009-01-01,586928,70447,46.97,-103.45
+Theodore Roosevelt,Midwest,ND,2010-01-01,623748,70447,46.97,-103.45
+Theodore Roosevelt,Midwest,ND,2011-01-01,563407,70447,46.97,-103.45
+Theodore Roosevelt,Midwest,ND,2012-01-01,640555,70447,46.97,-103.45
+Theodore Roosevelt,Midwest,ND,2013-01-01,545090,70447,46.97,-103.45
+Theodore Roosevelt,Midwest,ND,2014-01-01,559580,70447,46.97,-103.45
+Theodore Roosevelt,Midwest,ND,2015-01-01,580033,70447,46.97,-103.45
+Theodore Roosevelt,Midwest,ND,2016-01-01,753880,70447,46.97,-103.45
+Virgin Islands,Southeast,VI,2000-01-01,703992,15052,18.33,-64.73
+Virgin Islands,Southeast,VI,2001-01-01,677401,15052,18.33,-64.73
+Virgin Islands,Southeast,VI,2002-01-01,693494,15052,18.33,-64.73
+Virgin Islands,Southeast,VI,2003-01-01,821681,15052,18.33,-64.73
+Virgin Islands,Southeast,VI,2004-01-01,793590,15052,18.33,-64.73
+Virgin Islands,Southeast,VI,2005-01-01,803040,15052,18.33,-64.73
+Virgin Islands,Southeast,VI,2006-01-01,677289,15052,18.33,-64.73
+Virgin Islands,Southeast,VI,2007-01-01,571382,15052,18.33,-64.73
+Virgin Islands,Southeast,VI,2008-01-01,469034,15052,18.33,-64.73
+Virgin Islands,Southeast,VI,2009-01-01,415847,15052,18.33,-64.73
+Virgin Islands,Southeast,VI,2010-01-01,493477,15052,18.33,-64.73
+Virgin Islands,Southeast,VI,2011-01-01,442414,15052,18.33,-64.73
+Virgin Islands,Southeast,VI,2012-01-01,483341,15052,18.33,-64.73
+Virgin Islands,Southeast,VI,2013-01-01,438601,15052,18.33,-64.73
+Virgin Islands,Southeast,VI,2014-01-01,426930,15052,18.33,-64.73
+Virgin Islands,Southeast,VI,2015-01-01,438372,15052,18.33,-64.73
+Virgin Islands,Southeast,VI,2016-01-01,411343,15052,18.33,-64.73
+Voyageurs,Midwest,MN,2000-01-01,227371,218222,48.5,-92.88
+Voyageurs,Midwest,MN,2001-01-01,243374,218222,48.5,-92.88
+Voyageurs,Midwest,MN,2002-01-01,238227,218222,48.5,-92.88
+Voyageurs,Midwest,MN,2003-01-01,234231,218222,48.5,-92.88
+Voyageurs,Midwest,MN,2004-01-01,249041,218222,48.5,-92.88
+Voyageurs,Midwest,MN,2005-01-01,234577,218222,48.5,-92.88
+Voyageurs,Midwest,MN,2006-01-01,231875,218222,48.5,-92.88
+Voyageurs,Midwest,MN,2007-01-01,220650,218222,48.5,-92.88
+Voyageurs,Midwest,MN,2008-01-01,221585,218222,48.5,-92.88
+Voyageurs,Midwest,MN,2009-01-01,222429,218222,48.5,-92.88
+Voyageurs,Midwest,MN,2010-01-01,253891,218222,48.5,-92.88
+Voyageurs,Midwest,MN,2011-01-01,177184,218222,48.5,-92.88
+Voyageurs,Midwest,MN,2012-01-01,214841,218222,48.5,-92.88
+Voyageurs,Midwest,MN,2013-01-01,233390,218222,48.5,-92.88
+Voyageurs,Midwest,MN,2014-01-01,239160,218222,48.5,-92.88
+Voyageurs,Midwest,MN,2015-01-01,238313,218222,48.5,-92.88
+Voyageurs,Midwest,MN,2016-01-01,241912,218222,48.5,-92.88
+Wind Cave,Midwest,SD,2000-01-01,668507,33971,43.57,-103.48
+Wind Cave,Midwest,SD,2001-01-01,650357,33971,43.57,-103.48
+Wind Cave,Midwest,SD,2002-01-01,810298,33971,43.57,-103.48
+Wind Cave,Midwest,SD,2003-01-01,874167,33971,43.57,-103.48
+Wind Cave,Midwest,SD,2004-01-01,593877,33971,43.57,-103.48
+Wind Cave,Midwest,SD,2005-01-01,612478,33971,43.57,-103.48
+Wind Cave,Midwest,SD,2006-01-01,591049,33971,43.57,-103.48
+Wind Cave,Midwest,SD,2007-01-01,603158,33971,43.57,-103.48
+Wind Cave,Midwest,SD,2008-01-01,573433,33971,43.57,-103.48
+Wind Cave,Midwest,SD,2009-01-01,587868,33971,43.57,-103.48
+Wind Cave,Midwest,SD,2010-01-01,577141,33971,43.57,-103.48
+Wind Cave,Midwest,SD,2011-01-01,538394,33971,43.57,-103.48
+Wind Cave,Midwest,SD,2012-01-01,529083,33971,43.57,-103.48
+Wind Cave,Midwest,SD,2013-01-01,516142,33971,43.57,-103.48
+Wind Cave,Midwest,SD,2014-01-01,547022,33971,43.57,-103.48
+Wind Cave,Midwest,SD,2015-01-01,612198,33971,43.57,-103.48
+Wind Cave,Midwest,SD,2016-01-01,617377,33971,43.57,-103.48
+Wrangell–St. Elias,Alaska,AK,2000-01-01,28331,8323146,61.0,-142.0
+Wrangell–St. Elias,Alaska,AK,2001-01-01,28643,8323146,61.0,-142.0
+Wrangell–St. Elias,Alaska,AK,2002-01-01,40352,8323146,61.0,-142.0
+Wrangell–St. Elias,Alaska,AK,2003-01-01,43311,8323146,61.0,-142.0
+Wrangell–St. Elias,Alaska,AK,2004-01-01,57221,8323146,61.0,-142.0
+Wrangell–St. Elias,Alaska,AK,2005-01-01,56224,8323146,61.0,-142.0
+Wrangell–St. Elias,Alaska,AK,2006-01-01,50336,8323146,61.0,-142.0
+Wrangell–St. Elias,Alaska,AK,2007-01-01,61085,8323146,61.0,-142.0
+Wrangell–St. Elias,Alaska,AK,2008-01-01,65693,8323146,61.0,-142.0
+Wrangell–St. Elias,Alaska,AK,2009-01-01,59966,8323146,61.0,-142.0
+Wrangell–St. Elias,Alaska,AK,2010-01-01,73170,8323146,61.0,-142.0
+Wrangell–St. Elias,Alaska,AK,2011-01-01,65225,8323146,61.0,-142.0
+Wrangell–St. Elias,Alaska,AK,2012-01-01,87158,8323146,61.0,-142.0
+Wrangell–St. Elias,Alaska,AK,2013-01-01,69984,8323146,61.0,-142.0
+Wrangell–St. Elias,Alaska,AK,2014-01-01,74722,8323146,61.0,-142.0
+Wrangell–St. Elias,Alaska,AK,2015-01-01,80366,8323146,61.0,-142.0
+Wrangell–St. Elias,Alaska,AK,2016-01-01,79047,8323146,61.0,-142.0
+Yellowstone,Intermountain,WY,2000-01-01,2838233,2219791,44.6,-110.5
+Yellowstone,Intermountain,WY,2001-01-01,2758526,2219791,44.6,-110.5
+Yellowstone,Intermountain,WY,2002-01-01,2973677,2219791,44.6,-110.5
+Yellowstone,Intermountain,WY,2003-01-01,3019375,2219791,44.6,-110.5
+Yellowstone,Intermountain,WY,2004-01-01,2868317,2219791,44.6,-110.5
+Yellowstone,Intermountain,WY,2005-01-01,2835651,2219791,44.6,-110.5
+Yellowstone,Intermountain,WY,2006-01-01,2870295,2219791,44.6,-110.5
+Yellowstone,Intermountain,WY,2007-01-01,3151343,2219791,44.6,-110.5
+Yellowstone,Intermountain,WY,2008-01-01,3066580,2219791,44.6,-110.5
+Yellowstone,Intermountain,WY,2009-01-01,3295187,2219791,44.6,-110.5
+Yellowstone,Intermountain,WY,2010-01-01,3640185,2219791,44.6,-110.5
+Yellowstone,Intermountain,WY,2011-01-01,3394326,2219791,44.6,-110.5
+Yellowstone,Intermountain,WY,2012-01-01,3447729,2219791,44.6,-110.5
+Yellowstone,Intermountain,WY,2013-01-01,3188030,2219791,44.6,-110.5
+Yellowstone,Intermountain,WY,2014-01-01,3513484,2219791,44.6,-110.5
+Yellowstone,Intermountain,WY,2015-01-01,4097710,2219791,44.6,-110.5
+Yellowstone,Intermountain,WY,2016-01-01,4257177,2219791,44.6,-110.5
+Yosemite,Pacific West,CA,2000-01-01,3400903,761748,37.83,-119.5
+Yosemite,Pacific West,CA,2001-01-01,3368731,761748,37.83,-119.5
+Yosemite,Pacific West,CA,2002-01-01,3361867,761748,37.83,-119.5
+Yosemite,Pacific West,CA,2003-01-01,3378664,761748,37.83,-119.5
+Yosemite,Pacific West,CA,2004-01-01,3280911,761748,37.83,-119.5
+Yosemite,Pacific West,CA,2005-01-01,3304144,761748,37.83,-119.5
+Yosemite,Pacific West,CA,2006-01-01,3242644,761748,37.83,-119.5
+Yosemite,Pacific West,CA,2007-01-01,3503428,761748,37.83,-119.5
+Yosemite,Pacific West,CA,2008-01-01,3431514,761748,37.83,-119.5
+Yosemite,Pacific West,CA,2009-01-01,3737472,761748,37.83,-119.5
+Yosemite,Pacific West,CA,2010-01-01,3901408,761748,37.83,-119.5
+Yosemite,Pacific West,CA,2011-01-01,3951393,761748,37.83,-119.5
+Yosemite,Pacific West,CA,2012-01-01,3853404,761748,37.83,-119.5
+Yosemite,Pacific West,CA,2013-01-01,3691191,761748,37.83,-119.5
+Yosemite,Pacific West,CA,2014-01-01,3882642,761748,37.83,-119.5
+Yosemite,Pacific West,CA,2015-01-01,4150217,761748,37.83,-119.5
+Yosemite,Pacific West,CA,2016-01-01,5028868,761748,37.83,-119.5
+Zion,Intermountain,UT,2000-01-01,2432348,147243,37.3,-113.05
+Zion,Intermountain,UT,2001-01-01,2217779,147243,37.3,-113.05
+Zion,Intermountain,UT,2002-01-01,2592545,147243,37.3,-113.05
+Zion,Intermountain,UT,2003-01-01,2458792,147243,37.3,-113.05
+Zion,Intermountain,UT,2004-01-01,2677342,147243,37.3,-113.05
+Zion,Intermountain,UT,2005-01-01,2586665,147243,37.3,-113.05
+Zion,Intermountain,UT,2006-01-01,2567350,147243,37.3,-113.05
+Zion,Intermountain,UT,2007-01-01,2657281,147243,37.3,-113.05
+Zion,Intermountain,UT,2008-01-01,2690154,147243,37.3,-113.05
+Zion,Intermountain,UT,2009-01-01,2735402,147243,37.3,-113.05
+Zion,Intermountain,UT,2010-01-01,2665972,147243,37.3,-113.05
+Zion,Intermountain,UT,2011-01-01,2825505,147243,37.3,-113.05
+Zion,Intermountain,UT,2012-01-01,2973607,147243,37.3,-113.05
+Zion,Intermountain,UT,2013-01-01,2807387,147243,37.3,-113.05
+Zion,Intermountain,UT,2014-01-01,3189696,147243,37.3,-113.05
+Zion,Intermountain,UT,2015-01-01,3648846,147243,37.3,-113.05
+Zion,Intermountain,UT,2016-01-01,4295127,147243,37.3,-113.05
