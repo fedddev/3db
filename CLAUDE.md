@@ -72,7 +72,8 @@ speech / typed text
 - Corner view: grid and timeline layouts are turned 45° (`CORNER_YAW`) with
   their near corner at the origin, so you look straight at a corner and both
   sides recede. Boxes, outlines and the floor grid share the turn; geo stays
-  unturned. The timeline is about as long as it is wide (same-period records
+  unturned, but is built in front of you too: centered left to right with its
+  southern edge at the origin (`placeGeo`), not at raw lon/lat. The timeline is about as long as it is wide (same-period records
   stack sideways) so both sides have depth.
 - The title hangs past the far end, high enough to clear every box as seen
   from the start (`titlePlacement`). On load the camera turns in place toward

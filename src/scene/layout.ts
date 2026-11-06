@@ -380,11 +380,16 @@ function placeTimeline(rows: Row[], timeField: string, groups: { indices: number
   }
 }
 
-// Longitude and latitude on the floor, depth below it.
+// Longitude and latitude on the floor, depth below it. Like the other layouts,
+// the map is built in front of you: centered left to right, its southern edge
+// at the origin, receding north away from the start. (Raw coordinates would
+// leave most of the world far to one side, since 0°, 0° is off Africa.)
 function placeGeo(rows: Row[], ds: Dataset, pos: Float32Array, size: Float32Array) {
   const { lat, lon, depth } = ds.geo!
   const SCALE = 1.2
   const DEPTH_SCALE = 0.08
+  const placed: number[] = []
+  let minX = Infinity, maxX = -Infinity, maxZ = -Infinity
   rows.forEach((r, i) => {
     const la = r[lat], lo = r[lon]
     if (typeof la !== 'number' || typeof lo !== 'number') {
@@ -395,5 +400,14 @@ function placeGeo(rows: Row[], ds: Dataset, pos: Float32Array, size: Float32Arra
     pos[i * 3] = lo * SCALE
     pos[i * 3 + 1] = typeof d === 'number' ? -d * DEPTH_SCALE : 0
     pos[i * 3 + 2] = -la * SCALE
+    placed.push(i)
+    minX = Math.min(minX, pos[i * 3])
+    maxX = Math.max(maxX, pos[i * 3])
+    maxZ = Math.max(maxZ, pos[i * 3 + 2])
   })
+  const shiftX = -(minX + maxX) / 2
+  for (const i of placed) {
+    pos[i * 3] += shiftX
+    pos[i * 3 + 2] -= maxZ
+  }
 }
